@@ -1,0 +1,13 @@
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\OnlyTwo.exe.config
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\OnlyTwo.exe
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\OnlyTwo.pdb
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\Bunifu_UI_v1.5.3.dll
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\Bunifu_UI_v1.5.3.xml
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.csproj.AssemblyReference.cache
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.MainForm.resources
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.Properties.Resources.resources
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.csproj.GenerateResource.cache
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.csproj.CoreCompileInputs.cache
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.csproj.CopyComplete
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.exe
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.pdb
