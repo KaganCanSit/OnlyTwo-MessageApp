@@ -1,2 +1,2 @@
 # OnlyTwo-MessageApp
-C# dili ile birlikte soket programlama ve şifreleme algoritmaları kullanarak Yazılım Sınama dersi için oluşturulmuş proje.
+Project created for Software Testing course using socket programming and encryption algorithms together with C# language.
