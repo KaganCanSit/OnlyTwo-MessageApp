@@ -34,9 +34,15 @@ namespace OnlyTwo
         //Delete The Plain And Cipher Text Box
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            PlainRichTextBox.Text = "";
-            CipherTextBox.Text = "";
-            MessageBox.Show("Plain And Cipher Text Boxes Empty Now");
+            DialogResult Result;
+            Result = MessageBox.Show("Are you sure all content will be deleted?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == DialogResult.Yes)
+            {
+                PlainRichTextBox.Text = "";
+                CipherTextBox.Text = "";
+            }
+            else
+                MessageBox.Show("Operation Cancelled.");
         }
     }
 }

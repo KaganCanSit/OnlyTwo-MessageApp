@@ -32,6 +32,13 @@ namespace OnlyTwo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SendFlatButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox = new System.Windows.Forms.GroupBox();
+            this.Warning = new System.Windows.Forms.Label();
+            this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.FindLabel = new System.Windows.Forms.Label();
+            this.FindTextBox = new System.Windows.Forms.TextBox();
+            this.FindButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.DeleteButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.AddFileButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.CipherTextGroupBox = new System.Windows.Forms.GroupBox();
             this.CipherTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.EncryptionGroupBox = new System.Windows.Forms.GroupBox();
@@ -39,14 +46,8 @@ namespace OnlyTwo
             this.SHALabel = new System.Windows.Forms.Label();
             this.bunifuCheckbox2 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.bunifuCheckbox1 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.AddFileButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.KeygenTextBox = new System.Windows.Forms.TextBox();
             this.KeyLabel = new System.Windows.Forms.Label();
-            this.DeleteButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.FindButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.FindTextBox = new System.Windows.Forms.TextBox();
-            this.FindLabel = new System.Windows.Forms.Label();
-            this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.PlainTextGroupBox.SuspendLayout();
             this.CipherTextGroupBox.SuspendLayout();
             this.EncryptionGroupBox.SuspendLayout();
@@ -88,6 +89,7 @@ namespace OnlyTwo
             // 
             // PlainTextGroupBox
             // 
+            this.PlainTextGroupBox.Controls.Add(this.Warning);
             this.PlainTextGroupBox.Controls.Add(this.PlainRichTextBox);
             this.PlainTextGroupBox.Controls.Add(this.FindLabel);
             this.PlainTextGroupBox.Controls.Add(this.FindTextBox);
@@ -100,6 +102,134 @@ namespace OnlyTwo
             this.PlainTextGroupBox.TabIndex = 3;
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
+            // 
+            // Warning
+            // 
+            this.Warning.AutoSize = true;
+            this.Warning.Location = new System.Drawing.Point(499, 61);
+            this.Warning.Name = "Warning";
+            this.Warning.Size = new System.Drawing.Size(172, 13);
+            this.Warning.TabIndex = 6;
+            this.Warning.Text = "Warning: Makes all text lowercase.";
+            // 
+            // PlainRichTextBox
+            // 
+            this.PlainRichTextBox.Location = new System.Drawing.Point(6, 19);
+            this.PlainRichTextBox.Name = "PlainRichTextBox";
+            this.PlainRichTextBox.Size = new System.Drawing.Size(487, 176);
+            this.PlainRichTextBox.TabIndex = 5;
+            this.PlainRichTextBox.Text = "";
+            // 
+            // FindLabel
+            // 
+            this.FindLabel.AutoSize = true;
+            this.FindLabel.Location = new System.Drawing.Point(499, 19);
+            this.FindLabel.Name = "FindLabel";
+            this.FindLabel.Size = new System.Drawing.Size(71, 13);
+            this.FindLabel.TabIndex = 4;
+            this.FindLabel.Text = "Find Keyword";
+            // 
+            // FindTextBox
+            // 
+            this.FindTextBox.Location = new System.Drawing.Point(499, 35);
+            this.FindTextBox.Name = "FindTextBox";
+            this.FindTextBox.Size = new System.Drawing.Size(169, 20);
+            this.FindTextBox.TabIndex = 1;
+            // 
+            // FindButton
+            // 
+            this.FindButton.Activecolor = System.Drawing.Color.Transparent;
+            this.FindButton.BackColor = System.Drawing.Color.Transparent;
+            this.FindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FindButton.BorderRadius = 3;
+            this.FindButton.ButtonText = "  Find";
+            this.FindButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FindButton.DisabledColor = System.Drawing.Color.Gray;
+            this.FindButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.FindButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("FindButton.Iconimage")));
+            this.FindButton.Iconimage_right = null;
+            this.FindButton.Iconimage_right_Selected = null;
+            this.FindButton.Iconimage_Selected = null;
+            this.FindButton.IconMarginLeft = 5;
+            this.FindButton.IconMarginRight = 0;
+            this.FindButton.IconRightVisible = true;
+            this.FindButton.IconRightZoom = 120D;
+            this.FindButton.IconVisible = true;
+            this.FindButton.IconZoom = 85D;
+            this.FindButton.IsTab = false;
+            this.FindButton.Location = new System.Drawing.Point(499, 77);
+            this.FindButton.Name = "FindButton";
+            this.FindButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.FindButton.OnHovercolor = System.Drawing.Color.Red;
+            this.FindButton.OnHoverTextColor = System.Drawing.Color.Black;
+            this.FindButton.selected = false;
+            this.FindButton.Size = new System.Drawing.Size(169, 35);
+            this.FindButton.TabIndex = 3;
+            this.FindButton.Text = "  Find";
+            this.FindButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FindButton.Textcolor = System.Drawing.Color.Red;
+            this.FindButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindButton.Click += new System.EventHandler(this.FindButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Activecolor = System.Drawing.Color.Transparent;
+            this.DeleteButton.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.DeleteButton.BorderRadius = 3;
+            this.DeleteButton.ButtonText = "  Delete All Text";
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteButton.DisabledColor = System.Drawing.Color.Gray;
+            this.DeleteButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.DeleteButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Iconimage")));
+            this.DeleteButton.Iconimage_right = null;
+            this.DeleteButton.Iconimage_right_Selected = null;
+            this.DeleteButton.Iconimage_Selected = null;
+            this.DeleteButton.IconMarginLeft = 5;
+            this.DeleteButton.IconMarginRight = 0;
+            this.DeleteButton.IconRightVisible = true;
+            this.DeleteButton.IconRightZoom = 0D;
+            this.DeleteButton.IconVisible = true;
+            this.DeleteButton.IconZoom = 85D;
+            this.DeleteButton.IsTab = false;
+            this.DeleteButton.Location = new System.Drawing.Point(499, 119);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.DeleteButton.OnHovercolor = System.Drawing.Color.Red;
+            this.DeleteButton.OnHoverTextColor = System.Drawing.Color.Black;
+            this.DeleteButton.selected = false;
+            this.DeleteButton.Size = new System.Drawing.Size(169, 35);
+            this.DeleteButton.TabIndex = 2;
+            this.DeleteButton.Text = "  Delete All Text";
+            this.DeleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DeleteButton.Textcolor = System.Drawing.Color.Red;
+            this.DeleteButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // AddFileButton
+            // 
+            this.AddFileButton.ActiveBorderThickness = 1;
+            this.AddFileButton.ActiveCornerRadius = 20;
+            this.AddFileButton.ActiveFillColor = System.Drawing.Color.Red;
+            this.AddFileButton.ActiveForecolor = System.Drawing.Color.White;
+            this.AddFileButton.ActiveLineColor = System.Drawing.Color.Red;
+            this.AddFileButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AddFileButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFileButton.BackgroundImage")));
+            this.AddFileButton.ButtonText = "Add File";
+            this.AddFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddFileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddFileButton.ForeColor = System.Drawing.Color.Red;
+            this.AddFileButton.IdleBorderThickness = 1;
+            this.AddFileButton.IdleCornerRadius = 20;
+            this.AddFileButton.IdleFillColor = System.Drawing.Color.White;
+            this.AddFileButton.IdleForecolor = System.Drawing.Color.Red;
+            this.AddFileButton.IdleLineColor = System.Drawing.Color.Red;
+            this.AddFileButton.Location = new System.Drawing.Point(499, 162);
+            this.AddFileButton.Margin = new System.Windows.Forms.Padding(5);
+            this.AddFileButton.Name = "AddFileButton";
+            this.AddFileButton.Size = new System.Drawing.Size(169, 33);
+            this.AddFileButton.TabIndex = 2;
+            this.AddFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CipherTextGroupBox
             // 
@@ -175,31 +305,6 @@ namespace OnlyTwo
             this.bunifuCheckbox1.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox1.TabIndex = 0;
             // 
-            // AddFileButton
-            // 
-            this.AddFileButton.ActiveBorderThickness = 1;
-            this.AddFileButton.ActiveCornerRadius = 20;
-            this.AddFileButton.ActiveFillColor = System.Drawing.Color.Red;
-            this.AddFileButton.ActiveForecolor = System.Drawing.Color.White;
-            this.AddFileButton.ActiveLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.AddFileButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFileButton.BackgroundImage")));
-            this.AddFileButton.ButtonText = "Add File";
-            this.AddFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddFileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddFileButton.ForeColor = System.Drawing.Color.Red;
-            this.AddFileButton.IdleBorderThickness = 1;
-            this.AddFileButton.IdleCornerRadius = 20;
-            this.AddFileButton.IdleFillColor = System.Drawing.Color.White;
-            this.AddFileButton.IdleForecolor = System.Drawing.Color.Red;
-            this.AddFileButton.IdleLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.Location = new System.Drawing.Point(499, 162);
-            this.AddFileButton.Margin = new System.Windows.Forms.Padding(5);
-            this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(169, 33);
-            this.AddFileButton.TabIndex = 2;
-            this.AddFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // KeygenTextBox
             // 
             this.KeygenTextBox.Location = new System.Drawing.Point(18, 30);
@@ -215,100 +320,6 @@ namespace OnlyTwo
             this.KeyLabel.Size = new System.Drawing.Size(104, 13);
             this.KeyLabel.TabIndex = 7;
             this.KeyLabel.Text = "Key to the Message:";
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Activecolor = System.Drawing.Color.Transparent;
-            this.DeleteButton.BackColor = System.Drawing.Color.Transparent;
-            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.DeleteButton.BorderRadius = 3;
-            this.DeleteButton.ButtonText = "Delete All Text";
-            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteButton.DisabledColor = System.Drawing.Color.Gray;
-            this.DeleteButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.DeleteButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Iconimage")));
-            this.DeleteButton.Iconimage_right = null;
-            this.DeleteButton.Iconimage_right_Selected = null;
-            this.DeleteButton.Iconimage_Selected = null;
-            this.DeleteButton.IconMarginLeft = 5;
-            this.DeleteButton.IconMarginRight = 0;
-            this.DeleteButton.IconRightVisible = true;
-            this.DeleteButton.IconRightZoom = 0D;
-            this.DeleteButton.IconVisible = true;
-            this.DeleteButton.IconZoom = 90D;
-            this.DeleteButton.IsTab = false;
-            this.DeleteButton.Location = new System.Drawing.Point(499, 119);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Normalcolor = System.Drawing.Color.Transparent;
-            this.DeleteButton.OnHovercolor = System.Drawing.Color.Red;
-            this.DeleteButton.OnHoverTextColor = System.Drawing.Color.Black;
-            this.DeleteButton.selected = false;
-            this.DeleteButton.Size = new System.Drawing.Size(169, 35);
-            this.DeleteButton.TabIndex = 2;
-            this.DeleteButton.Text = "Delete All Text";
-            this.DeleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DeleteButton.Textcolor = System.Drawing.Color.Red;
-            this.DeleteButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // FindButton
-            // 
-            this.FindButton.Activecolor = System.Drawing.Color.Transparent;
-            this.FindButton.BackColor = System.Drawing.Color.Transparent;
-            this.FindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FindButton.BorderRadius = 3;
-            this.FindButton.ButtonText = "Find";
-            this.FindButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FindButton.DisabledColor = System.Drawing.Color.Gray;
-            this.FindButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.FindButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("FindButton.Iconimage")));
-            this.FindButton.Iconimage_right = null;
-            this.FindButton.Iconimage_right_Selected = null;
-            this.FindButton.Iconimage_Selected = null;
-            this.FindButton.IconMarginLeft = 5;
-            this.FindButton.IconMarginRight = 0;
-            this.FindButton.IconRightVisible = true;
-            this.FindButton.IconRightZoom = 120D;
-            this.FindButton.IconVisible = true;
-            this.FindButton.IconZoom = 90D;
-            this.FindButton.IsTab = false;
-            this.FindButton.Location = new System.Drawing.Point(499, 64);
-            this.FindButton.Name = "FindButton";
-            this.FindButton.Normalcolor = System.Drawing.Color.Transparent;
-            this.FindButton.OnHovercolor = System.Drawing.Color.Red;
-            this.FindButton.OnHoverTextColor = System.Drawing.Color.Black;
-            this.FindButton.selected = false;
-            this.FindButton.Size = new System.Drawing.Size(169, 35);
-            this.FindButton.TabIndex = 3;
-            this.FindButton.Text = "Find";
-            this.FindButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FindButton.Textcolor = System.Drawing.Color.Red;
-            this.FindButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindButton.Click += new System.EventHandler(this.FindButton_Click);
-            // 
-            // FindTextBox
-            // 
-            this.FindTextBox.Location = new System.Drawing.Point(499, 38);
-            this.FindTextBox.Name = "FindTextBox";
-            this.FindTextBox.Size = new System.Drawing.Size(169, 20);
-            this.FindTextBox.TabIndex = 1;
-            // 
-            // FindLabel
-            // 
-            this.FindLabel.AutoSize = true;
-            this.FindLabel.Location = new System.Drawing.Point(499, 19);
-            this.FindLabel.Name = "FindLabel";
-            this.FindLabel.Size = new System.Drawing.Size(71, 13);
-            this.FindLabel.TabIndex = 4;
-            this.FindLabel.Text = "Find Keyword";
-            // 
-            // PlainRichTextBox
-            // 
-            this.PlainRichTextBox.Location = new System.Drawing.Point(6, 19);
-            this.PlainRichTextBox.Name = "PlainRichTextBox";
-            this.PlainRichTextBox.Size = new System.Drawing.Size(487, 176);
-            this.PlainRichTextBox.TabIndex = 5;
-            this.PlainRichTextBox.Text = "";
             // 
             // MainForm
             // 
@@ -355,6 +366,7 @@ namespace OnlyTwo
         private Bunifu.Framework.UI.BunifuFlatButton FindButton;
         private System.Windows.Forms.Label FindLabel;
         private System.Windows.Forms.RichTextBox PlainRichTextBox;
+        private System.Windows.Forms.Label Warning;
     }
 }
 
