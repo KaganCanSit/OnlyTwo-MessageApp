@@ -249,6 +249,7 @@ namespace OnlyTwo
             this.DeleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DeleteButton.Textcolor = System.Drawing.Color.Red;
             this.DeleteButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // FindButton
             // 
@@ -271,7 +272,7 @@ namespace OnlyTwo
             this.FindButton.IconVisible = true;
             this.FindButton.IconZoom = 90D;
             this.FindButton.IsTab = false;
-            this.FindButton.Location = new System.Drawing.Point(499, 78);
+            this.FindButton.Location = new System.Drawing.Point(499, 64);
             this.FindButton.Name = "FindButton";
             this.FindButton.Normalcolor = System.Drawing.Color.Transparent;
             this.FindButton.OnHovercolor = System.Drawing.Color.Red;
