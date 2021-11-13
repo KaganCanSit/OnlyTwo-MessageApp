@@ -44,14 +44,14 @@ namespace OnlyTwo
             this.bunifuCheckbox2 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.SHALabel = new System.Windows.Forms.Label();
             this.SpnLabel = new System.Windows.Forms.Label();
-            this.AddGroupBox = new System.Windows.Forms.GroupBox();
             this.AddFileButton = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.KeygenTextBox = new System.Windows.Forms.TextBox();
+            this.KeygenLabel = new System.Windows.Forms.Label();
             this.PlainTextGroupBox.SuspendLayout();
             this.CipherTextGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FindButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeleteButton)).BeginInit();
             this.EncryptionGroupBox.SuspendLayout();
-            this.AddGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // PlainTextBox
@@ -84,13 +84,13 @@ namespace OnlyTwo
             this.SendFlatButton.IconVisible = true;
             this.SendFlatButton.IconZoom = 90D;
             this.SendFlatButton.IsTab = false;
-            this.SendFlatButton.Location = new System.Drawing.Point(582, 613);
+            this.SendFlatButton.Location = new System.Drawing.Point(27, 516);
             this.SendFlatButton.Name = "SendFlatButton";
             this.SendFlatButton.Normalcolor = System.Drawing.Color.Black;
             this.SendFlatButton.OnHovercolor = System.Drawing.Color.Red;
             this.SendFlatButton.OnHoverTextColor = System.Drawing.Color.White;
             this.SendFlatButton.selected = false;
-            this.SendFlatButton.Size = new System.Drawing.Size(92, 33);
+            this.SendFlatButton.Size = new System.Drawing.Size(641, 33);
             this.SendFlatButton.TabIndex = 2;
             this.SendFlatButton.Text = "Send";
             this.SendFlatButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -232,16 +232,6 @@ namespace OnlyTwo
             this.SpnLabel.TabIndex = 3;
             this.SpnLabel.Text = "SPN";
             // 
-            // AddGroupBox
-            // 
-            this.AddGroupBox.Controls.Add(this.AddFileButton);
-            this.AddGroupBox.Location = new System.Drawing.Point(27, 472);
-            this.AddGroupBox.Name = "AddGroupBox";
-            this.AddGroupBox.Size = new System.Drawing.Size(647, 135);
-            this.AddGroupBox.TabIndex = 5;
-            this.AddGroupBox.TabStop = false;
-            this.AddGroupBox.Text = "Add Media";
-            // 
             // AddFileButton
             // 
             this.AddFileButton.ActiveBorderThickness = 1;
@@ -249,7 +239,7 @@ namespace OnlyTwo
             this.AddFileButton.ActiveFillColor = System.Drawing.Color.Red;
             this.AddFileButton.ActiveForecolor = System.Drawing.Color.White;
             this.AddFileButton.ActiveLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.BackColor = System.Drawing.SystemColors.Control;
+            this.AddFileButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.AddFileButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFileButton.BackgroundImage")));
             this.AddFileButton.ButtonText = "Add File";
             this.AddFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -260,20 +250,38 @@ namespace OnlyTwo
             this.AddFileButton.IdleFillColor = System.Drawing.Color.White;
             this.AddFileButton.IdleForecolor = System.Drawing.Color.Red;
             this.AddFileButton.IdleLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.Location = new System.Drawing.Point(256, 93);
+            this.AddFileButton.Location = new System.Drawing.Point(282, 474);
             this.AddFileButton.Margin = new System.Windows.Forms.Padding(5);
             this.AddFileButton.Name = "AddFileButton";
             this.AddFileButton.Size = new System.Drawing.Size(135, 34);
             this.AddFileButton.TabIndex = 2;
             this.AddFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // KeygenTextBox
+            // 
+            this.KeygenTextBox.Location = new System.Drawing.Point(33, 30);
+            this.KeygenTextBox.Name = "KeygenTextBox";
+            this.KeygenTextBox.Size = new System.Drawing.Size(457, 20);
+            this.KeygenTextBox.TabIndex = 6;
+            // 
+            // KeygenLabel
+            // 
+            this.KeygenLabel.AutoSize = true;
+            this.KeygenLabel.Location = new System.Drawing.Point(30, 14);
+            this.KeygenLabel.Name = "KeygenLabel";
+            this.KeygenLabel.Size = new System.Drawing.Size(124, 13);
+            this.KeygenLabel.TabIndex = 7;
+            this.KeygenLabel.Text = "Çözümleme İçin Anahtar:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(699, 658);
-            this.Controls.Add(this.AddGroupBox);
+            this.ClientSize = new System.Drawing.Size(699, 562);
+            this.Controls.Add(this.KeygenLabel);
+            this.Controls.Add(this.AddFileButton);
+            this.Controls.Add(this.KeygenTextBox);
             this.Controls.Add(this.CipherTextGroupBox);
             this.Controls.Add(this.EncryptionGroupBox);
             this.Controls.Add(this.PlainTextGroupBox);
@@ -290,8 +298,8 @@ namespace OnlyTwo
             ((System.ComponentModel.ISupportInitialize)(this.DeleteButton)).EndInit();
             this.EncryptionGroupBox.ResumeLayout(false);
             this.EncryptionGroupBox.PerformLayout();
-            this.AddGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -311,8 +319,9 @@ namespace OnlyTwo
         private System.Windows.Forms.Label SHALabel;
         private Bunifu.Framework.UI.BunifuCheckbox bunifuCheckbox2;
         private Bunifu.Framework.UI.BunifuCheckbox bunifuCheckbox1;
-        private System.Windows.Forms.GroupBox AddGroupBox;
         private Bunifu.Framework.UI.BunifuThinButton2 AddFileButton;
+        private System.Windows.Forms.TextBox KeygenTextBox;
+        private System.Windows.Forms.Label KeygenLabel;
     }
 }
 
