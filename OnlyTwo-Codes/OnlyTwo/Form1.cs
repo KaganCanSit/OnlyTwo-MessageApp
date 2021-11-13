@@ -16,5 +16,22 @@ namespace OnlyTwo
         {
             InitializeComponent();
         }
+
+
+
+        //Metin İçerisinde Kelime Arama
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+            int index = 0;
+            PlainRichTextBox.Text = PlainRichTextBox.Text.ToLower();
+            FindTextBox.Text = FindTextBox.Text.ToLower();
+
+            while (index < PlainRichTextBox.Text.LastIndexOf(FindTextBox.Text))
+            {
+                PlainRichTextBox.Find(FindTextBox.Text, index, PlainRichTextBox.TextLength, RichTextBoxFinds.None);
+                PlainRichTextBox.SelectionBackColor = Color.Yellow;
+                index = PlainRichTextBox.Text.IndexOf(FindTextBox.Text, index) + 1;
+            }          
+        }
     }
 }
