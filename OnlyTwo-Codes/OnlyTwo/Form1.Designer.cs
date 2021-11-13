@@ -42,7 +42,7 @@ namespace OnlyTwo
             this.bunifuCheckbox1 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.AddFileButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.KeygenTextBox = new System.Windows.Forms.TextBox();
-            this.KeygenLabel = new System.Windows.Forms.Label();
+            this.KeyLabel = new System.Windows.Forms.Label();
             this.FindTextBox = new Bunifu.Framework.UI.BunifuTextbox();
             this.DeleteButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox.SuspendLayout();
@@ -212,14 +212,14 @@ namespace OnlyTwo
             this.KeygenTextBox.Size = new System.Drawing.Size(487, 20);
             this.KeygenTextBox.TabIndex = 6;
             // 
-            // KeygenLabel
+            // KeyLabel
             // 
-            this.KeygenLabel.AutoSize = true;
-            this.KeygenLabel.Location = new System.Drawing.Point(15, 13);
-            this.KeygenLabel.Name = "KeygenLabel";
-            this.KeygenLabel.Size = new System.Drawing.Size(124, 13);
-            this.KeygenLabel.TabIndex = 7;
-            this.KeygenLabel.Text = "Çözümleme İçin Anahtar:";
+            this.KeyLabel.AutoSize = true;
+            this.KeyLabel.Location = new System.Drawing.Point(18, 13);
+            this.KeyLabel.Name = "KeyLabel";
+            this.KeyLabel.Size = new System.Drawing.Size(104, 13);
+            this.KeyLabel.TabIndex = 7;
+            this.KeyLabel.Text = "Key to the Message:";
             // 
             // FindTextBox
             // 
@@ -274,7 +274,7 @@ namespace OnlyTwo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(704, 519);
-            this.Controls.Add(this.KeygenLabel);
+            this.Controls.Add(this.KeyLabel);
             this.Controls.Add(this.KeygenTextBox);
             this.Controls.Add(this.CipherTextGroupBox);
             this.Controls.Add(this.EncryptionGroupBox);
@@ -309,7 +309,7 @@ namespace OnlyTwo
         private Bunifu.Framework.UI.BunifuCheckbox bunifuCheckbox1;
         private Bunifu.Framework.UI.BunifuThinButton2 AddFileButton;
         private System.Windows.Forms.TextBox KeygenTextBox;
-        private System.Windows.Forms.Label KeygenLabel;
+        private System.Windows.Forms.Label KeyLabel;
         private Bunifu.Framework.UI.BunifuTextbox FindTextBox;
         private Bunifu.Framework.UI.BunifuFlatButton DeleteButton;
     }
