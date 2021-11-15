@@ -7,14 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace OnlyTwo
 {
-    public partial class MainForm : Form
+    public partial class OnlyTwoForm : Form
     {
-        public MainForm()
+        public OnlyTwoForm()
         {
             InitializeComponent();
+        }
+
+        //SHA256
+        private static string SHA256(string text)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (String.IsNullOrEmpty(text))
+                MessageBox.Show("File is empty!");
+            else
+            {
+                SHA256CryptoServiceProvider SHA256Encrypt = new SHA256CryptoServiceProvider();
+                byte[] bt = Encoding.UTF8.GetBytes(text);
+                bt = SHA256Encrypt.ComputeHash(bt);
+                foreach (byte x in bt)
+                    sb.Append(x.ToString("X2"));
+
+            }
+            return sb.ToString();
         }
 
         //Find The Keywords In The Main Text
@@ -43,6 +62,20 @@ namespace OnlyTwo
             }
             else
                 MessageBox.Show("Operation Cancelled.");
+        }
+
+        private void EncryptButton_Click(object sender, EventArgs e)
+        {
+            if(EncryptComboBox.SelectedIndex == 0) //SHA-256
+                CipherTextBox.Text = SHA256(PlainRichTextBox.Text);
+            else if(EncryptComboBox.SelectedIndex == 1) //SPN-16
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Please Check The Encrypt Type");
+            }
         }
     }
 }
