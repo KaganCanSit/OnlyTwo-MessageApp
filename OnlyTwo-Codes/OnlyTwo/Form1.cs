@@ -43,7 +43,7 @@ namespace OnlyTwo
             for (int i = 0; i < text.Length; i++)
             {
                 char current = text[i];
-                MessageBox.Show(text[i].ToString());
+                MessageBox.Show(text[i].ToString() + ((byte)text[i]));
             }
             return text.ToString();
         }
