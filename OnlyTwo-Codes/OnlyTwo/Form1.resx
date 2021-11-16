@@ -167,18 +167,17 @@
   </data>
   <data name="AddFileButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
   <data name="SolveButton.Iconimage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

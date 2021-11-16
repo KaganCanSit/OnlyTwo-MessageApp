@@ -34,29 +34,51 @@ namespace OnlyTwo
             }
             return sb.ToString();
         }
-        //SPN-16 - Crypting
-        private static string SPN16(string text, string keygen) 
+        //SPN-16 - Text Crypting
+        private static string SPN16(string text, string keygen)
         {
             if (String.IsNullOrEmpty(text))
-                MessageBox.Show("File is empty!");
+                MessageBox.Show("File Is Empty!");
+            if (text.Length < 8)
+                MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
 
-            int binaryvalue = 0;
+            //Add Key Binary
+            string keycrypto = "";
+            keycrypto = Key(keygen);
+
+            //8 Bit Text Binary
+            string alltext = "";
             for (int i = 0; i < text.Length; i++)
             {
-                binaryvalue = ConBinary(text[i]);
+                string temp = "";
+                temp = Convert.ToString(text[i], 2);
+                temp = "0" + temp;
+                alltext += temp;
             }
-            MessageBox.Show(binaryvalue.ToString());
-            return binaryvalue.ToString();
+
+            //How Many Times Should It Return For Encryption
+            int textnumber = text.Length/2;
+            int remaining = text.Length % 2;
+            int fornumber = textnumber + remaining;
+            MessageBox.Show(textnumber.ToString() + " " + remaining.ToString());
+
+
+
+            return alltext;
         }
 
-        //Convert The Char To Binary
-        private static int ConBinary(char value)
+        //SPN-16 Key To Binary
+        private static String Key(string text)
         {
-            string temp = "";
-            temp = Convert.ToString(value, 2);
-            return Convert.ToInt32(temp);
+            string temp = " ", keycrypto="";
+            for (int a=0; a<text.Length;a++)
+            {
+                temp = Convert.ToString(text[a], 2);
+                temp = "0" + temp;
+                keycrypto += temp;
+            }
+            return keycrypto;
         }
-
 
         string temptext;
         //Find The Keywords In The Main Text
@@ -102,6 +124,23 @@ namespace OnlyTwo
                 MessageBox.Show("Operation Cancelled.");
         }
 
+        //Text Counters - Limits Control
+        private void PlainRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int PlainTextLenght = PlainRichTextBox.TextLength;
+            if (PlainTextLenght > 500)
+                MessageBox.Show("You've Reached The 500 Character Limit! Done!");
+            CounterPlainLabel.Text = "Counter: " + PlainTextLenght.ToString();
+            
+        }
+        private void CipherTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int CipherTextLenght = CipherTextBox.TextLength;
+            if (CipherTextLenght > 500)
+                MessageBox.Show("You've Reached The 500 Character Limit! Done!");
+            CounterCipherLabel.Text = "Counter: " + CipherTextLenght.ToString();
+        }
+
         //Key Must Be 8 Characters Control
         private void KeygenTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -120,7 +159,7 @@ namespace OnlyTwo
                 if (KeygenTextBox.TextLength != 8)
                     MessageBox.Show("Please specify your Password with 8 characters.");
                 else
-                    SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
+                    CipherTextBox.Text=SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
             }
             else
             {
