@@ -15,7 +15,7 @@
     <li>The program will also be able to send other files (such as TXT, DAT or GIF) to the other party, but while sending (the file will be reduced in size after it is encrypted with a compression algorithm you will write or use ready-made).</li>
   </ol>
   <p>
-      <b>In addition;</b>
+      <h3>In addition;</h3>
       Software Specifications will be prepared.<br>
       Test Documents will be prepared with Test Cases.<br>
       Black Box and White Box tests will be done.<br>
