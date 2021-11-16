@@ -45,13 +45,13 @@ namespace OnlyTwo
             this.EncryptComboBox = new System.Windows.Forms.ComboBox();
             this.SolveButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.EncryptButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.KeygenTextBox = new System.Windows.Forms.TextBox();
             this.KeyLabel = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.LogoName = new System.Windows.Forms.Label();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.FindWordsGroupBox = new System.Windows.Forms.GroupBox();
             this.ReturnButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.KeygenTextBox = new System.Windows.Forms.TextBox();
             this.PlainTextGroupBox.SuspendLayout();
             this.CipherTextGroupBox.SuspendLayout();
             this.EncryptionGroupBox.SuspendLayout();
@@ -352,21 +352,14 @@ namespace OnlyTwo
             this.EncryptButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EncryptButton.Click += new System.EventHandler(this.EncryptButton_Click);
             // 
-            // KeygenTextBox
-            // 
-            this.KeygenTextBox.Location = new System.Drawing.Point(18, 30);
-            this.KeygenTextBox.Name = "KeygenTextBox";
-            this.KeygenTextBox.Size = new System.Drawing.Size(631, 20);
-            this.KeygenTextBox.TabIndex = 6;
-            // 
             // KeyLabel
             // 
             this.KeyLabel.AutoSize = true;
             this.KeyLabel.Location = new System.Drawing.Point(18, 13);
             this.KeyLabel.Name = "KeyLabel";
-            this.KeyLabel.Size = new System.Drawing.Size(104, 13);
+            this.KeyLabel.Size = new System.Drawing.Size(231, 13);
             this.KeyLabel.TabIndex = 7;
-            this.KeyLabel.Text = "Key to the Message:";
+            this.KeyLabel.Text = "Key to the Message: (Key Must Be 8 Character)";
             // 
             // bunifuGradientPanel1
             // 
@@ -463,6 +456,14 @@ namespace OnlyTwo
             this.ReturnButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
+            // KeygenTextBox
+            // 
+            this.KeygenTextBox.Location = new System.Drawing.Point(18, 30);
+            this.KeygenTextBox.Name = "KeygenTextBox";
+            this.KeygenTextBox.Size = new System.Drawing.Size(631, 20);
+            this.KeygenTextBox.TabIndex = 6;
+            this.KeygenTextBox.TextChanged += new System.EventHandler(this.KeygenTextBox_TextChanged);
+            // 
             // OnlyTwoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,7 +501,6 @@ namespace OnlyTwo
         private WindowsFormsControlLibrary1.BunifuCustomTextbox CipherTextBox;
         private System.Windows.Forms.GroupBox EncryptionGroupBox;
         private Bunifu.Framework.UI.BunifuThinButton2 AddFileButton;
-        private System.Windows.Forms.TextBox KeygenTextBox;
         private System.Windows.Forms.Label KeyLabel;
         private Bunifu.Framework.UI.BunifuFlatButton DeleteButton;
         private System.Windows.Forms.TextBox FindTextBox;
@@ -516,6 +516,7 @@ namespace OnlyTwo
         private System.Windows.Forms.RichTextBox PlainRichTextBox;
         private System.Windows.Forms.ComboBox EncryptComboBox;
         private Bunifu.Framework.UI.BunifuFlatButton ReturnButton;
+        private System.Windows.Forms.TextBox KeygenTextBox;
     }
 }
 

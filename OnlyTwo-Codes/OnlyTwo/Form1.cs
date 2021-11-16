@@ -34,6 +34,22 @@ namespace OnlyTwo
             }
             return sb.ToString();
         }
+        //SPN-16
+        private static string Deneme(string text) 
+        {
+            if (String.IsNullOrEmpty(text))
+                MessageBox.Show("File is empty!");
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                char current = text[i];
+                MessageBox.Show(text[i].ToString());
+            }
+            return text.ToString();
+        }
+
+
+
 
         string temptext;
         //Find The Keywords In The Main Text
@@ -73,18 +89,31 @@ namespace OnlyTwo
             {
                 PlainRichTextBox.Text = "";
                 CipherTextBox.Text = "";
+                KeygenTextBox.Text = "";
             }
             else
                 MessageBox.Show("Operation Cancelled.");
         }
 
+        //Key Must Be 8 Characters Control
+        private void KeygenTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int PasswordLenght = KeygenTextBox.TextLength;
+            if (PasswordLenght == 8)
+                MessageBox.Show("You've Reached The 8 Character Limit! Done!");
+        }
+
+        //Encryption Process / Buton Click
         private void EncryptButton_Click(object sender, EventArgs e)
         {
-            if(EncryptComboBox.SelectedIndex == 0) //SHA-256
+            if (EncryptComboBox.SelectedIndex == 0) //SHA-256
                 CipherTextBox.Text = SHA256(PlainRichTextBox.Text);
-            else if(EncryptComboBox.SelectedIndex == 1) //SPN-16
+            else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
             {
-
+                if (KeygenTextBox.TextLength != 8)
+                    MessageBox.Show("Please specify your Password with 8 characters.");
+                else
+                    Deneme(PlainRichTextBox.Text);
             }
             else
             {
