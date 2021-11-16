@@ -31,14 +31,16 @@ namespace OnlyTwo
                 bt = SHA256Encrypt.ComputeHash(bt);
                 foreach (byte x in bt)
                     sb.Append(x.ToString("X2"));
-
             }
             return sb.ToString();
         }
 
+        string temptext;
         //Find The Keywords In The Main Text
         private void FindButton_Click(object sender, EventArgs e)
-        {
+        {        
+            temptext = PlainRichTextBox.Text;   //Restore Previous Text
+
             int index = 0;
             PlainRichTextBox.Text = PlainRichTextBox.Text.ToLower();
             FindTextBox.Text = FindTextBox.Text.ToLower();
@@ -50,6 +52,18 @@ namespace OnlyTwo
                 index = PlainRichTextBox.Text.IndexOf(FindTextBox.Text, index) + 1;
             }
         }
+
+        //Restore Previous Text Click
+        private void ReturnButton_Click(object sender, EventArgs e)
+        {
+            DialogResult Result;
+            Result = MessageBox.Show("Do you want to restore the message?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(Result == DialogResult.Yes)
+                PlainRichTextBox.Text = temptext;
+            else
+                MessageBox.Show("Operation Cancelled.");
+        }
+
         //Delete The Plain And Cipher Text Box
         private void DeleteButton_Click(object sender, EventArgs e)
         {

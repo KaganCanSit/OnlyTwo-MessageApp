@@ -32,6 +32,7 @@ namespace OnlyTwo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlyTwoForm));
             this.SendFlatButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox = new System.Windows.Forms.GroupBox();
+            this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.Warning = new System.Windows.Forms.Label();
             this.FindLabel = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
@@ -41,6 +42,7 @@ namespace OnlyTwo
             this.CipherTextGroupBox = new System.Windows.Forms.GroupBox();
             this.CipherTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.EncryptionGroupBox = new System.Windows.Forms.GroupBox();
+            this.EncryptComboBox = new System.Windows.Forms.ComboBox();
             this.SolveButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.EncryptButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.KeygenTextBox = new System.Windows.Forms.TextBox();
@@ -49,8 +51,7 @@ namespace OnlyTwo
             this.LogoName = new System.Windows.Forms.Label();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.FindWordsGroupBox = new System.Windows.Forms.GroupBox();
-            this.EncryptComboBox = new System.Windows.Forms.ComboBox();
-            this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.ReturnButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox.SuspendLayout();
             this.CipherTextGroupBox.SuspendLayout();
             this.EncryptionGroupBox.SuspendLayout();
@@ -102,6 +103,14 @@ namespace OnlyTwo
             this.PlainTextGroupBox.TabIndex = 3;
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
+            // 
+            // PlainRichTextBox
+            // 
+            this.PlainRichTextBox.Location = new System.Drawing.Point(6, 19);
+            this.PlainRichTextBox.Name = "PlainRichTextBox";
+            this.PlainRichTextBox.Size = new System.Drawing.Size(631, 176);
+            this.PlainRichTextBox.TabIndex = 5;
+            this.PlainRichTextBox.Text = "";
             // 
             // Warning
             // 
@@ -189,7 +198,7 @@ namespace OnlyTwo
             this.DeleteButton.IconVisible = true;
             this.DeleteButton.IconZoom = 80D;
             this.DeleteButton.IsTab = false;
-            this.DeleteButton.Location = new System.Drawing.Point(5, 122);
+            this.DeleteButton.Location = new System.Drawing.Point(7, 163);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Normalcolor = System.Drawing.Color.Transparent;
             this.DeleteButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -221,10 +230,10 @@ namespace OnlyTwo
             this.AddFileButton.IdleFillColor = System.Drawing.Color.White;
             this.AddFileButton.IdleForecolor = System.Drawing.Color.Red;
             this.AddFileButton.IdleLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.Location = new System.Drawing.Point(7, 165);
+            this.AddFileButton.Location = new System.Drawing.Point(7, 206);
             this.AddFileButton.Margin = new System.Windows.Forms.Padding(5);
             this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(161, 33);
+            this.AddFileButton.Size = new System.Drawing.Size(159, 33);
             this.AddFileButton.TabIndex = 2;
             this.AddFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -260,6 +269,19 @@ namespace OnlyTwo
             this.EncryptionGroupBox.TabIndex = 5;
             this.EncryptionGroupBox.TabStop = false;
             this.EncryptionGroupBox.Text = "Encryption Type";
+            // 
+            // EncryptComboBox
+            // 
+            this.EncryptComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EncryptComboBox.ForeColor = System.Drawing.Color.Red;
+            this.EncryptComboBox.FormattingEnabled = true;
+            this.EncryptComboBox.Items.AddRange(new object[] {
+            "SHA-256",
+            "SPN-16"});
+            this.EncryptComboBox.Location = new System.Drawing.Point(4, 17);
+            this.EncryptComboBox.Name = "EncryptComboBox";
+            this.EncryptComboBox.Size = new System.Drawing.Size(164, 21);
+            this.EncryptComboBox.TabIndex = 6;
             // 
             // SolveButton
             // 
@@ -391,6 +413,7 @@ namespace OnlyTwo
             // FindWordsGroupBox
             // 
             this.FindWordsGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.FindWordsGroupBox.Controls.Add(this.ReturnButton);
             this.FindWordsGroupBox.Controls.Add(this.FindLabel);
             this.FindWordsGroupBox.Controls.Add(this.FindTextBox);
             this.FindWordsGroupBox.Controls.Add(this.FindButton);
@@ -400,31 +423,45 @@ namespace OnlyTwo
             this.FindWordsGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FindWordsGroupBox.Location = new System.Drawing.Point(10, 145);
             this.FindWordsGroupBox.Name = "FindWordsGroupBox";
-            this.FindWordsGroupBox.Size = new System.Drawing.Size(178, 209);
+            this.FindWordsGroupBox.Size = new System.Drawing.Size(178, 244);
             this.FindWordsGroupBox.TabIndex = 9;
             this.FindWordsGroupBox.TabStop = false;
             this.FindWordsGroupBox.Text = "Plain Text Operation";
             // 
-            // EncryptComboBox
+            // ReturnButton
             // 
-            this.EncryptComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EncryptComboBox.ForeColor = System.Drawing.Color.Red;
-            this.EncryptComboBox.FormattingEnabled = true;
-            this.EncryptComboBox.Items.AddRange(new object[] {
-            "SHA-256",
-            "SPN-16"});
-            this.EncryptComboBox.Location = new System.Drawing.Point(4, 17);
-            this.EncryptComboBox.Name = "EncryptComboBox";
-            this.EncryptComboBox.Size = new System.Drawing.Size(164, 21);
-            this.EncryptComboBox.TabIndex = 6;
-            // 
-            // PlainRichTextBox
-            // 
-            this.PlainRichTextBox.Location = new System.Drawing.Point(6, 19);
-            this.PlainRichTextBox.Name = "PlainRichTextBox";
-            this.PlainRichTextBox.Size = new System.Drawing.Size(631, 176);
-            this.PlainRichTextBox.TabIndex = 5;
-            this.PlainRichTextBox.Text = "";
+            this.ReturnButton.Activecolor = System.Drawing.Color.Transparent;
+            this.ReturnButton.BackColor = System.Drawing.Color.Transparent;
+            this.ReturnButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ReturnButton.BorderRadius = 3;
+            this.ReturnButton.ButtonText = "  Restore Previous Text";
+            this.ReturnButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReturnButton.DisabledColor = System.Drawing.Color.Gray;
+            this.ReturnButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.ReturnButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("ReturnButton.Iconimage")));
+            this.ReturnButton.Iconimage_right = null;
+            this.ReturnButton.Iconimage_right_Selected = null;
+            this.ReturnButton.Iconimage_Selected = null;
+            this.ReturnButton.IconMarginLeft = 5;
+            this.ReturnButton.IconMarginRight = 0;
+            this.ReturnButton.IconRightVisible = true;
+            this.ReturnButton.IconRightZoom = 120D;
+            this.ReturnButton.IconVisible = true;
+            this.ReturnButton.IconZoom = 80D;
+            this.ReturnButton.IsTab = false;
+            this.ReturnButton.Location = new System.Drawing.Point(5, 122);
+            this.ReturnButton.Name = "ReturnButton";
+            this.ReturnButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.ReturnButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.ReturnButton.OnHoverTextColor = System.Drawing.Color.Black;
+            this.ReturnButton.selected = false;
+            this.ReturnButton.Size = new System.Drawing.Size(164, 35);
+            this.ReturnButton.TabIndex = 7;
+            this.ReturnButton.Text = "  Restore Previous Text";
+            this.ReturnButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ReturnButton.Textcolor = System.Drawing.Color.White;
+            this.ReturnButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // OnlyTwoForm
             // 
@@ -478,6 +515,7 @@ namespace OnlyTwo
         private System.Windows.Forms.PictureBox LogoPictureBox;
         private System.Windows.Forms.RichTextBox PlainRichTextBox;
         private System.Windows.Forms.ComboBox EncryptComboBox;
+        private Bunifu.Framework.UI.BunifuFlatButton ReturnButton;
     }
 }
 
