@@ -26,4 +26,11 @@
     
 <div class="sources">
   <h2>Utilized Resources</h2>
+  <ul>
+    <li><a href="https://www.serkanduran.com.tr/blockchain/blockchain-sifreleme-nasil-calisir/">01-SHA Info</a><li>
+    <li><a href="https://akademiksunum.com/index.jsp?modul=document&folder=1773482bfc1501276f22c3254c4559626eaa45e4">02-SPN/SHA-Crypto Info</a><li>
+    <li><a href="https://slideplayer.biz.tr/slide/2292020/">03-Basic CryptoInfo</a><li>
+    <li><a href="https://www.youtube.com/watch?v=c0xvY6cgGY8">04-SHA Software Simple</a><li>
+    <li><a href="https://www.youtube.com/watch?v=Hx0EoorZao4&list=LL&index=8">05-Find Operation</a><li>
+  </ul>
 </div>
