@@ -18,7 +18,7 @@ namespace OnlyTwo
             InitializeComponent();
         }
 
-        //SHA256
+        //SHA256 - Crypting
         private static string SHA256(string text)
         {
             StringBuilder sb = new StringBuilder();
@@ -34,21 +34,28 @@ namespace OnlyTwo
             }
             return sb.ToString();
         }
-        //SPN-16
-        private static string Deneme(string text) 
+        //SPN-16 - Crypting
+        private static string SPN16(string text, string keygen) 
         {
             if (String.IsNullOrEmpty(text))
                 MessageBox.Show("File is empty!");
 
+            int binaryvalue = 0;
             for (int i = 0; i < text.Length; i++)
             {
-                char current = text[i];
-                MessageBox.Show(text[i].ToString() + ((byte)text[i]));
+                binaryvalue = ConBinary(text[i]);
             }
-            return text.ToString();
+            MessageBox.Show(binaryvalue.ToString());
+            return binaryvalue.ToString();
         }
 
-
+        //Convert The Char To Binary
+        private static int ConBinary(char value)
+        {
+            string temp = "";
+            temp = Convert.ToString(value, 2);
+            return Convert.ToInt32(temp);
+        }
 
 
         string temptext;
@@ -113,7 +120,7 @@ namespace OnlyTwo
                 if (KeygenTextBox.TextLength != 8)
                     MessageBox.Show("Please specify your Password with 8 characters.");
                 else
-                    Deneme(PlainRichTextBox.Text);
+                    SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
             }
             else
             {
