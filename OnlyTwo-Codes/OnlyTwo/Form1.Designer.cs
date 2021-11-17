@@ -32,6 +32,7 @@ namespace OnlyTwo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlyTwoForm));
             this.SendFlatButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox = new System.Windows.Forms.GroupBox();
+            this.CounterPlainLabel = new System.Windows.Forms.Label();
             this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.Warning = new System.Windows.Forms.Label();
             this.FindLabel = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@ namespace OnlyTwo
             this.DeleteButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.AddFileButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.CipherTextGroupBox = new System.Windows.Forms.GroupBox();
+            this.CounterCipherLabel = new System.Windows.Forms.Label();
             this.CipherTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.EncryptionGroupBox = new System.Windows.Forms.GroupBox();
             this.EncryptComboBox = new System.Windows.Forms.ComboBox();
@@ -52,8 +54,6 @@ namespace OnlyTwo
             this.FindWordsGroupBox = new System.Windows.Forms.GroupBox();
             this.ReturnButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.KeygenTextBox = new System.Windows.Forms.TextBox();
-            this.CounterPlainLabel = new System.Windows.Forms.Label();
-            this.CounterCipherLabel = new System.Windows.Forms.Label();
             this.PlainTextGroupBox.SuspendLayout();
             this.CipherTextGroupBox.SuspendLayout();
             this.EncryptionGroupBox.SuspendLayout();
@@ -108,6 +108,15 @@ namespace OnlyTwo
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
             // 
+            // CounterPlainLabel
+            // 
+            this.CounterPlainLabel.AutoSize = true;
+            this.CounterPlainLabel.Location = new System.Drawing.Point(450, 12);
+            this.CounterPlainLabel.Name = "CounterPlainLabel";
+            this.CounterPlainLabel.Size = new System.Drawing.Size(47, 13);
+            this.CounterPlainLabel.TabIndex = 6;
+            this.CounterPlainLabel.Text = "Counter:";
+            // 
             // PlainRichTextBox
             // 
             this.PlainRichTextBox.Location = new System.Drawing.Point(6, 28);
@@ -122,7 +131,7 @@ namespace OnlyTwo
             this.Warning.AutoSize = true;
             this.Warning.BackColor = System.Drawing.Color.Transparent;
             this.Warning.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Warning.Location = new System.Drawing.Point(14, 64);
+            this.Warning.Location = new System.Drawing.Point(9, 64);
             this.Warning.Name = "Warning";
             this.Warning.Size = new System.Drawing.Size(172, 13);
             this.Warning.TabIndex = 6;
@@ -254,6 +263,15 @@ namespace OnlyTwo
             this.CipherTextGroupBox.TabIndex = 4;
             this.CipherTextGroupBox.TabStop = false;
             this.CipherTextGroupBox.Text = "CipherText";
+            // 
+            // CounterCipherLabel
+            // 
+            this.CounterCipherLabel.AutoSize = true;
+            this.CounterCipherLabel.Location = new System.Drawing.Point(450, 12);
+            this.CounterCipherLabel.Name = "CounterCipherLabel";
+            this.CounterCipherLabel.Size = new System.Drawing.Size(47, 13);
+            this.CounterCipherLabel.TabIndex = 7;
+            this.CounterCipherLabel.Text = "Counter:";
             // 
             // CipherTextBox
             // 
@@ -476,24 +494,6 @@ namespace OnlyTwo
             this.KeygenTextBox.Size = new System.Drawing.Size(513, 20);
             this.KeygenTextBox.TabIndex = 6;
             this.KeygenTextBox.TextChanged += new System.EventHandler(this.KeygenTextBox_TextChanged);
-            // 
-            // CounterPlainLabel
-            // 
-            this.CounterPlainLabel.AutoSize = true;
-            this.CounterPlainLabel.Location = new System.Drawing.Point(450, 12);
-            this.CounterPlainLabel.Name = "CounterPlainLabel";
-            this.CounterPlainLabel.Size = new System.Drawing.Size(47, 13);
-            this.CounterPlainLabel.TabIndex = 6;
-            this.CounterPlainLabel.Text = "Counter:";
-            // 
-            // CounterCipherLabel
-            // 
-            this.CounterCipherLabel.AutoSize = true;
-            this.CounterCipherLabel.Location = new System.Drawing.Point(450, 12);
-            this.CounterCipherLabel.Name = "CounterCipherLabel";
-            this.CounterCipherLabel.Size = new System.Drawing.Size(47, 13);
-            this.CounterCipherLabel.TabIndex = 7;
-            this.CounterCipherLabel.Text = "Counter:";
             // 
             // OnlyTwoForm
             // 

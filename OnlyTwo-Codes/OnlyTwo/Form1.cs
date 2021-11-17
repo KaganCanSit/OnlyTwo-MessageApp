@@ -34,27 +34,15 @@ namespace OnlyTwo
             }
             return sb.ToString();
         }
+
         //SPN-16 - Text Crypting
         private static string SPN16(string text, string keygen)
         {
             if (String.IsNullOrEmpty(text))
                 MessageBox.Show("File Is Empty!");
-            if (text.Length < 8)
-                MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
 
-            //Add Key Binary
-            string keycrypto = "";
-            keycrypto = Key(keygen);
-
-            //8 Bit Text Binary
-            string alltext = "";
-            for (int i = 0; i < text.Length; i++)
-            {
-                string temp = "";
-                temp = Convert.ToString(text[i], 2);
-                temp = "0" + temp;
-                alltext += temp;
-            }
+            //Add Key Binary    -   8 Bit Text Binary
+            string keycrypto = Key(keygen), alltext = Key(text);
 
             //How Many Times Should It Return For Encryption
             int textnumber = text.Length/2;
@@ -62,23 +50,21 @@ namespace OnlyTwo
             int fornumber = textnumber + remaining;
             MessageBox.Show(textnumber.ToString() + " " + remaining.ToString());
 
-
-
             return alltext;
         }
-
-        //SPN-16 Key To Binary
+        //SPN-16 Input Convert To Binary
         private static String Key(string text)
         {
-            string temp = " ", keycrypto="";
+            string temp, keycrypto="";
             for (int a=0; a<text.Length;a++)
             {
-                temp = Convert.ToString(text[a], 2);
-                temp = "0" + temp;
+                temp = Convert.ToString(text[a], 2).PadLeft(8, '0');
                 keycrypto += temp;
             }
             return keycrypto;
-        }
+        }        
+        
+
 
         string temptext;
         //Find The Keywords In The Main Text
@@ -131,7 +117,6 @@ namespace OnlyTwo
             if (PlainTextLenght > 500)
                 MessageBox.Show("You've Reached The 500 Character Limit! Done!");
             CounterPlainLabel.Text = "Counter: " + PlainTextLenght.ToString();
-            
         }
         private void CipherTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -145,19 +130,19 @@ namespace OnlyTwo
         private void KeygenTextBox_TextChanged(object sender, EventArgs e)
         {
             int PasswordLenght = KeygenTextBox.TextLength;
-            if (PasswordLenght == 8)
-                MessageBox.Show("You've Reached The 8 Character Limit! Done!");
+            if (PasswordLenght >= 8)
+                MessageBox.Show("You've Reached The 8 Character Limit! Done!");            
         }
 
-        //Encryption Process / Buton Click
+        //Encryption Process / Button Click
         private void EncryptButton_Click(object sender, EventArgs e)
         {
             if (EncryptComboBox.SelectedIndex == 0) //SHA-256
                 CipherTextBox.Text = SHA256(PlainRichTextBox.Text);
             else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
             {
-                if (KeygenTextBox.TextLength != 8)
-                    MessageBox.Show("Please specify your Password with 8 characters.");
+                if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
+                    MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
                 else
                     CipherTextBox.Text=SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
             }
