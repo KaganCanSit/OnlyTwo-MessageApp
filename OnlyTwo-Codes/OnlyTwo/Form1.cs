@@ -65,7 +65,6 @@ namespace OnlyTwo
         }        
         
 
-
         string temptext;
         //Find The Keywords In The Main Text
         private void FindButton_Click(object sender, EventArgs e)
