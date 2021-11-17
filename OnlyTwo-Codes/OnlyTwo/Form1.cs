@@ -45,24 +45,37 @@ namespace OnlyTwo
             string keycrypto = Key(keygen), alltext = Key(text);
 
             //How Many Times Should It Return For Encryption
-            int textnumber = text.Length/2;
-            int remaining = text.Length % 2;
-            int fornumber = textnumber + remaining;
-            MessageBox.Show(textnumber.ToString() + " " + remaining.ToString());
+            //int fullkeycrypte = text.Length/8;          //Full Encrypted With Key
+            //int halfkey = text.Length % 8;              //The Part That Doesn't Match the Key (Excess)
+
+            //Use XOR (0-0->0 / 0-1->1 / 1-0->1 / 1-1->1)
+            int keygencounter=0;
+            for (int a = 0; a < alltext.Length; a++)
+            {
+                if (keygencounter == keycrypto.Length)
+                    keygencounter = 0;
+
+                if (alltext[a] == '0' && keycrypto[keygencounter] == '0' || alltext[a] == '1' && keycrypto[keygencounter] == '1')
+                    alltext = alltext.Remove(a, 1).Insert(a, "0"); 
+                else if (alltext[a] == '0' && keycrypto[keygencounter] == '1' || alltext[a] == '1' && keycrypto[keygencounter] == '0')
+                    alltext = alltext.Remove(a, 1).Insert(a, "1");
+
+                keygencounter++;
+            }
 
             return alltext;
         }
         //SPN-16 Input Convert To Binary
         private static String Key(string text)
         {
-            string temp, keycrypto="";
-            for (int a=0; a<text.Length;a++)
+            string temp, keycrypto = "";
+            for (int a = 0; a < text.Length; a++)
             {
                 temp = Convert.ToString(text[a], 2).PadLeft(8, '0');
                 keycrypto += temp;
             }
             return keycrypto;
-        }        
+        }
         
 
         string temptext;
@@ -146,9 +159,8 @@ namespace OnlyTwo
                     CipherTextBox.Text=SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
             }
             else
-            {
                 MessageBox.Show("Please Check The Encrypt Type");
-            }
+
         }
     }
 }
