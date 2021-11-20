@@ -58,11 +58,35 @@ namespace OnlyTwo
                 
                 keygencounter++;
             }
+            //return alltext;
 
             //Crossover Operation
             int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
+            string alltextEnd = "";
+            int CrossoverCounter = 0, arraypoint = 0, counter = 0;
+            int remaining = alltext.Length % 16;
 
-            return alltext;
+            for (int j = 0; j < alltext.Length - remaining; j++)
+            {
+                if (j != 0 && CrossoverCounter % 16 == 0)
+                {
+                    CrossoverCounter = 0;
+                    counter += 16;
+                    if (counter == remaining * 16)
+                        break;
+                }
+
+                arraypoint = CrossoverArray[CrossoverCounter];
+                alltextEnd = alltextEnd.Insert(j, Convert.ToString(alltext[counter + arraypoint]));
+                CrossoverCounter++;
+            }
+
+            //while (counter + 15 <= alltext.Length - 1)
+            //{
+            //    counter++;
+            //    alltextEnd = alltextEnd.Insert(counter, Convert.ToString(alltext[counter]));
+            //}
+            return alltextEnd;
         }
         //SPN-16 Input Convert To Binary
         private static String Key(string text)
