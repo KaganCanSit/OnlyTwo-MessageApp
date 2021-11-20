@@ -58,7 +58,6 @@ namespace OnlyTwo
                 
                 keygencounter++;
             }
-            //return alltext;
 
             //Crossover Operation
             int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
@@ -73,17 +72,11 @@ namespace OnlyTwo
                     CrossoverCounter = 0;
                     counter += 16;
                 }
-
+               
                 arraypoint = CrossoverArray[CrossoverCounter];
                 alltextEnd = alltextEnd.Remove(counter+arraypoint,1).Insert(counter + arraypoint, Convert.ToString(alltext[j]));
                 CrossoverCounter++;
             }
-
-            //while (counter + 15 <= alltext.Length - 1)
-            //{
-            //    counter++;
-            //    alltextEnd = alltextEnd.Insert(counter, Convert.ToString(alltext[counter]));
-            //}
             return alltextEnd;
         }
         //SPN-16 Input Convert To Binary
