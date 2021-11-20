@@ -62,7 +62,7 @@ namespace OnlyTwo
 
             //Crossover Operation
             int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
-            string alltextEnd = "";
+            string alltextEnd = alltext;
             int CrossoverCounter = 0, arraypoint = 0, counter = 0;
             int remaining = alltext.Length % 16;
 
@@ -72,12 +72,10 @@ namespace OnlyTwo
                 {
                     CrossoverCounter = 0;
                     counter += 16;
-                    if (counter == remaining * 16)
-                        break;
                 }
 
                 arraypoint = CrossoverArray[CrossoverCounter];
-                alltextEnd = alltextEnd.Insert(j, Convert.ToString(alltext[counter + arraypoint]));
+                alltextEnd = alltextEnd.Remove(counter+arraypoint,1).Insert(counter + arraypoint, Convert.ToString(alltext[j]));
                 CrossoverCounter++;
             }
 
