@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace OnlyTwo
 {
@@ -198,7 +201,7 @@ namespace OnlyTwo
                 else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
                 {
                     if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
-                        MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
+                        MessageBox.Show("Please specify your Password with 8 characters.\nText To Be Encrypted Must Be Longer Than 8 Letters!");
                     else
                         CipherTextBox.Text = SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
                 }
@@ -241,6 +244,112 @@ namespace OnlyTwo
             text = text.Replace("Ç", "C");
             text = text.Replace("ç", "c");
             return text;
+        }
+
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------
+        private void OnlyTwoForm_Load(object sender, EventArgs e)
+        {
+            CheckForIllegalCrossThreadCalls = false;//dinamik nesne eklemek için listeye
+        }
+
+        //Send Operation
+        private void SendFlatButton_Click(object sender, EventArgs e)
+        {
+            if (_clientSocket.Connected)//client servera bağlı ise
+            {
+                string tmpStr = "";
+                foreach (var item in UsersListBox.SelectedItems)//listboxtaki seçili itemlere
+                {
+                    tmpStr = UsersListBox.GetItemText(item);
+                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr +" :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//byte çevir
+                    _clientSocket.Send(buffer);//ve gönder ip ve porta
+                    Thread.Sleep(20);//yapmasanda olur(fakat 4 cliente bırden mesaj gonderınce dıgerlerine gıtmeyebılir)
+                }
+                if (tmpStr.Equals(""))
+                    MessageBox.Show("Please Click The Send Username");
+                else
+                    PlainRichTextBox.AppendText(CipherTextBox.Text);
+            }
+        }
+
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+            Thread t1 = new Thread(LoopConnect);
+            t1.Start();
+        }
+
+        private void LoopConnect()
+        {
+            int attempts = 0;
+            while (!_clientSocket.Connected)//server çalışmıyorsa(çalışısaya kadar döngü döner)
+            {
+                try
+                {
+                    attempts++;
+                    _clientSocket.Connect("127.0.0.1", 100);//127.0.0.1=IPAddress.Loopback demek 100 portuna bağlan
+                }
+                catch (SocketException)
+                {
+                    Console.WriteLine("Links: " + attempts.ToString());
+                }
+            }
+            _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);//AsyncCallback thread gibi asenkron eş zamansız çalışıyor
+            byte[] buffer = Encoding.ASCII.GetBytes("@@" + UsernameTextBox.Text);//ismimizin başına 2 tane @@ koydum belli olsun
+            _clientSocket.Send(buffer);//veriyi gönderdim servera
+            ServerInfoLabel.Text = ("Connected To The Server!");//servere bağlandı
+        }
+
+        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //InterNetwork = ipv4 ailesi için -- SocketType.Dgram= UDP için -- SocketType.Stream= TCP için -- ProtocolType.IP = TCP ve UDP
+
+        byte[] receivedBuf = new byte[1024];//veri almak için yer ayırdık
+        private void ReceiveData(IAsyncResult ar)//burası asenkron oldugu için hep çalışır thread gibi veriyi almak için
+        {
+            int listede_yok = 0;//yok
+            try
+            {
+                Socket socket = (Socket)ar.AsyncState;//asenkron soketi alırız
+                int received = socket.EndReceive(ar);//verinin toplam uzunlugu
+                byte[] dataBuf = new byte[received];//verıyı byte cevırdık
+                Array.Copy(receivedBuf, dataBuf, received);//dataBuf=receivedBuf ve received uzunluk
+                string gelen = Encoding.ASCII.GetString(dataBuf).ToString();//serverdan gelen mesaj
+                if (gelen.Contains("sil*"))
+                {
+                    string parcala = gelen.Substring(4, (gelen.Length - 4));
+                    Console.WriteLine("degerim  " + parcala);
+                    for (int j = 0; j < UsersListBox.Items.Count; j++)//list boxtanda kaldır
+                    {
+                        if (UsersListBox.Items[j].Equals(parcala))
+                            UsersListBox.Items.RemoveAt(j);
+                    }
+                }
+                else if (gelen.Contains("@"))//içerisinde @ içeriyorsa clienti listeye eklicez
+                {
+                    for (int i = 0; i < UsersListBox.Items.Count; i++)//listedeki itemler kadar dön
+                    {
+                        if (UsersListBox.Items[i].ToString().Equals(gelen))//listede varsa o client
+                            listede_yok = 1;//var
+                    }
+                    if (listede_yok == 0)//yoksa  ekle clienti
+                    {
+                        string ben = "@" + UsernameTextBox.Text;
+                        if (ben.Equals(gelen))//kendimi ekleme
+                        {
+                        }
+                        else
+                            UsersListBox.Items.Add(gelen);
+                    }
+                }
+                else
+                    PlainRichTextBox.AppendText(gelen + "\n");
+
+                _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ReceiveData() Error In Method" + e.Message);
+            }
         }
     }
 }

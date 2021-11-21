@@ -55,6 +55,12 @@ namespace OnlyTwo
             this.FindWordsGroupBox = new System.Windows.Forms.GroupBox();
             this.ReturnButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.KeygenTextBox = new System.Windows.Forms.TextBox();
+            this.UsernameLabel = new System.Windows.Forms.Label();
+            this.UsernameTextBox = new System.Windows.Forms.TextBox();
+            this.SendUserInfoLabel = new System.Windows.Forms.Label();
+            this.ConnectButton = new System.Windows.Forms.Button();
+            this.ServerInfoLabel = new System.Windows.Forms.Label();
+            this.UsersListBox = new System.Windows.Forms.ListBox();
             this.PlainTextGroupBox.SuspendLayout();
             this.CipherTextGroupBox.SuspendLayout();
             this.EncryptionGroupBox.SuspendLayout();
@@ -84,7 +90,7 @@ namespace OnlyTwo
             this.SendFlatButton.IconVisible = true;
             this.SendFlatButton.IconZoom = 90D;
             this.SendFlatButton.IsTab = false;
-            this.SendFlatButton.Location = new System.Drawing.Point(12, 493);
+            this.SendFlatButton.Location = new System.Drawing.Point(224, 489);
             this.SendFlatButton.Margin = new System.Windows.Forms.Padding(4);
             this.SendFlatButton.Name = "SendFlatButton";
             this.SendFlatButton.Normalcolor = System.Drawing.Color.Black;
@@ -97,13 +103,14 @@ namespace OnlyTwo
             this.SendFlatButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SendFlatButton.Textcolor = System.Drawing.Color.White;
             this.SendFlatButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendFlatButton.Click += new System.EventHandler(this.SendFlatButton_Click);
             // 
             // PlainTextGroupBox
             // 
             this.PlainTextGroupBox.Controls.Add(this.PleaseLabel);
             this.PlainTextGroupBox.Controls.Add(this.CounterPlainLabel);
             this.PlainTextGroupBox.Controls.Add(this.PlainRichTextBox);
-            this.PlainTextGroupBox.Location = new System.Drawing.Point(12, 56);
+            this.PlainTextGroupBox.Location = new System.Drawing.Point(224, 52);
             this.PlainTextGroupBox.Name = "PlainTextGroupBox";
             this.PlainTextGroupBox.Size = new System.Drawing.Size(528, 213);
             this.PlainTextGroupBox.TabIndex = 3;
@@ -268,7 +275,7 @@ namespace OnlyTwo
             // 
             this.CipherTextGroupBox.Controls.Add(this.CounterCipherLabel);
             this.CipherTextGroupBox.Controls.Add(this.CipherTextBox);
-            this.CipherTextGroupBox.Location = new System.Drawing.Point(12, 275);
+            this.CipherTextGroupBox.Location = new System.Drawing.Point(224, 271);
             this.CipherTextGroupBox.Name = "CipherTextGroupBox";
             this.CipherTextGroupBox.Size = new System.Drawing.Size(528, 211);
             this.CipherTextGroupBox.TabIndex = 4;
@@ -395,7 +402,7 @@ namespace OnlyTwo
             // KeyLabel
             // 
             this.KeyLabel.AutoSize = true;
-            this.KeyLabel.Location = new System.Drawing.Point(18, 13);
+            this.KeyLabel.Location = new System.Drawing.Point(230, 9);
             this.KeyLabel.Name = "KeyLabel";
             this.KeyLabel.Size = new System.Drawing.Size(231, 13);
             this.KeyLabel.TabIndex = 7;
@@ -415,7 +422,7 @@ namespace OnlyTwo
             this.SagPanel.GradientBottomRight = System.Drawing.Color.Red;
             this.SagPanel.GradientTopLeft = System.Drawing.Color.Black;
             this.SagPanel.GradientTopRight = System.Drawing.Color.Black;
-            this.SagPanel.Location = new System.Drawing.Point(545, 0);
+            this.SagPanel.Location = new System.Drawing.Point(759, 0);
             this.SagPanel.Name = "SagPanel";
             this.SagPanel.Quality = 10;
             this.SagPanel.Size = new System.Drawing.Size(203, 532);
@@ -500,18 +507,75 @@ namespace OnlyTwo
             // 
             // KeygenTextBox
             // 
-            this.KeygenTextBox.Location = new System.Drawing.Point(18, 30);
+            this.KeygenTextBox.Location = new System.Drawing.Point(230, 26);
             this.KeygenTextBox.Name = "KeygenTextBox";
             this.KeygenTextBox.Size = new System.Drawing.Size(513, 20);
             this.KeygenTextBox.TabIndex = 6;
             this.KeygenTextBox.TextChanged += new System.EventHandler(this.KeygenTextBox_TextChanged);
+            // 
+            // UsernameLabel
+            // 
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.Location = new System.Drawing.Point(12, 9);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(58, 13);
+            this.UsernameLabel.TabIndex = 10;
+            this.UsernameLabel.Text = "Username:";
+            // 
+            // UsernameTextBox
+            // 
+            this.UsernameTextBox.Location = new System.Drawing.Point(12, 27);
+            this.UsernameTextBox.Name = "UsernameTextBox";
+            this.UsernameTextBox.Size = new System.Drawing.Size(112, 20);
+            this.UsernameTextBox.TabIndex = 11;
+            // 
+            // SendUserInfoLabel
+            // 
+            this.SendUserInfoLabel.AutoSize = true;
+            this.SendUserInfoLabel.Location = new System.Drawing.Point(12, 55);
+            this.SendUserInfoLabel.Name = "SendUserInfoLabel";
+            this.SendUserInfoLabel.Size = new System.Drawing.Size(164, 13);
+            this.SendUserInfoLabel.TabIndex = 12;
+            this.SendUserInfoLabel.Text = "Choose Send The Message User";
+            // 
+            // ConnectButton
+            // 
+            this.ConnectButton.Location = new System.Drawing.Point(130, 27);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(84, 20);
+            this.ConnectButton.TabIndex = 13;
+            this.ConnectButton.Text = "Connect";
+            this.ConnectButton.UseVisualStyleBackColor = true;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            // 
+            // ServerInfoLabel
+            // 
+            this.ServerInfoLabel.AutoSize = true;
+            this.ServerInfoLabel.Location = new System.Drawing.Point(89, 507);
+            this.ServerInfoLabel.Name = "ServerInfoLabel";
+            this.ServerInfoLabel.Size = new System.Drawing.Size(0, 13);
+            this.ServerInfoLabel.TabIndex = 14;
+            // 
+            // UsersListBox
+            // 
+            this.UsersListBox.FormattingEnabled = true;
+            this.UsersListBox.Location = new System.Drawing.Point(12, 71);
+            this.UsersListBox.Name = "UsersListBox";
+            this.UsersListBox.Size = new System.Drawing.Size(202, 407);
+            this.UsersListBox.TabIndex = 15;
             // 
             // OnlyTwoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(748, 532);
+            this.ClientSize = new System.Drawing.Size(962, 532);
+            this.Controls.Add(this.UsersListBox);
+            this.Controls.Add(this.ServerInfoLabel);
+            this.Controls.Add(this.ConnectButton);
+            this.Controls.Add(this.SendUserInfoLabel);
+            this.Controls.Add(this.UsernameTextBox);
+            this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.SagPanel);
             this.Controls.Add(this.KeyLabel);
             this.Controls.Add(this.KeygenTextBox);
@@ -522,6 +586,7 @@ namespace OnlyTwo
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OnlyTwoForm";
             this.Text = "OnlyTwo";
+            this.Load += new System.EventHandler(this.OnlyTwoForm_Load);
             this.PlainTextGroupBox.ResumeLayout(false);
             this.PlainTextGroupBox.PerformLayout();
             this.CipherTextGroupBox.ResumeLayout(false);
@@ -563,6 +628,12 @@ namespace OnlyTwo
         private System.Windows.Forms.Label CounterPlainLabel;
         private System.Windows.Forms.Label CounterCipherLabel;
         private System.Windows.Forms.Label PleaseLabel;
+        private System.Windows.Forms.Label UsernameLabel;
+        private System.Windows.Forms.TextBox UsernameTextBox;
+        private System.Windows.Forms.Label SendUserInfoLabel;
+        private System.Windows.Forms.Button ConnectButton;
+        private System.Windows.Forms.Label ServerInfoLabel;
+        private System.Windows.Forms.ListBox UsersListBox;
     }
 }
 
