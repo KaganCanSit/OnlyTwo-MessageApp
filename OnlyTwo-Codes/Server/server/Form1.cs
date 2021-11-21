@@ -212,19 +212,6 @@ namespace server
                 }
             }
         }
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            for (int i = 0; i < ClintListBox.SelectedItems.Count; i++)//Send The Choise Select ListBox Item 
-            {
-                string t = ClintListBox.SelectedItems[i].ToString();
-                for (int j = 0; j < __ClientSockets.Count; j++)
-                {
-                    if (__ClientSockets[j]._Socket.Connected && __ClientSockets[j]._Name.Equals("@" + t))//If The Client's Name Is In The Listbox And It Is Active 
-                        Sendata(__ClientSockets[j]._Socket, MesTextBox.Text);//Send Message
-                }
-            }
-            MessageTextBox.AppendText("\nServer: " + MesTextBox.Text);
-        }
     }
     public class SocketT2h
     {
@@ -236,4 +223,3 @@ namespace server
         }
     }
 }
-

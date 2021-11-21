@@ -32,8 +32,6 @@
             this.MessageTextBox = new System.Windows.Forms.RichTextBox();
             this.InfoLabelUp = new System.Windows.Forms.Label();
             this.InfoLabelDown = new System.Windows.Forms.Label();
-            this.MesTextBox = new System.Windows.Forms.TextBox();
-            this.SendButton = new System.Windows.Forms.Button();
             this.MessageLabel = new System.Windows.Forms.Label();
             this.ClintListBox = new System.Windows.Forms.ListBox();
             this.ClientLabel = new System.Windows.Forms.Label();
@@ -52,7 +50,7 @@
             // InfoLabelUp
             // 
             this.InfoLabelUp.AutoSize = true;
-            this.InfoLabelUp.Location = new System.Drawing.Point(12, 439);
+            this.InfoLabelUp.Location = new System.Drawing.Point(12, 416);
             this.InfoLabelUp.Name = "InfoLabelUp";
             this.InfoLabelUp.Size = new System.Drawing.Size(0, 13);
             this.InfoLabelUp.TabIndex = 2;
@@ -60,27 +58,10 @@
             // InfoLabelDown
             // 
             this.InfoLabelDown.AutoSize = true;
-            this.InfoLabelDown.Location = new System.Drawing.Point(12, 466);
+            this.InfoLabelDown.Location = new System.Drawing.Point(12, 443);
             this.InfoLabelDown.Name = "InfoLabelDown";
             this.InfoLabelDown.Size = new System.Drawing.Size(0, 13);
             this.InfoLabelDown.TabIndex = 3;
-            // 
-            // MesTextBox
-            // 
-            this.MesTextBox.Location = new System.Drawing.Point(12, 412);
-            this.MesTextBox.Name = "MesTextBox";
-            this.MesTextBox.Size = new System.Drawing.Size(192, 20);
-            this.MesTextBox.TabIndex = 4;
-            // 
-            // SendButton
-            // 
-            this.SendButton.Location = new System.Drawing.Point(212, 410);
-            this.SendButton.Name = "SendButton";
-            this.SendButton.Size = new System.Drawing.Size(75, 23);
-            this.SendButton.TabIndex = 5;
-            this.SendButton.Text = "Send";
-            this.SendButton.UseVisualStyleBackColor = true;
-            this.SendButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // MessageLabel
             // 
@@ -97,7 +78,7 @@
             this.ClintListBox.Location = new System.Drawing.Point(9, 33);
             this.ClintListBox.Name = "ClintListBox";
             this.ClintListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.ClintListBox.Size = new System.Drawing.Size(125, 446);
+            this.ClintListBox.Size = new System.Drawing.Size(125, 420);
             this.ClintListBox.TabIndex = 6;
             // 
             // ClientLabel
@@ -125,18 +106,16 @@
             this.BackGradientPanel.Location = new System.Drawing.Point(298, 0);
             this.BackGradientPanel.Name = "BackGradientPanel";
             this.BackGradientPanel.Quality = 10;
-            this.BackGradientPanel.Size = new System.Drawing.Size(143, 491);
+            this.BackGradientPanel.Size = new System.Drawing.Size(143, 468);
             this.BackGradientPanel.TabIndex = 9;
             // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 491);
+            this.ClientSize = new System.Drawing.Size(441, 468);
             this.Controls.Add(this.BackGradientPanel);
             this.Controls.Add(this.MessageLabel);
-            this.Controls.Add(this.SendButton);
-            this.Controls.Add(this.MesTextBox);
             this.Controls.Add(this.InfoLabelDown);
             this.Controls.Add(this.InfoLabelUp);
             this.Controls.Add(this.MessageTextBox);
@@ -155,8 +134,6 @@
         private System.Windows.Forms.RichTextBox MessageTextBox;
         private System.Windows.Forms.Label InfoLabelUp;
         private System.Windows.Forms.Label InfoLabelDown;
-        private System.Windows.Forms.TextBox MesTextBox;
-        private System.Windows.Forms.Button SendButton;
         private System.Windows.Forms.Label MessageLabel;
         private System.Windows.Forms.ListBox ClintListBox;
         private System.Windows.Forms.Label ClientLabel;

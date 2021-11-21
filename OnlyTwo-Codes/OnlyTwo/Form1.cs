@@ -250,26 +250,24 @@ namespace OnlyTwo
         //-------------------------------------------------------------------------------------------------------------------------------------------------
         private void OnlyTwoForm_Load(object sender, EventArgs e)
         {
-            CheckForIllegalCrossThreadCalls = false;//dinamik nesne eklemek için listeye
+            CheckForIllegalCrossThreadCalls = false;//Add Dynamic Object To List
         }
 
         //Send Operation
         private void SendFlatButton_Click(object sender, EventArgs e)
         {
-            if (_clientSocket.Connected)//client servera bağlı ise
+            if (_clientSocket.Connected)
             {
                 string tmpStr = "";
-                foreach (var item in UsersListBox.SelectedItems)//listboxtaki seçili itemlere
+                foreach (var item in UsersListBox.SelectedItems)//Listbox Selected Item
                 {
                     tmpStr = UsersListBox.GetItemText(item);
-                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr +" :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//byte çevir
-                    _clientSocket.Send(buffer);//ve gönder ip ve porta
-                    Thread.Sleep(20);//yapmasanda olur(fakat 4 cliente bırden mesaj gonderınce dıgerlerine gıtmeyebılir)
+                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr +" :" + CipherTextBox.Text);//Byte Translate
+                    _clientSocket.Send(buffer);//Send IP+Port > Socket
+                    Thread.Sleep(20);
                 }
                 if (tmpStr.Equals(""))
                     MessageBox.Show("Please Click The Send Username");
-                else
-                    PlainRichTextBox.AppendText(CipherTextBox.Text);
             }
         }
 
@@ -282,67 +280,65 @@ namespace OnlyTwo
         private void LoopConnect()
         {
             int attempts = 0;
-            while (!_clientSocket.Connected)//server çalışmıyorsa(çalışısaya kadar döngü döner)
+            while (!_clientSocket.Connected)//Server Not Work - Try Loop
             {
                 try
                 {
                     attempts++;
-                    _clientSocket.Connect("127.0.0.1", 100);//127.0.0.1=IPAddress.Loopback demek 100 portuna bağlan
+                    _clientSocket.Connect("127.0.0.1", 100);//127.0.0.1=IPAddress.Loopback - Connect 100 Port Num.
                 }
                 catch (SocketException)
                 {
                     Console.WriteLine("Links: " + attempts.ToString());
                 }
             }
-            _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);//AsyncCallback thread gibi asenkron eş zamansız çalışıyor
-            byte[] buffer = Encoding.ASCII.GetBytes("@@" + UsernameTextBox.Text);//ismimizin başına 2 tane @@ koydum belli olsun
-            _clientSocket.Send(buffer);//veriyi gönderdim servera
-            ServerInfoLabel.Text = ("Connected To The Server!");//servere bağlandı
+            _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);//AsyncCallback
+            byte[] buffer = Encoding.ASCII.GetBytes("@@" + UsernameTextBox.Text);
+            _clientSocket.Send(buffer);//Send The Server
+            ServerInfoLabel.Text = ("Connected To The Server!");
         }
 
         private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         //InterNetwork = ipv4 ailesi için -- SocketType.Dgram= UDP için -- SocketType.Stream= TCP için -- ProtocolType.IP = TCP ve UDP
 
-        byte[] receivedBuf = new byte[1024];//veri almak için yer ayırdık
-        private void ReceiveData(IAsyncResult ar)//burası asenkron oldugu için hep çalışır thread gibi veriyi almak için
+        byte[] receivedBuf = new byte[1024];
+        private void ReceiveData(IAsyncResult ar)//Asenkron
         {
             int listede_yok = 0;//yok
             try
             {
-                Socket socket = (Socket)ar.AsyncState;//asenkron soketi alırız
-                int received = socket.EndReceive(ar);//verinin toplam uzunlugu
-                byte[] dataBuf = new byte[received];//verıyı byte cevırdık
-                Array.Copy(receivedBuf, dataBuf, received);//dataBuf=receivedBuf ve received uzunluk
-                string gelen = Encoding.ASCII.GetString(dataBuf).ToString();//serverdan gelen mesaj
-                if (gelen.Contains("sil*"))
+                Socket socket = (Socket)ar.AsyncState;//Asenkron Get Socket
+                int received = socket.EndReceive(ar);//Data Lenght
+                byte[] dataBuf = new byte[received];//Translate Byte
+                Array.Copy(receivedBuf, dataBuf, received);//dataBuf=receivedBuf
+                string gelen = Encoding.ASCII.GetString(dataBuf).ToString();//Message From Server
+                if (gelen.Contains("Delete*"))
                 {
                     string parcala = gelen.Substring(4, (gelen.Length - 4));
-                    Console.WriteLine("degerim  " + parcala);
-                    for (int j = 0; j < UsersListBox.Items.Count; j++)//list boxtanda kaldır
+                    Console.WriteLine("Value " + parcala);
+                    for (int j = 0; j < UsersListBox.Items.Count; j++)//Remove From List Box
                     {
                         if (UsersListBox.Items[j].Equals(parcala))
                             UsersListBox.Items.RemoveAt(j);
                     }
                 }
-                else if (gelen.Contains("@"))//içerisinde @ içeriyorsa clienti listeye eklicez
+                else if (gelen.Contains("@"))//If It Contains @, We Will Add The Client To The List
                 {
-                    for (int i = 0; i < UsersListBox.Items.Count; i++)//listedeki itemler kadar dön
+                    for (int i = 0; i < UsersListBox.Items.Count; i++)
                     {
-                        if (UsersListBox.Items[i].ToString().Equals(gelen))//listede varsa o client
-                            listede_yok = 1;//var
+                        if (UsersListBox.Items[i].ToString().Equals(gelen))
+                            listede_yok = 1;
                     }
-                    if (listede_yok == 0)//yoksa  ekle clienti
+                    if (listede_yok == 0)
                     {
                         string ben = "@" + UsernameTextBox.Text;
-                        if (ben.Equals(gelen))//kendimi ekleme
+                        if (ben.Equals(gelen))
                         {
                         }
                         else
                             UsersListBox.Items.Add(gelen);
                     }
                 }
-                else
-                    PlainRichTextBox.AppendText(gelen + "\n");
 
                 _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);
             }
