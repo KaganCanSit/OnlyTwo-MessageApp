@@ -32,6 +32,7 @@ namespace OnlyTwo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlyTwoForm));
             this.SendFlatButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox = new System.Windows.Forms.GroupBox();
+            this.PleaseLabel = new System.Windows.Forms.Label();
             this.CounterPlainLabel = new System.Windows.Forms.Label();
             this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.Warning = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@ namespace OnlyTwo
             // 
             // PlainTextGroupBox
             // 
+            this.PlainTextGroupBox.Controls.Add(this.PleaseLabel);
             this.PlainTextGroupBox.Controls.Add(this.CounterPlainLabel);
             this.PlainTextGroupBox.Controls.Add(this.PlainRichTextBox);
             this.PlainTextGroupBox.Location = new System.Drawing.Point(12, 56);
@@ -107,6 +109,15 @@ namespace OnlyTwo
             this.PlainTextGroupBox.TabIndex = 3;
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
+            // 
+            // PleaseLabel
+            // 
+            this.PleaseLabel.AutoSize = true;
+            this.PleaseLabel.Location = new System.Drawing.Point(6, 15);
+            this.PleaseLabel.Name = "PleaseLabel";
+            this.PleaseLabel.Size = new System.Drawing.Size(311, 13);
+            this.PleaseLabel.TabIndex = 7;
+            this.PleaseLabel.Text = "Please! Use Only English Alphabet And Your Character Limit 200";
             // 
             // CounterPlainLabel
             // 
@@ -281,7 +292,6 @@ namespace OnlyTwo
             this.CipherTextBox.Name = "CipherTextBox";
             this.CipherTextBox.Size = new System.Drawing.Size(513, 177);
             this.CipherTextBox.TabIndex = 0;
-            this.CipherTextBox.TextChanged += new System.EventHandler(this.CipherTextBox_TextChanged);
             // 
             // EncryptionGroupBox
             // 
@@ -552,6 +562,7 @@ namespace OnlyTwo
         private System.Windows.Forms.TextBox KeygenTextBox;
         private System.Windows.Forms.Label CounterPlainLabel;
         private System.Windows.Forms.Label CounterCipherLabel;
+        private System.Windows.Forms.Label PleaseLabel;
     }
 }
 

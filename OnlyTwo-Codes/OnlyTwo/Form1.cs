@@ -17,8 +17,7 @@ namespace OnlyTwo
         {
             InitializeComponent();
         }
-
-        
+       
         //SPN-16 - Solve
         private static string SPN16Solve(string text, string keygen)
         {
@@ -174,54 +173,74 @@ namespace OnlyTwo
         private void PlainRichTextBox_TextChanged(object sender, EventArgs e)
         {
             int PlainTextLenght = PlainRichTextBox.TextLength;
-            if (PlainTextLenght > 500)
-                MessageBox.Show("You've Reached The 500 Character Limit! Done!");
             CounterPlainLabel.Text = "Counter: " + PlainTextLenght.ToString();
         }
-        private void CipherTextBox_TextChanged(object sender, EventArgs e)
-        {
-            int CipherTextLenght = CipherTextBox.TextLength;
-            if (CipherTextLenght > 500)
-                MessageBox.Show("You've Reached The 500 Character Limit! Done!");
-            CounterCipherLabel.Text = "Counter: " + CipherTextLenght.ToString();
-        }
-
         //Key Must Be 8 Characters Control
         private void KeygenTextBox_TextChanged(object sender, EventArgs e)
-        {
+        {         
             int PasswordLenght = KeygenTextBox.TextLength;
             if (PasswordLenght >= 8)
-                MessageBox.Show("You've Reached The 8 Character Limit! Done!");            
+                MessageBox.Show("You've Reached The 8 Character Limit!");
         }
 
         //Encryption Process / Button Click
         private void EncryptButton_Click(object sender, EventArgs e)
         {
-            if (EncryptComboBox.SelectedIndex == 0) //SHA-256
-                CipherTextBox.Text = SHA256(PlainRichTextBox.Text);
-            else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
-            {
-                if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
-                    MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
-                else
-                    CipherTextBox.Text=SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
-            }
+            KeygenTextBox.Text = StringReplace(KeygenTextBox.Text);
+            PlainRichTextBox.Text = StringReplace(PlainRichTextBox.Text);
+            
+            if(PlainRichTextBox.TextLength > 200)
+                MessageBox.Show("You've Reached The 200 character Limit! Please Try Again!");
             else
-                MessageBox.Show("Please Check The Encrypt Type");
+            {
+                if (EncryptComboBox.SelectedIndex == 0) //SHA-256
+                    CipherTextBox.Text = SHA256(PlainRichTextBox.Text);
+                else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
+                {
+                    if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
+                        MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
+                    else
+                        CipherTextBox.Text = SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
+                }
+                else
+                    MessageBox.Show("Please Check The Encrypt Type");
+            }          
         }
-
         //Solve Process / Button Click
         private void SolveButton_Click(object sender, EventArgs e)
         {
-            if (EncryptComboBox.SelectedIndex == 1) //SPN-16
-            {
-                if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
-                    MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
-                else
-                    CipherTextBox.Text = SPN16Solve(PlainRichTextBox.Text, KeygenTextBox.Text);
-            }
+            if(PlainRichTextBox.TextLength > 1600)
+                MessageBox.Show("You've Reached The 1200 character Limit! Please Try Again!");
             else
-                MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
+            {
+                if (EncryptComboBox.SelectedIndex == 1) //SPN-16
+                {
+                    if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
+                        MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
+                    else
+                        CipherTextBox.Text = SPN16Solve(PlainRichTextBox.Text, KeygenTextBox.Text);
+                }
+                else
+                    MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
+            }       
+        }
+
+        //Turkisch Convert Englisch
+        public string StringReplace(string text)
+        {
+            text = text.Replace("İ", "I");
+            text = text.Replace("ı", "i");
+            text = text.Replace("Ğ", "G");
+            text = text.Replace("ğ", "g");
+            text = text.Replace("Ö", "O");
+            text = text.Replace("ö", "o");
+            text = text.Replace("Ü", "U");
+            text = text.Replace("ü", "u");
+            text = text.Replace("Ş", "S");
+            text = text.Replace("ş", "s");
+            text = text.Replace("Ç", "C");
+            text = text.Replace("ç", "c");
+            return text;
         }
     }
 }
