@@ -18,6 +18,69 @@ namespace OnlyTwo
             InitializeComponent();
         }
 
+
+        //SPN-16 - Text Crypting
+        private static string SPN16(string text, string keygen)
+        {
+            if (String.IsNullOrEmpty(text))
+                MessageBox.Show("File Is Empty!");
+           
+            string keycrypto = Key(keygen), alltext = Key(text);    //Add Key Binary    -   8 Bit Text Binary
+            alltext = XOROperation(alltext, keycrypto);             //XOR Operation          
+            int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
+            alltext = Crossover(CrossoverArray, alltext);           //Crossover Operation
+            return alltext;
+        }
+        //SPN-16 Input Convert To Binary
+        private static String Key(string text)
+        {
+            string temp, keycrypto = "";
+            for (int a = 0; a < text.Length; a++)
+            {
+                temp = Convert.ToString(text[a], 2).PadLeft(8, '0');
+                keycrypto += temp;
+            }
+            return keycrypto;
+        }
+        //SPN-16 XOR Operation
+        private static String XOROperation(string alltext, string keycrypto)
+        {
+            int keygencounter = 0;
+            for (int a = 0; a < alltext.Length; a++)
+            {
+                if (keygencounter == keycrypto.Length)   //Segmentation By Key length
+                    keygencounter = 0;
+
+                if (alltext[a] == '0' && keycrypto[keygencounter] == '0' || alltext[a] == '1' && keycrypto[keygencounter] == '1')       //(0 - 0->0 / 0 - 1->1 / 1 - 0->1 / 1 - 1->1)
+                    alltext = alltext.Remove(a, 1).Insert(a, "0");
+                else if (alltext[a] == '0' && keycrypto[keygencounter] == '1' || alltext[a] == '1' && keycrypto[keygencounter] == '0')
+                    alltext = alltext.Remove(a, 1).Insert(a, "1");
+
+                keygencounter++;
+            }
+            return alltext;
+        }
+        //SPN-16 Crossover Operation
+        private static String Crossover(int[] CrossoverArray, string alltext)
+        {
+            string alltextEnd = alltext;
+            int CrossoverCounter = 0, arraypoint = 0, counter = 0;
+            int remaining = alltext.Length % 16;
+
+            for (int j = 0; j < alltext.Length - remaining; j++)
+            {
+                if (j != 0 && CrossoverCounter % 16 == 0)
+                {
+                    CrossoverCounter = 0;
+                    counter += 16;
+                }
+
+                arraypoint = CrossoverArray[CrossoverCounter];
+                alltextEnd = alltextEnd.Remove(counter + arraypoint, 1).Insert(counter + arraypoint, Convert.ToString(alltext[j]));
+                CrossoverCounter++;
+            }
+            return alltextEnd;
+        }
         //SHA256 - Crypting
         private static string SHA256(string text)
         {
@@ -34,63 +97,7 @@ namespace OnlyTwo
             }
             return sb.ToString();
         }
-
-        //SPN-16 - Text Crypting
-        private static string SPN16(string text, string keygen)
-        {
-            if (String.IsNullOrEmpty(text))
-                MessageBox.Show("File Is Empty!");
-
-            //Add Key Binary    -   8 Bit Text Binary
-            string keycrypto = Key(keygen), alltext = Key(text);
-
-            //XOR Operation
-            int keygencounter=0;
-            for (int a = 0; a < alltext.Length; a++)
-            {
-                if (keygencounter == keycrypto.Length)   //Segmentation By Key length
-                    keygencounter = 0;
-          
-                if (alltext[a] == '0' && keycrypto[keygencounter] == '0' || alltext[a] == '1' && keycrypto[keygencounter] == '1')       //(0 - 0->0 / 0 - 1->1 / 1 - 0->1 / 1 - 1->1)
-                    alltext = alltext.Remove(a, 1).Insert(a, "0"); 
-                else if (alltext[a] == '0' && keycrypto[keygencounter] == '1' || alltext[a] == '1' && keycrypto[keygencounter] == '0')
-                    alltext = alltext.Remove(a, 1).Insert(a, "1");
-                
-                keygencounter++;
-            }
-
-            //Crossover Operation
-            int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
-            string alltextEnd = alltext;
-            int CrossoverCounter = 0, arraypoint = 0, counter = 0;
-            int remaining = alltext.Length % 16;
-
-            for (int j = 0; j < alltext.Length - remaining; j++)
-            {
-                if (j != 0 && CrossoverCounter % 16 == 0)
-                {
-                    CrossoverCounter = 0;
-                    counter += 16;
-                }
-               
-                arraypoint = CrossoverArray[CrossoverCounter];
-                alltextEnd = alltextEnd.Remove(counter+arraypoint,1).Insert(counter + arraypoint, Convert.ToString(alltext[j]));
-                CrossoverCounter++;
-            }
-            return alltextEnd;
-        }
-        //SPN-16 Input Convert To Binary
-        private static String Key(string text)
-        {
-            string temp, keycrypto = "";
-            for (int a = 0; a < text.Length; a++)
-            {
-                temp = Convert.ToString(text[a], 2).PadLeft(8, '0');
-                keycrypto += temp;
-            }
-            return keycrypto;
-        }
-        
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         string temptext;
         //Find The Keywords In The Main Text
