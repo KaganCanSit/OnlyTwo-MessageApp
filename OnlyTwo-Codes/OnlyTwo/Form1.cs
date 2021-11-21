@@ -18,6 +18,33 @@ namespace OnlyTwo
             InitializeComponent();
         }
 
+        
+        //SPN-16 - Solve
+        private static string SPN16Solve(string text, string keygen)
+        {
+            if (String.IsNullOrEmpty(text))
+                MessageBox.Show("File Is Empty!");
+
+            string alltext, keycrypto = Key(keygen);
+            int[] CrossoverArray = { 2, 8, 12, 5, 9, 0, 14, 4, 11, 1, 15, 6, 3, 10, 7, 13 };
+            alltext = Crossover(CrossoverArray, text);
+            alltext = XOROperation(alltext, keycrypto);
+            alltext = ConvertString(alltext);
+            return alltext;
+        }
+        //Spn16-Solve - Input Convert To String
+        private static String ConvertString(string text)
+        {
+            List<byte> stringList = new List<byte>();
+
+            for (int i = 0; i < text.Length; i += 8)
+            {
+                stringList.Add(Convert.ToByte(text.Substring(i, 8), 2));
+            }
+            return Encoding.ASCII.GetString(stringList.ToArray());
+        }
+
+
 
         //SPN-16 - Text Crypting
         private static string SPN16(string text, string keygen)
@@ -181,7 +208,20 @@ namespace OnlyTwo
             }
             else
                 MessageBox.Show("Please Check The Encrypt Type");
+        }
 
+        //Solve Process / Button Click
+        private void SolveButton_Click(object sender, EventArgs e)
+        {
+            if (EncryptComboBox.SelectedIndex == 1) //SPN-16
+            {
+                if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
+                    MessageBox.Show("Please specify your Password with 8 characters.\n Text To Be Encrypted Must Be Longer Than 8 Letters!");
+                else
+                    CipherTextBox.Text = SPN16Solve(PlainRichTextBox.Text, KeygenTextBox.Text);
+            }
+            else
+                MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
         }
     }
 }
