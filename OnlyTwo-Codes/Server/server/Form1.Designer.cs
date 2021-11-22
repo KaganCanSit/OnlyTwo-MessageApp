@@ -41,44 +41,50 @@
             // 
             // MessageTextBox
             // 
-            this.MessageTextBox.Location = new System.Drawing.Point(12, 28);
+            this.MessageTextBox.Location = new System.Drawing.Point(16, 34);
+            this.MessageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MessageTextBox.Name = "MessageTextBox";
-            this.MessageTextBox.Size = new System.Drawing.Size(275, 376);
+            this.MessageTextBox.Size = new System.Drawing.Size(365, 462);
             this.MessageTextBox.TabIndex = 0;
             this.MessageTextBox.Text = "";
             // 
             // InfoLabelUp
             // 
             this.InfoLabelUp.AutoSize = true;
-            this.InfoLabelUp.Location = new System.Drawing.Point(12, 416);
+            this.InfoLabelUp.Location = new System.Drawing.Point(16, 512);
+            this.InfoLabelUp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InfoLabelUp.Name = "InfoLabelUp";
-            this.InfoLabelUp.Size = new System.Drawing.Size(0, 13);
+            this.InfoLabelUp.Size = new System.Drawing.Size(0, 17);
             this.InfoLabelUp.TabIndex = 2;
             // 
             // InfoLabelDown
             // 
             this.InfoLabelDown.AutoSize = true;
-            this.InfoLabelDown.Location = new System.Drawing.Point(12, 443);
+            this.InfoLabelDown.Location = new System.Drawing.Point(16, 545);
+            this.InfoLabelDown.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InfoLabelDown.Name = "InfoLabelDown";
-            this.InfoLabelDown.Size = new System.Drawing.Size(0, 13);
+            this.InfoLabelDown.Size = new System.Drawing.Size(0, 17);
             this.InfoLabelDown.TabIndex = 3;
             // 
             // MessageLabel
             // 
             this.MessageLabel.AutoSize = true;
-            this.MessageLabel.Location = new System.Drawing.Point(12, 13);
+            this.MessageLabel.Location = new System.Drawing.Point(16, 16);
+            this.MessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MessageLabel.Name = "MessageLabel";
-            this.MessageLabel.Size = new System.Drawing.Size(58, 13);
+            this.MessageLabel.Size = new System.Drawing.Size(76, 17);
             this.MessageLabel.TabIndex = 7;
             this.MessageLabel.Text = "Messages:";
             // 
             // ClintListBox
             // 
             this.ClintListBox.FormattingEnabled = true;
-            this.ClintListBox.Location = new System.Drawing.Point(9, 33);
+            this.ClintListBox.ItemHeight = 16;
+            this.ClintListBox.Location = new System.Drawing.Point(12, 41);
+            this.ClintListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ClintListBox.Name = "ClintListBox";
             this.ClintListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.ClintListBox.Size = new System.Drawing.Size(125, 420);
+            this.ClintListBox.Size = new System.Drawing.Size(165, 516);
             this.ClintListBox.TabIndex = 6;
             // 
             // ClientLabel
@@ -86,9 +92,10 @@
             this.ClientLabel.AutoSize = true;
             this.ClientLabel.BackColor = System.Drawing.Color.Transparent;
             this.ClientLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientLabel.Location = new System.Drawing.Point(6, 13);
+            this.ClientLabel.Location = new System.Drawing.Point(8, 16);
+            this.ClientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ClientLabel.Name = "ClientLabel";
-            this.ClientLabel.Size = new System.Drawing.Size(50, 13);
+            this.ClientLabel.Size = new System.Drawing.Size(66, 17);
             this.ClientLabel.TabIndex = 8;
             this.ClientLabel.Text = "All Client:";
             // 
@@ -103,22 +110,25 @@
             this.BackGradientPanel.GradientBottomRight = System.Drawing.Color.DarkRed;
             this.BackGradientPanel.GradientTopLeft = System.Drawing.Color.Black;
             this.BackGradientPanel.GradientTopRight = System.Drawing.Color.Red;
-            this.BackGradientPanel.Location = new System.Drawing.Point(298, 0);
+            this.BackGradientPanel.Location = new System.Drawing.Point(397, 0);
+            this.BackGradientPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BackGradientPanel.Name = "BackGradientPanel";
             this.BackGradientPanel.Quality = 10;
-            this.BackGradientPanel.Size = new System.Drawing.Size(143, 468);
+            this.BackGradientPanel.Size = new System.Drawing.Size(191, 576);
             this.BackGradientPanel.TabIndex = 9;
             // 
             // ServerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 468);
+            this.ClientSize = new System.Drawing.Size(588, 576);
             this.Controls.Add(this.BackGradientPanel);
             this.Controls.Add(this.MessageLabel);
             this.Controls.Add(this.InfoLabelDown);
             this.Controls.Add(this.InfoLabelUp);
             this.Controls.Add(this.MessageTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ServerForm";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.Form1_Load_1);

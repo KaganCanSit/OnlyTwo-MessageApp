@@ -5,17 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Windows.Forms;
-using System.Security.Cryptography;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Text;
+using System.Security.Cryptography;
+
 
 namespace OnlyTwo
 {
     public partial class OnlyTwoForm : Form
     {
+        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //InterNetwork = ipv4 ailesi için -- SocketType.Dgram= UDP için -- SocketType.Stream= TCP için -- ProtocolType.IP = TCP ve UDP
+
         public OnlyTwoForm()
         {
             InitializeComponent();
@@ -248,65 +252,10 @@ namespace OnlyTwo
 
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------
-        private void OnlyTwoForm_Load(object sender, EventArgs e)
-        {
-            CheckForIllegalCrossThreadCalls = false;//Add Dynamic Object To List
-        }
-
-        //Send Operation
-        private void SendFlatButton_Click(object sender, EventArgs e)
-        {
-            if (_clientSocket.Connected)
-            {
-                string tmpStr = "";
-                foreach (var item in UsersListBox.SelectedItems)//Listbox Selected Item
-                {
-                    tmpStr = UsersListBox.GetItemText(item);
-                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr +" :" + CipherTextBox.Text);//Byte Translate
-                    _clientSocket.Send(buffer);//Send IP+Port > Socket
-                    Thread.Sleep(20);
-                }
-                if (tmpStr.Equals(""))
-                    MessageBox.Show("Please Click The Send Username");
-                else
-                    PlainRichTextBox.AppendText(UsernameLabel + ": " + CipherTextBox.Text + "\n");
-            }
-        }
-
-        private void ConnectButton_Click(object sender, EventArgs e)
-        {
-            Thread t1 = new Thread(LoopConnect);
-            t1.Start();
-        }
-
-        private void LoopConnect()
-        {
-            int attempts = 0;
-            while (!_clientSocket.Connected)//Server Not Work - Try Loop
-            {
-                try
-                {
-                    attempts++;
-                    _clientSocket.Connect("127.0.0.1", 100);//127.0.0.1=IPAddress.Loopback - Connect 100 Port Num.
-                }
-                catch (SocketException)
-                {
-                    Console.WriteLine("Links: " + attempts.ToString());
-                }
-            }
-            _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);//AsyncCallback
-            byte[] buffer = Encoding.ASCII.GetBytes("@@" + UsernameTextBox.Text);
-            _clientSocket.Send(buffer);//Send The Server
-            ServerInfoLabel.Text = ("Connected To The Server!");
-        }
-
-        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        //InterNetwork = ipv4 ailesi için -- SocketType.Dgram= UDP için -- SocketType.Stream= TCP için -- ProtocolType.IP = TCP ve UDP
-
         byte[] receivedBuf = new byte[1024];
         private void ReceiveData(IAsyncResult ar)//Asenkron
         {
-            int listede_yok = 0;//yok
+            int listede_yok = 0;
             try
             {
                 Socket socket = (Socket)ar.AsyncState;//Asenkron Get Socket
@@ -314,10 +263,10 @@ namespace OnlyTwo
                 byte[] dataBuf = new byte[received];//Translate Byte
                 Array.Copy(receivedBuf, dataBuf, received);//dataBuf=receivedBuf
                 string gelen = Encoding.ASCII.GetString(dataBuf).ToString();//Message From Server
-                if (gelen.Contains("Delete*"))
+                if (gelen.Contains("sil*"))
                 {
                     string parcala = gelen.Substring(4, (gelen.Length - 4));
-                    Console.WriteLine("Value " + parcala);
+                    Console.WriteLine("degerim " + parcala);
                     for (int j = 0; j < UsersListBox.Items.Count; j++)//Remove From List Box
                     {
                         if (UsersListBox.Items[j].Equals(parcala))
@@ -341,6 +290,10 @@ namespace OnlyTwo
                             UsersListBox.Items.Add(gelen);
                     }
                 }
+                else
+                {
+                    PlainRichTextBox.AppendText(gelen + "\n");
+                }
 
                 _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);
             }
@@ -348,6 +301,61 @@ namespace OnlyTwo
             {
                 Console.WriteLine("ReceiveData() Error In Method" + e.Message);
             }
+        }
+
+        private void LoopConnect()
+        {
+            int attempts = 0;
+            while (!_clientSocket.Connected)//Server Not Work - Try Loop
+            {
+                try
+                {
+                    attempts++;
+                    _clientSocket.Connect("127.0.0.1", 100);//127.0.0.1=IPAddress.Loopback - Connect 100 Port Num.
+                }
+                catch (SocketException)
+                {
+                    Console.WriteLine("Links: " + attempts.ToString());
+                }
+            }
+            _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);//AsyncCallback
+            byte[] buffer = Encoding.ASCII.GetBytes("@@" + UsernameTextBox.Text);
+            _clientSocket.Send(buffer);//Send The Server
+            ServerInfoLabel.Text = ("Connected To The Server!");
+        }
+        
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+            UsernameTextBox.Text = StringReplace(UsernameTextBox.Text);
+            Thread t1 = new Thread(LoopConnect);
+            t1.Start();
+        }
+
+        //Send Operation
+        private void SendFlatButton_Click(object sender, EventArgs e)
+        {
+            if (_clientSocket.Connected)
+            {
+                string tmpStr = "";
+                foreach (var item in UsersListBox.SelectedItems)//Listbox Selected Item
+                {
+                    tmpStr = UsersListBox.GetItemText(item);
+                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr +" :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//Byte Translate
+                    _clientSocket.Send(buffer);//Send IP+Port > Socket
+                    Thread.Sleep(20);
+                }
+                if (tmpStr.Equals(""))
+                    MessageBox.Show("Please Click The Send Username");
+                else
+                {
+                    PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");
+                }                         
+            }
+        }
+
+        private void OnlyTwoForm_Load(object sender, EventArgs e)
+        {
+            CheckForIllegalCrossThreadCalls = false;//Add Dynamic Object To List
         }
     }
 }

@@ -17,7 +17,7 @@ namespace server
     public partial class ServerForm : Form
     {
 
-        private byte[] _buffer = new byte[5120];//Data Size
+        private byte[] _buffer = new byte[1024];//Data Size
         public List<SocketT2h> __ClientSockets { get; set; }
         List<string> _names = new List<string>();
         private Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
