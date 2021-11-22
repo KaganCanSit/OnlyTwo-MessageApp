@@ -268,6 +268,8 @@ namespace OnlyTwo
                 }
                 if (tmpStr.Equals(""))
                     MessageBox.Show("Please Click The Send Username");
+                else
+                    PlainRichTextBox.AppendText(UsernameLabel + ": " + CipherTextBox.Text + "\n");
             }
         }
 
