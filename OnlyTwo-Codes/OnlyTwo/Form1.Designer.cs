@@ -39,7 +39,6 @@ namespace OnlyTwo
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.FindButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.DeleteButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.AddFileButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.CipherTextGroupBox = new System.Windows.Forms.GroupBox();
             this.CounterCipherLabel = new System.Windows.Forms.Label();
             this.CipherTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
@@ -49,8 +48,13 @@ namespace OnlyTwo
             this.EncryptButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.KeyLabel = new System.Windows.Forms.Label();
             this.SagPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.LogoName = new System.Windows.Forms.Label();
-            this.LogoPictureBox = new System.Windows.Forms.PictureBox();
+            this.CrypteFileGroup = new System.Windows.Forms.GroupBox();
+            this.ExecuteButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.DeRadioButton = new System.Windows.Forms.RadioButton();
+            this.EnRadioButton = new System.Windows.Forms.RadioButton();
+            this.FilePathLabel = new System.Windows.Forms.Label();
+            this.FilePathTextBox = new System.Windows.Forms.TextBox();
+            this.BrowseButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.FindWordsGroupBox = new System.Windows.Forms.GroupBox();
             this.ReturnButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.KeygenTextBox = new System.Windows.Forms.TextBox();
@@ -64,7 +68,7 @@ namespace OnlyTwo
             this.CipherTextGroupBox.SuspendLayout();
             this.EncryptionGroupBox.SuspendLayout();
             this.SagPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
+            this.CrypteFileGroup.SuspendLayout();
             this.FindWordsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -242,31 +246,6 @@ namespace OnlyTwo
             this.DeleteButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // AddFileButton
-            // 
-            this.AddFileButton.ActiveBorderThickness = 1;
-            this.AddFileButton.ActiveCornerRadius = 20;
-            this.AddFileButton.ActiveFillColor = System.Drawing.Color.Red;
-            this.AddFileButton.ActiveForecolor = System.Drawing.Color.White;
-            this.AddFileButton.ActiveLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.BackColor = System.Drawing.Color.Transparent;
-            this.AddFileButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFileButton.BackgroundImage")));
-            this.AddFileButton.ButtonText = "Add File";
-            this.AddFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddFileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddFileButton.ForeColor = System.Drawing.Color.Red;
-            this.AddFileButton.IdleBorderThickness = 1;
-            this.AddFileButton.IdleCornerRadius = 20;
-            this.AddFileButton.IdleFillColor = System.Drawing.Color.White;
-            this.AddFileButton.IdleForecolor = System.Drawing.Color.Red;
-            this.AddFileButton.IdleLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.Location = new System.Drawing.Point(15, 250);
-            this.AddFileButton.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(216, 39);
-            this.AddFileButton.TabIndex = 2;
-            this.AddFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // CipherTextGroupBox
             // 
             this.CipherTextGroupBox.Controls.Add(this.CounterCipherLabel);
@@ -418,8 +397,7 @@ namespace OnlyTwo
             this.SagPanel.BackColor = System.Drawing.Color.Transparent;
             this.SagPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SagPanel.BackgroundImage")));
             this.SagPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SagPanel.Controls.Add(this.LogoName);
-            this.SagPanel.Controls.Add(this.LogoPictureBox);
+            this.SagPanel.Controls.Add(this.CrypteFileGroup);
             this.SagPanel.Controls.Add(this.FindWordsGroupBox);
             this.SagPanel.Controls.Add(this.EncryptionGroupBox);
             this.SagPanel.Dock = System.Windows.Forms.DockStyle.Right;
@@ -434,30 +412,139 @@ namespace OnlyTwo
             this.SagPanel.Size = new System.Drawing.Size(271, 655);
             this.SagPanel.TabIndex = 8;
             // 
-            // LogoName
+            // CrypteFileGroup
             // 
-            this.LogoName.AutoSize = true;
-            this.LogoName.BackColor = System.Drawing.Color.Transparent;
-            this.LogoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.LogoName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LogoName.Location = new System.Drawing.Point(112, 574);
-            this.LogoName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LogoName.Name = "LogoName";
-            this.LogoName.Size = new System.Drawing.Size(75, 17);
-            this.LogoName.TabIndex = 11;
-            this.LogoName.Text = "Only Two";
+            this.CrypteFileGroup.BackColor = System.Drawing.Color.Transparent;
+            this.CrypteFileGroup.Controls.Add(this.ExecuteButton);
+            this.CrypteFileGroup.Controls.Add(this.DeRadioButton);
+            this.CrypteFileGroup.Controls.Add(this.EnRadioButton);
+            this.CrypteFileGroup.Controls.Add(this.FilePathLabel);
+            this.CrypteFileGroup.Controls.Add(this.FilePathTextBox);
+            this.CrypteFileGroup.Controls.Add(this.BrowseButton);
+            this.CrypteFileGroup.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CrypteFileGroup.Location = new System.Drawing.Point(12, 437);
+            this.CrypteFileGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.CrypteFileGroup.Name = "CrypteFileGroup";
+            this.CrypteFileGroup.Padding = new System.Windows.Forms.Padding(4);
+            this.CrypteFileGroup.Size = new System.Drawing.Size(245, 214);
+            this.CrypteFileGroup.TabIndex = 10;
+            this.CrypteFileGroup.TabStop = false;
+            this.CrypteFileGroup.Text = "Crypte File Operation";
             // 
-            // LogoPictureBox
+            // ExecuteButton
             // 
-            this.LogoPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.LogoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("LogoPictureBox.Image")));
-            this.LogoPictureBox.Location = new System.Drawing.Point(84, 497);
-            this.LogoPictureBox.Margin = new System.Windows.Forms.Padding(4);
-            this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(115, 89);
-            this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.LogoPictureBox.TabIndex = 10;
-            this.LogoPictureBox.TabStop = false;
+            this.ExecuteButton.Activecolor = System.Drawing.Color.Transparent;
+            this.ExecuteButton.BackColor = System.Drawing.Color.Transparent;
+            this.ExecuteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ExecuteButton.BorderRadius = 3;
+            this.ExecuteButton.ButtonText = "Execute Action";
+            this.ExecuteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExecuteButton.DisabledColor = System.Drawing.Color.Gray;
+            this.ExecuteButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.ExecuteButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("ExecuteButton.Iconimage")));
+            this.ExecuteButton.Iconimage_right = null;
+            this.ExecuteButton.Iconimage_right_Selected = null;
+            this.ExecuteButton.Iconimage_Selected = null;
+            this.ExecuteButton.IconMarginLeft = 5;
+            this.ExecuteButton.IconMarginRight = 0;
+            this.ExecuteButton.IconRightVisible = true;
+            this.ExecuteButton.IconRightZoom = 110D;
+            this.ExecuteButton.IconVisible = true;
+            this.ExecuteButton.IconZoom = 65D;
+            this.ExecuteButton.IsTab = false;
+            this.ExecuteButton.Location = new System.Drawing.Point(15, 159);
+            this.ExecuteButton.Margin = new System.Windows.Forms.Padding(5);
+            this.ExecuteButton.Name = "ExecuteButton";
+            this.ExecuteButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.ExecuteButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.ExecuteButton.OnHoverTextColor = System.Drawing.Color.Black;
+            this.ExecuteButton.selected = false;
+            this.ExecuteButton.Size = new System.Drawing.Size(216, 43);
+            this.ExecuteButton.TabIndex = 7;
+            this.ExecuteButton.Text = "Execute Action";
+            this.ExecuteButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ExecuteButton.Textcolor = System.Drawing.Color.White;
+            this.ExecuteButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
+            // 
+            // DeRadioButton
+            // 
+            this.DeRadioButton.AutoSize = true;
+            this.DeRadioButton.Location = new System.Drawing.Point(127, 130);
+            this.DeRadioButton.Name = "DeRadioButton";
+            this.DeRadioButton.Size = new System.Drawing.Size(78, 21);
+            this.DeRadioButton.TabIndex = 6;
+            this.DeRadioButton.TabStop = true;
+            this.DeRadioButton.Text = "Decrypt";
+            this.DeRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // EnRadioButton
+            // 
+            this.EnRadioButton.AutoSize = true;
+            this.EnRadioButton.Location = new System.Drawing.Point(15, 130);
+            this.EnRadioButton.Name = "EnRadioButton";
+            this.EnRadioButton.Size = new System.Drawing.Size(77, 21);
+            this.EnRadioButton.TabIndex = 5;
+            this.EnRadioButton.TabStop = true;
+            this.EnRadioButton.Text = "Encrypt";
+            this.EnRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // FilePathLabel
+            // 
+            this.FilePathLabel.AutoSize = true;
+            this.FilePathLabel.BackColor = System.Drawing.Color.Transparent;
+            this.FilePathLabel.ForeColor = System.Drawing.Color.White;
+            this.FilePathLabel.Location = new System.Drawing.Point(12, 27);
+            this.FilePathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FilePathLabel.Name = "FilePathLabel";
+            this.FilePathLabel.Size = new System.Drawing.Size(67, 17);
+            this.FilePathLabel.TabIndex = 4;
+            this.FilePathLabel.Text = "File Path:";
+            // 
+            // FilePathTextBox
+            // 
+            this.FilePathTextBox.BackColor = System.Drawing.Color.White;
+            this.FilePathTextBox.Location = new System.Drawing.Point(15, 47);
+            this.FilePathTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.FilePathTextBox.Name = "FilePathTextBox";
+            this.FilePathTextBox.Size = new System.Drawing.Size(216, 22);
+            this.FilePathTextBox.TabIndex = 1;
+            // 
+            // BrowseButton
+            // 
+            this.BrowseButton.Activecolor = System.Drawing.Color.Transparent;
+            this.BrowseButton.BackColor = System.Drawing.Color.Transparent;
+            this.BrowseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BrowseButton.BorderRadius = 3;
+            this.BrowseButton.ButtonText = "Browse";
+            this.BrowseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BrowseButton.DisabledColor = System.Drawing.Color.Gray;
+            this.BrowseButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.BrowseButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("BrowseButton.Iconimage")));
+            this.BrowseButton.Iconimage_right = null;
+            this.BrowseButton.Iconimage_right_Selected = null;
+            this.BrowseButton.Iconimage_Selected = null;
+            this.BrowseButton.IconMarginLeft = 5;
+            this.BrowseButton.IconMarginRight = 0;
+            this.BrowseButton.IconRightVisible = true;
+            this.BrowseButton.IconRightZoom = 110D;
+            this.BrowseButton.IconVisible = true;
+            this.BrowseButton.IconZoom = 65D;
+            this.BrowseButton.IsTab = false;
+            this.BrowseButton.Location = new System.Drawing.Point(15, 78);
+            this.BrowseButton.Margin = new System.Windows.Forms.Padding(5);
+            this.BrowseButton.Name = "BrowseButton";
+            this.BrowseButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.BrowseButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.BrowseButton.OnHoverTextColor = System.Drawing.Color.Black;
+            this.BrowseButton.selected = false;
+            this.BrowseButton.Size = new System.Drawing.Size(216, 43);
+            this.BrowseButton.TabIndex = 3;
+            this.BrowseButton.Text = "Browse";
+            this.BrowseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BrowseButton.Textcolor = System.Drawing.Color.White;
+            this.BrowseButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
             // 
             // FindWordsGroupBox
             // 
@@ -466,15 +553,14 @@ namespace OnlyTwo
             this.FindWordsGroupBox.Controls.Add(this.FindLabel);
             this.FindWordsGroupBox.Controls.Add(this.FindTextBox);
             this.FindWordsGroupBox.Controls.Add(this.FindButton);
-            this.FindWordsGroupBox.Controls.Add(this.AddFileButton);
             this.FindWordsGroupBox.Controls.Add(this.Warning);
             this.FindWordsGroupBox.Controls.Add(this.DeleteButton);
             this.FindWordsGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.FindWordsGroupBox.Location = new System.Drawing.Point(12, 177);
+            this.FindWordsGroupBox.Location = new System.Drawing.Point(12, 178);
             this.FindWordsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.FindWordsGroupBox.Name = "FindWordsGroupBox";
             this.FindWordsGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.FindWordsGroupBox.Size = new System.Drawing.Size(245, 300);
+            this.FindWordsGroupBox.Size = new System.Drawing.Size(245, 251);
             this.FindWordsGroupBox.TabIndex = 9;
             this.FindWordsGroupBox.TabStop = false;
             this.FindWordsGroupBox.Text = "Plain Text Operation";
@@ -614,8 +700,8 @@ namespace OnlyTwo
             this.CipherTextGroupBox.PerformLayout();
             this.EncryptionGroupBox.ResumeLayout(false);
             this.SagPanel.ResumeLayout(false);
-            this.SagPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
+            this.CrypteFileGroup.ResumeLayout(false);
+            this.CrypteFileGroup.PerformLayout();
             this.FindWordsGroupBox.ResumeLayout(false);
             this.FindWordsGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -629,7 +715,6 @@ namespace OnlyTwo
         private System.Windows.Forms.GroupBox CipherTextGroupBox;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox CipherTextBox;
         private System.Windows.Forms.GroupBox EncryptionGroupBox;
-        private Bunifu.Framework.UI.BunifuThinButton2 AddFileButton;
         private System.Windows.Forms.Label KeyLabel;
         private Bunifu.Framework.UI.BunifuFlatButton DeleteButton;
         private System.Windows.Forms.TextBox FindTextBox;
@@ -640,8 +725,6 @@ namespace OnlyTwo
         private Bunifu.Framework.UI.BunifuFlatButton EncryptButton;
         private Bunifu.Framework.UI.BunifuGradientPanel SagPanel;
         private System.Windows.Forms.GroupBox FindWordsGroupBox;
-        private System.Windows.Forms.Label LogoName;
-        private System.Windows.Forms.PictureBox LogoPictureBox;
         private System.Windows.Forms.RichTextBox PlainRichTextBox;
         private System.Windows.Forms.ComboBox EncryptComboBox;
         private Bunifu.Framework.UI.BunifuFlatButton ReturnButton;
@@ -654,6 +737,14 @@ namespace OnlyTwo
         private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Label ServerInfoLabel;
         private System.Windows.Forms.ListBox UsersListBox;
+        private System.Windows.Forms.GroupBox CrypteFileGroup;
+        private Bunifu.Framework.UI.BunifuFlatButton CrypteButton;
+        private System.Windows.Forms.RadioButton DeRadioButton;
+        private System.Windows.Forms.RadioButton EnRadioButton;
+        private System.Windows.Forms.Label FilePathLabel;
+        private System.Windows.Forms.TextBox FilePathTextBox;
+        private Bunifu.Framework.UI.BunifuFlatButton BrowseButton;
+        private Bunifu.Framework.UI.BunifuFlatButton ExecuteButton;
     }
 }
 
