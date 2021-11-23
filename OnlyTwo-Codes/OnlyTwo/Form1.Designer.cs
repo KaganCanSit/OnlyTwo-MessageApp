@@ -32,7 +32,6 @@ namespace OnlyTwo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlyTwoForm));
             this.SendFlatButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PlainTextGroupBox = new System.Windows.Forms.GroupBox();
-            this.PleaseLabel = new System.Windows.Forms.Label();
             this.CounterPlainLabel = new System.Windows.Forms.Label();
             this.PlainRichTextBox = new System.Windows.Forms.RichTextBox();
             this.Warning = new System.Windows.Forms.Label();
@@ -107,7 +106,6 @@ namespace OnlyTwo
             // 
             // PlainTextGroupBox
             // 
-            this.PlainTextGroupBox.Controls.Add(this.PleaseLabel);
             this.PlainTextGroupBox.Controls.Add(this.CounterPlainLabel);
             this.PlainTextGroupBox.Controls.Add(this.PlainRichTextBox);
             this.PlainTextGroupBox.Location = new System.Drawing.Point(299, 64);
@@ -118,16 +116,6 @@ namespace OnlyTwo
             this.PlainTextGroupBox.TabIndex = 3;
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
-            // 
-            // PleaseLabel
-            // 
-            this.PleaseLabel.AutoSize = true;
-            this.PleaseLabel.Location = new System.Drawing.Point(8, 18);
-            this.PleaseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.PleaseLabel.Name = "PleaseLabel";
-            this.PleaseLabel.Size = new System.Drawing.Size(416, 17);
-            this.PleaseLabel.TabIndex = 7;
-            this.PleaseLabel.Text = "Please! Use Only English Alphabet And Your Character Limit 200";
             // 
             // CounterPlainLabel
             // 
@@ -542,9 +530,9 @@ namespace OnlyTwo
             this.UsernameLabel.Location = new System.Drawing.Point(16, 11);
             this.UsernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(77, 17);
+            this.UsernameLabel.Size = new System.Drawing.Size(250, 17);
             this.UsernameLabel.TabIndex = 10;
-            this.UsernameLabel.Text = "Username:";
+            this.UsernameLabel.Text = "Username (Max Lenght 20 Character):";
             // 
             // UsernameTextBox
             // 
@@ -660,7 +648,6 @@ namespace OnlyTwo
         private System.Windows.Forms.TextBox KeygenTextBox;
         private System.Windows.Forms.Label CounterPlainLabel;
         private System.Windows.Forms.Label CounterCipherLabel;
-        private System.Windows.Forms.Label PleaseLabel;
         private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.TextBox UsernameTextBox;
         private System.Windows.Forms.Label SendUserInfoLabel;
