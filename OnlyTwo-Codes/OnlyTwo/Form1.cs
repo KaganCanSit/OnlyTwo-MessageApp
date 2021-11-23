@@ -24,7 +24,38 @@ namespace OnlyTwo
         {
             InitializeComponent();
         }
-       
+        
+        //SHA256 - Crypting
+        private static string SHA256(string text)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (String.IsNullOrEmpty(text))
+                MessageBox.Show("File is empty!");
+            else
+            {
+                SHA256CryptoServiceProvider SHA256Encrypt = new SHA256CryptoServiceProvider();
+                byte[] bt = Encoding.UTF8.GetBytes(text);
+                bt = SHA256Encrypt.ComputeHash(bt);
+                foreach (byte x in bt)
+                    sb.Append(x.ToString("X2"));
+            }
+            return sb.ToString();
+        }
+
+
+        //SPN-16 - Text Crypting
+        private static string SPN16(string text, string keygen)
+        {
+            if (String.IsNullOrEmpty(text))
+                MessageBox.Show("File Is Empty!");
+
+            string keycrypto = Key(keygen), alltext = Key(text);    //Add Key Binary    -   8 Bit Text Binary
+            alltext = XOROperation(alltext, keycrypto);             //XOR Operation          
+            int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
+            alltext = Crossover(CrossoverArray, alltext);           //Crossover Operation
+            return alltext;
+        }
+
         //SPN-16 - Solve
         private static string SPN16Solve(string text, string keygen)
         {
@@ -38,6 +69,7 @@ namespace OnlyTwo
             alltext = ConvertString(alltext);
             return alltext;
         }
+
         //Spn16-Solve - Input Convert To String
         private static String ConvertString(string text)
         {
@@ -50,20 +82,6 @@ namespace OnlyTwo
             return Encoding.ASCII.GetString(stringList.ToArray());
         }
 
-
-
-        //SPN-16 - Text Crypting
-        private static string SPN16(string text, string keygen)
-        {
-            if (String.IsNullOrEmpty(text))
-                MessageBox.Show("File Is Empty!");
-           
-            string keycrypto = Key(keygen), alltext = Key(text);    //Add Key Binary    -   8 Bit Text Binary
-            alltext = XOROperation(alltext, keycrypto);             //XOR Operation          
-            int[] CrossoverArray = { 5, 9, 0, 12, 7, 3, 11, 14, 1, 4, 13, 8, 2, 15, 6, 10 };
-            alltext = Crossover(CrossoverArray, alltext);           //Crossover Operation
-            return alltext;
-        }
         //SPN-16 Input Convert To Binary
         private static String Key(string text)
         {
@@ -114,22 +132,6 @@ namespace OnlyTwo
             }
             return alltextEnd;
         }
-        //SHA256 - Crypting
-        private static string SHA256(string text)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (String.IsNullOrEmpty(text))
-                MessageBox.Show("File is empty!");
-            else
-            {
-                SHA256CryptoServiceProvider SHA256Encrypt = new SHA256CryptoServiceProvider();
-                byte[] bt = Encoding.UTF8.GetBytes(text);
-                bt = SHA256Encrypt.ComputeHash(bt);
-                foreach (byte x in bt)
-                    sb.Append(x.ToString("X2"));
-            }
-            return sb.ToString();
-        }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         string temptext;
@@ -176,11 +178,16 @@ namespace OnlyTwo
                 MessageBox.Show("Operation Cancelled.");
         }
 
-        //Text Counters - Limits Control
+        //Text Counters
         private void PlainRichTextBox_TextChanged(object sender, EventArgs e)
         {
             int PlainTextLenght = PlainRichTextBox.TextLength;
             CounterPlainLabel.Text = "Counter: " + PlainTextLenght.ToString();
+        }
+        private void CipherTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+            int CipherTextBoxLenght = CipherTextBox.TextLength;
+            CounterCipherLabel.Text = "Counter: " + CipherTextBoxLenght.ToString();
         }
         //Key Must Be 8 Characters Control
         private void KeygenTextBox_TextChanged(object sender, EventArgs e)

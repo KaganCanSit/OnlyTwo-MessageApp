@@ -42,7 +42,7 @@
             // MessageTextBox
             // 
             this.MessageTextBox.Location = new System.Drawing.Point(16, 34);
-            this.MessageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MessageTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.MessageTextBox.Name = "MessageTextBox";
             this.MessageTextBox.Size = new System.Drawing.Size(365, 462);
             this.MessageTextBox.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.ClintListBox.FormattingEnabled = true;
             this.ClintListBox.ItemHeight = 16;
             this.ClintListBox.Location = new System.Drawing.Point(12, 41);
-            this.ClintListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClintListBox.Margin = new System.Windows.Forms.Padding(4);
             this.ClintListBox.Name = "ClintListBox";
             this.ClintListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.ClintListBox.Size = new System.Drawing.Size(165, 516);
@@ -111,7 +111,7 @@
             this.BackGradientPanel.GradientTopLeft = System.Drawing.Color.Black;
             this.BackGradientPanel.GradientTopRight = System.Drawing.Color.Red;
             this.BackGradientPanel.Location = new System.Drawing.Point(397, 0);
-            this.BackGradientPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BackGradientPanel.Margin = new System.Windows.Forms.Padding(4);
             this.BackGradientPanel.Name = "BackGradientPanel";
             this.BackGradientPanel.Quality = 10;
             this.BackGradientPanel.Size = new System.Drawing.Size(191, 576);
@@ -128,7 +128,9 @@
             this.Controls.Add(this.InfoLabelUp);
             this.Controls.Add(this.MessageTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ServerForm";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.Form1_Load_1);

@@ -90,14 +90,14 @@ namespace OnlyTwo
             this.SendFlatButton.IconVisible = true;
             this.SendFlatButton.IconZoom = 90D;
             this.SendFlatButton.IsTab = false;
-            this.SendFlatButton.Location = new System.Drawing.Point(224, 489);
-            this.SendFlatButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SendFlatButton.Location = new System.Drawing.Point(299, 602);
+            this.SendFlatButton.Margin = new System.Windows.Forms.Padding(5);
             this.SendFlatButton.Name = "SendFlatButton";
             this.SendFlatButton.Normalcolor = System.Drawing.Color.Black;
             this.SendFlatButton.OnHovercolor = System.Drawing.Color.Red;
             this.SendFlatButton.OnHoverTextColor = System.Drawing.Color.White;
             this.SendFlatButton.selected = false;
-            this.SendFlatButton.Size = new System.Drawing.Size(528, 33);
+            this.SendFlatButton.Size = new System.Drawing.Size(704, 41);
             this.SendFlatButton.TabIndex = 2;
             this.SendFlatButton.Text = "Send";
             this.SendFlatButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,9 +110,11 @@ namespace OnlyTwo
             this.PlainTextGroupBox.Controls.Add(this.PleaseLabel);
             this.PlainTextGroupBox.Controls.Add(this.CounterPlainLabel);
             this.PlainTextGroupBox.Controls.Add(this.PlainRichTextBox);
-            this.PlainTextGroupBox.Location = new System.Drawing.Point(224, 52);
+            this.PlainTextGroupBox.Location = new System.Drawing.Point(299, 64);
+            this.PlainTextGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.PlainTextGroupBox.Name = "PlainTextGroupBox";
-            this.PlainTextGroupBox.Size = new System.Drawing.Size(528, 213);
+            this.PlainTextGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.PlainTextGroupBox.Size = new System.Drawing.Size(704, 262);
             this.PlainTextGroupBox.TabIndex = 3;
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
@@ -120,26 +122,29 @@ namespace OnlyTwo
             // PleaseLabel
             // 
             this.PleaseLabel.AutoSize = true;
-            this.PleaseLabel.Location = new System.Drawing.Point(6, 15);
+            this.PleaseLabel.Location = new System.Drawing.Point(8, 18);
+            this.PleaseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PleaseLabel.Name = "PleaseLabel";
-            this.PleaseLabel.Size = new System.Drawing.Size(311, 13);
+            this.PleaseLabel.Size = new System.Drawing.Size(416, 17);
             this.PleaseLabel.TabIndex = 7;
             this.PleaseLabel.Text = "Please! Use Only English Alphabet And Your Character Limit 200";
             // 
             // CounterPlainLabel
             // 
             this.CounterPlainLabel.AutoSize = true;
-            this.CounterPlainLabel.Location = new System.Drawing.Point(450, 12);
+            this.CounterPlainLabel.Location = new System.Drawing.Point(600, 15);
+            this.CounterPlainLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CounterPlainLabel.Name = "CounterPlainLabel";
-            this.CounterPlainLabel.Size = new System.Drawing.Size(47, 13);
+            this.CounterPlainLabel.Size = new System.Drawing.Size(62, 17);
             this.CounterPlainLabel.TabIndex = 6;
             this.CounterPlainLabel.Text = "Counter:";
             // 
             // PlainRichTextBox
             // 
-            this.PlainRichTextBox.Location = new System.Drawing.Point(6, 28);
+            this.PlainRichTextBox.Location = new System.Drawing.Point(8, 34);
+            this.PlainRichTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PlainRichTextBox.Name = "PlainRichTextBox";
-            this.PlainRichTextBox.Size = new System.Drawing.Size(513, 176);
+            this.PlainRichTextBox.Size = new System.Drawing.Size(683, 216);
             this.PlainRichTextBox.TabIndex = 5;
             this.PlainRichTextBox.Text = "";
             this.PlainRichTextBox.TextChanged += new System.EventHandler(this.PlainRichTextBox_TextChanged);
@@ -149,9 +154,10 @@ namespace OnlyTwo
             this.Warning.AutoSize = true;
             this.Warning.BackColor = System.Drawing.Color.Transparent;
             this.Warning.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Warning.Location = new System.Drawing.Point(9, 64);
+            this.Warning.Location = new System.Drawing.Point(12, 79);
+            this.Warning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Warning.Name = "Warning";
-            this.Warning.Size = new System.Drawing.Size(172, 13);
+            this.Warning.Size = new System.Drawing.Size(225, 17);
             this.Warning.TabIndex = 6;
             this.Warning.Text = "Warning: Makes all text lowercase.";
             // 
@@ -160,18 +166,20 @@ namespace OnlyTwo
             this.FindLabel.AutoSize = true;
             this.FindLabel.BackColor = System.Drawing.Color.Transparent;
             this.FindLabel.ForeColor = System.Drawing.Color.White;
-            this.FindLabel.Location = new System.Drawing.Point(9, 22);
+            this.FindLabel.Location = new System.Drawing.Point(12, 27);
+            this.FindLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FindLabel.Name = "FindLabel";
-            this.FindLabel.Size = new System.Drawing.Size(71, 13);
+            this.FindLabel.Size = new System.Drawing.Size(93, 17);
             this.FindLabel.TabIndex = 4;
             this.FindLabel.Text = "Find Keyword";
             // 
             // FindTextBox
             // 
             this.FindTextBox.BackColor = System.Drawing.Color.White;
-            this.FindTextBox.Location = new System.Drawing.Point(11, 38);
+            this.FindTextBox.Location = new System.Drawing.Point(15, 47);
+            this.FindTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.FindTextBox.Name = "FindTextBox";
-            this.FindTextBox.Size = new System.Drawing.Size(163, 20);
+            this.FindTextBox.Size = new System.Drawing.Size(216, 22);
             this.FindTextBox.TabIndex = 1;
             // 
             // FindButton
@@ -195,14 +203,14 @@ namespace OnlyTwo
             this.FindButton.IconVisible = true;
             this.FindButton.IconZoom = 65D;
             this.FindButton.IsTab = false;
-            this.FindButton.Location = new System.Drawing.Point(11, 81);
-            this.FindButton.Margin = new System.Windows.Forms.Padding(4);
+            this.FindButton.Location = new System.Drawing.Point(15, 100);
+            this.FindButton.Margin = new System.Windows.Forms.Padding(5);
             this.FindButton.Name = "FindButton";
             this.FindButton.Normalcolor = System.Drawing.Color.Transparent;
             this.FindButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
             this.FindButton.OnHoverTextColor = System.Drawing.Color.Black;
             this.FindButton.selected = false;
-            this.FindButton.Size = new System.Drawing.Size(162, 35);
+            this.FindButton.Size = new System.Drawing.Size(216, 43);
             this.FindButton.TabIndex = 3;
             this.FindButton.Text = "Find";
             this.FindButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -231,14 +239,14 @@ namespace OnlyTwo
             this.DeleteButton.IconVisible = true;
             this.DeleteButton.IconZoom = 65D;
             this.DeleteButton.IsTab = false;
-            this.DeleteButton.Location = new System.Drawing.Point(11, 163);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.DeleteButton.Location = new System.Drawing.Point(15, 201);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Normalcolor = System.Drawing.Color.Transparent;
             this.DeleteButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
             this.DeleteButton.OnHoverTextColor = System.Drawing.Color.Black;
             this.DeleteButton.selected = false;
-            this.DeleteButton.Size = new System.Drawing.Size(162, 35);
+            this.DeleteButton.Size = new System.Drawing.Size(216, 43);
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "     Delete All Text";
             this.DeleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -264,10 +272,10 @@ namespace OnlyTwo
             this.AddFileButton.IdleFillColor = System.Drawing.Color.White;
             this.AddFileButton.IdleForecolor = System.Drawing.Color.Red;
             this.AddFileButton.IdleLineColor = System.Drawing.Color.Red;
-            this.AddFileButton.Location = new System.Drawing.Point(11, 203);
-            this.AddFileButton.Margin = new System.Windows.Forms.Padding(5);
+            this.AddFileButton.Location = new System.Drawing.Point(15, 250);
+            this.AddFileButton.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(162, 32);
+            this.AddFileButton.Size = new System.Drawing.Size(216, 39);
             this.AddFileButton.TabIndex = 2;
             this.AddFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -275,9 +283,11 @@ namespace OnlyTwo
             // 
             this.CipherTextGroupBox.Controls.Add(this.CounterCipherLabel);
             this.CipherTextGroupBox.Controls.Add(this.CipherTextBox);
-            this.CipherTextGroupBox.Location = new System.Drawing.Point(224, 271);
+            this.CipherTextGroupBox.Location = new System.Drawing.Point(299, 334);
+            this.CipherTextGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.CipherTextGroupBox.Name = "CipherTextGroupBox";
-            this.CipherTextGroupBox.Size = new System.Drawing.Size(528, 211);
+            this.CipherTextGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.CipherTextGroupBox.Size = new System.Drawing.Size(704, 260);
             this.CipherTextGroupBox.TabIndex = 4;
             this.CipherTextGroupBox.TabStop = false;
             this.CipherTextGroupBox.Text = "CipherText";
@@ -285,20 +295,23 @@ namespace OnlyTwo
             // CounterCipherLabel
             // 
             this.CounterCipherLabel.AutoSize = true;
-            this.CounterCipherLabel.Location = new System.Drawing.Point(450, 12);
+            this.CounterCipherLabel.Location = new System.Drawing.Point(600, 15);
+            this.CounterCipherLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CounterCipherLabel.Name = "CounterCipherLabel";
-            this.CounterCipherLabel.Size = new System.Drawing.Size(47, 13);
+            this.CounterCipherLabel.Size = new System.Drawing.Size(62, 17);
             this.CounterCipherLabel.TabIndex = 7;
             this.CounterCipherLabel.Text = "Counter:";
             // 
             // CipherTextBox
             // 
             this.CipherTextBox.BorderColor = System.Drawing.Color.SeaGreen;
-            this.CipherTextBox.Location = new System.Drawing.Point(6, 28);
+            this.CipherTextBox.Location = new System.Drawing.Point(8, 34);
+            this.CipherTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.CipherTextBox.Multiline = true;
             this.CipherTextBox.Name = "CipherTextBox";
-            this.CipherTextBox.Size = new System.Drawing.Size(513, 177);
+            this.CipherTextBox.Size = new System.Drawing.Size(683, 217);
             this.CipherTextBox.TabIndex = 0;
+            this.CipherTextBox.TextChanged += new System.EventHandler(this.CipherTextBox_TextChanged_1);
             // 
             // EncryptionGroupBox
             // 
@@ -307,9 +320,11 @@ namespace OnlyTwo
             this.EncryptionGroupBox.Controls.Add(this.SolveButton);
             this.EncryptionGroupBox.Controls.Add(this.EncryptButton);
             this.EncryptionGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EncryptionGroupBox.Location = new System.Drawing.Point(9, 12);
+            this.EncryptionGroupBox.Location = new System.Drawing.Point(12, 15);
+            this.EncryptionGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.EncryptionGroupBox.Name = "EncryptionGroupBox";
-            this.EncryptionGroupBox.Size = new System.Drawing.Size(184, 127);
+            this.EncryptionGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.EncryptionGroupBox.Size = new System.Drawing.Size(245, 156);
             this.EncryptionGroupBox.TabIndex = 5;
             this.EncryptionGroupBox.TabStop = false;
             this.EncryptionGroupBox.Text = "Encryption Type";
@@ -322,9 +337,10 @@ namespace OnlyTwo
             this.EncryptComboBox.Items.AddRange(new object[] {
             "SHA-256",
             "SPN-16"});
-            this.EncryptComboBox.Location = new System.Drawing.Point(11, 19);
+            this.EncryptComboBox.Location = new System.Drawing.Point(15, 23);
+            this.EncryptComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.EncryptComboBox.Name = "EncryptComboBox";
-            this.EncryptComboBox.Size = new System.Drawing.Size(163, 21);
+            this.EncryptComboBox.Size = new System.Drawing.Size(216, 24);
             this.EncryptComboBox.TabIndex = 6;
             // 
             // SolveButton
@@ -348,14 +364,14 @@ namespace OnlyTwo
             this.SolveButton.IconVisible = true;
             this.SolveButton.IconZoom = 65D;
             this.SolveButton.IsTab = false;
-            this.SolveButton.Location = new System.Drawing.Point(12, 84);
-            this.SolveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SolveButton.Location = new System.Drawing.Point(16, 103);
+            this.SolveButton.Margin = new System.Windows.Forms.Padding(5);
             this.SolveButton.Name = "SolveButton";
             this.SolveButton.Normalcolor = System.Drawing.Color.Transparent;
             this.SolveButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
             this.SolveButton.OnHoverTextColor = System.Drawing.Color.Black;
             this.SolveButton.selected = false;
-            this.SolveButton.Size = new System.Drawing.Size(161, 35);
+            this.SolveButton.Size = new System.Drawing.Size(215, 43);
             this.SolveButton.TabIndex = 8;
             this.SolveButton.Text = "Solve";
             this.SolveButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -384,14 +400,14 @@ namespace OnlyTwo
             this.EncryptButton.IconVisible = true;
             this.EncryptButton.IconZoom = 65D;
             this.EncryptButton.IsTab = false;
-            this.EncryptButton.Location = new System.Drawing.Point(12, 44);
-            this.EncryptButton.Margin = new System.Windows.Forms.Padding(4);
+            this.EncryptButton.Location = new System.Drawing.Point(16, 54);
+            this.EncryptButton.Margin = new System.Windows.Forms.Padding(5);
             this.EncryptButton.Name = "EncryptButton";
             this.EncryptButton.Normalcolor = System.Drawing.Color.Transparent;
             this.EncryptButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
             this.EncryptButton.OnHoverTextColor = System.Drawing.Color.Black;
             this.EncryptButton.selected = false;
-            this.EncryptButton.Size = new System.Drawing.Size(161, 35);
+            this.EncryptButton.Size = new System.Drawing.Size(215, 43);
             this.EncryptButton.TabIndex = 7;
             this.EncryptButton.Text = "Encrypt";
             this.EncryptButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -402,9 +418,10 @@ namespace OnlyTwo
             // KeyLabel
             // 
             this.KeyLabel.AutoSize = true;
-            this.KeyLabel.Location = new System.Drawing.Point(230, 9);
+            this.KeyLabel.Location = new System.Drawing.Point(307, 11);
+            this.KeyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.KeyLabel.Name = "KeyLabel";
-            this.KeyLabel.Size = new System.Drawing.Size(231, 13);
+            this.KeyLabel.Size = new System.Drawing.Size(308, 17);
             this.KeyLabel.TabIndex = 7;
             this.KeyLabel.Text = "Key to the Message: (Key Must Be 8 Character)";
             // 
@@ -422,10 +439,11 @@ namespace OnlyTwo
             this.SagPanel.GradientBottomRight = System.Drawing.Color.Red;
             this.SagPanel.GradientTopLeft = System.Drawing.Color.Black;
             this.SagPanel.GradientTopRight = System.Drawing.Color.Black;
-            this.SagPanel.Location = new System.Drawing.Point(759, 0);
+            this.SagPanel.Location = new System.Drawing.Point(1012, 0);
+            this.SagPanel.Margin = new System.Windows.Forms.Padding(4);
             this.SagPanel.Name = "SagPanel";
             this.SagPanel.Quality = 10;
-            this.SagPanel.Size = new System.Drawing.Size(203, 532);
+            this.SagPanel.Size = new System.Drawing.Size(271, 655);
             this.SagPanel.TabIndex = 8;
             // 
             // LogoName
@@ -434,9 +452,10 @@ namespace OnlyTwo
             this.LogoName.BackColor = System.Drawing.Color.Transparent;
             this.LogoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.LogoName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LogoName.Location = new System.Drawing.Point(84, 466);
+            this.LogoName.Location = new System.Drawing.Point(112, 574);
+            this.LogoName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LogoName.Name = "LogoName";
-            this.LogoName.Size = new System.Drawing.Size(60, 13);
+            this.LogoName.Size = new System.Drawing.Size(75, 17);
             this.LogoName.TabIndex = 11;
             this.LogoName.Text = "Only Two";
             // 
@@ -444,9 +463,10 @@ namespace OnlyTwo
             // 
             this.LogoPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.LogoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("LogoPictureBox.Image")));
-            this.LogoPictureBox.Location = new System.Drawing.Point(63, 404);
+            this.LogoPictureBox.Location = new System.Drawing.Point(84, 497);
+            this.LogoPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(86, 72);
+            this.LogoPictureBox.Size = new System.Drawing.Size(115, 89);
             this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.LogoPictureBox.TabIndex = 10;
             this.LogoPictureBox.TabStop = false;
@@ -462,9 +482,11 @@ namespace OnlyTwo
             this.FindWordsGroupBox.Controls.Add(this.Warning);
             this.FindWordsGroupBox.Controls.Add(this.DeleteButton);
             this.FindWordsGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.FindWordsGroupBox.Location = new System.Drawing.Point(9, 144);
+            this.FindWordsGroupBox.Location = new System.Drawing.Point(12, 177);
+            this.FindWordsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.FindWordsGroupBox.Name = "FindWordsGroupBox";
-            this.FindWordsGroupBox.Size = new System.Drawing.Size(184, 244);
+            this.FindWordsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.FindWordsGroupBox.Size = new System.Drawing.Size(245, 300);
             this.FindWordsGroupBox.TabIndex = 9;
             this.FindWordsGroupBox.TabStop = false;
             this.FindWordsGroupBox.Text = "Plain Text Operation";
@@ -490,14 +512,14 @@ namespace OnlyTwo
             this.ReturnButton.IconVisible = true;
             this.ReturnButton.IconZoom = 65D;
             this.ReturnButton.IsTab = false;
-            this.ReturnButton.Location = new System.Drawing.Point(11, 121);
-            this.ReturnButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ReturnButton.Location = new System.Drawing.Point(15, 149);
+            this.ReturnButton.Margin = new System.Windows.Forms.Padding(5);
             this.ReturnButton.Name = "ReturnButton";
             this.ReturnButton.Normalcolor = System.Drawing.Color.Transparent;
             this.ReturnButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
             this.ReturnButton.OnHoverTextColor = System.Drawing.Color.Black;
             this.ReturnButton.selected = false;
-            this.ReturnButton.Size = new System.Drawing.Size(163, 35);
+            this.ReturnButton.Size = new System.Drawing.Size(217, 43);
             this.ReturnButton.TabIndex = 7;
             this.ReturnButton.Text = "            Restore Previous Text";
             this.ReturnButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -507,42 +529,47 @@ namespace OnlyTwo
             // 
             // KeygenTextBox
             // 
-            this.KeygenTextBox.Location = new System.Drawing.Point(230, 26);
+            this.KeygenTextBox.Location = new System.Drawing.Point(307, 32);
+            this.KeygenTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.KeygenTextBox.Name = "KeygenTextBox";
-            this.KeygenTextBox.Size = new System.Drawing.Size(513, 20);
+            this.KeygenTextBox.Size = new System.Drawing.Size(683, 22);
             this.KeygenTextBox.TabIndex = 6;
             this.KeygenTextBox.TextChanged += new System.EventHandler(this.KeygenTextBox_TextChanged);
             // 
             // UsernameLabel
             // 
             this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Location = new System.Drawing.Point(12, 9);
+            this.UsernameLabel.Location = new System.Drawing.Point(16, 11);
+            this.UsernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(58, 13);
+            this.UsernameLabel.Size = new System.Drawing.Size(77, 17);
             this.UsernameLabel.TabIndex = 10;
             this.UsernameLabel.Text = "Username:";
             // 
             // UsernameTextBox
             // 
-            this.UsernameTextBox.Location = new System.Drawing.Point(12, 27);
+            this.UsernameTextBox.Location = new System.Drawing.Point(16, 33);
+            this.UsernameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(112, 20);
+            this.UsernameTextBox.Size = new System.Drawing.Size(148, 22);
             this.UsernameTextBox.TabIndex = 11;
             // 
             // SendUserInfoLabel
             // 
             this.SendUserInfoLabel.AutoSize = true;
-            this.SendUserInfoLabel.Location = new System.Drawing.Point(12, 55);
+            this.SendUserInfoLabel.Location = new System.Drawing.Point(16, 68);
+            this.SendUserInfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SendUserInfoLabel.Name = "SendUserInfoLabel";
-            this.SendUserInfoLabel.Size = new System.Drawing.Size(164, 13);
+            this.SendUserInfoLabel.Size = new System.Drawing.Size(217, 17);
             this.SendUserInfoLabel.TabIndex = 12;
             this.SendUserInfoLabel.Text = "Choose Send The Message User";
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Location = new System.Drawing.Point(130, 27);
+            this.ConnectButton.Location = new System.Drawing.Point(173, 33);
+            this.ConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(84, 20);
+            this.ConnectButton.Size = new System.Drawing.Size(112, 25);
             this.ConnectButton.TabIndex = 13;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
@@ -551,25 +578,28 @@ namespace OnlyTwo
             // ServerInfoLabel
             // 
             this.ServerInfoLabel.AutoSize = true;
-            this.ServerInfoLabel.Location = new System.Drawing.Point(89, 507);
+            this.ServerInfoLabel.Location = new System.Drawing.Point(119, 624);
+            this.ServerInfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ServerInfoLabel.Name = "ServerInfoLabel";
-            this.ServerInfoLabel.Size = new System.Drawing.Size(0, 13);
+            this.ServerInfoLabel.Size = new System.Drawing.Size(0, 17);
             this.ServerInfoLabel.TabIndex = 14;
             // 
             // UsersListBox
             // 
             this.UsersListBox.FormattingEnabled = true;
-            this.UsersListBox.Location = new System.Drawing.Point(12, 71);
+            this.UsersListBox.ItemHeight = 16;
+            this.UsersListBox.Location = new System.Drawing.Point(16, 87);
+            this.UsersListBox.Margin = new System.Windows.Forms.Padding(4);
             this.UsersListBox.Name = "UsersListBox";
-            this.UsersListBox.Size = new System.Drawing.Size(202, 407);
+            this.UsersListBox.Size = new System.Drawing.Size(268, 500);
             this.UsersListBox.TabIndex = 15;
             // 
             // OnlyTwoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(962, 532);
+            this.ClientSize = new System.Drawing.Size(1283, 655);
             this.Controls.Add(this.UsersListBox);
             this.Controls.Add(this.ServerInfoLabel);
             this.Controls.Add(this.ConnectButton);
@@ -584,6 +614,9 @@ namespace OnlyTwo
             this.Controls.Add(this.SendFlatButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OnlyTwoForm";
             this.Text = "OnlyTwo";
             this.Load += new System.EventHandler(this.OnlyTwoForm_Load);
