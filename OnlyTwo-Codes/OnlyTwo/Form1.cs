@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
-using System.Security;
 using System.Security.Cryptography;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.IO;
 
 namespace OnlyTwo
@@ -23,8 +15,8 @@ namespace OnlyTwo
         byte[] abc;
         byte[,] table;
 
-        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         //InterNetwork = ipv4 ailesi için -- SocketType.Dgram= UDP için -- SocketType.Stream= TCP için -- ProtocolType.IP = TCP ve UDP
+        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         public OnlyTwoForm()
         {
@@ -378,6 +370,8 @@ namespace OnlyTwo
             }
         }
 
+
+        //Form Load Operation
         private void OnlyTwoForm_Load(object sender, EventArgs e)
         {
             UsernameTextBox.MaxLength = 20;
@@ -509,5 +503,7 @@ namespace OnlyTwo
                 return;
             }
         }
+        
+        //------------------------------------------------------------------------------------------    
     }
 }
