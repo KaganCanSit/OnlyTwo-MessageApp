@@ -278,7 +278,7 @@ namespace OnlyTwo
             this.CipherTextBox.Name = "CipherTextBox";
             this.CipherTextBox.Size = new System.Drawing.Size(683, 217);
             this.CipherTextBox.TabIndex = 0;
-            this.CipherTextBox.TextChanged += new System.EventHandler(this.CipherTextBox_TextChanged_1);
+            this.CipherTextBox.TextChanged += new System.EventHandler(this.CipherTextBox_TextChanged);
             // 
             // EncryptionGroupBox
             // 
@@ -608,7 +608,6 @@ namespace OnlyTwo
             this.KeygenTextBox.Name = "KeygenTextBox";
             this.KeygenTextBox.Size = new System.Drawing.Size(683, 22);
             this.KeygenTextBox.TabIndex = 6;
-            this.KeygenTextBox.TextChanged += new System.EventHandler(this.KeygenTextBox_TextChanged);
             // 
             // UsernameLabel
             // 
@@ -738,7 +737,6 @@ namespace OnlyTwo
         private System.Windows.Forms.Label ServerInfoLabel;
         private System.Windows.Forms.ListBox UsersListBox;
         private System.Windows.Forms.GroupBox CrypteFileGroup;
-        private Bunifu.Framework.UI.BunifuFlatButton CrypteButton;
         private System.Windows.Forms.RadioButton DeRadioButton;
         private System.Windows.Forms.RadioButton EnRadioButton;
         private System.Windows.Forms.Label FilePathLabel;

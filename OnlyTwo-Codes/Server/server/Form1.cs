@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
@@ -19,7 +14,6 @@ namespace server
 
         private byte[] _buffer = new byte[1024];//Data Size
         public List<SocketT2h> __ClientSockets { get; set; }
-        List<string> _names = new List<string>();
         private Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         public ServerForm()
         {
@@ -109,7 +103,7 @@ namespace server
 
                     string mesaj = "";
                     int uzunluk = (text.Length) - (index + 2);
-                    index = index + 2;
+                    index += 2;
                     mesaj = text.Substring(index, uzunluk);
                     gonder_gelen_mesaji(cli, text, mesaj);
                     for (int i = 0; i < __ClientSockets.Count; i++)

@@ -12,6 +12,7 @@ namespace OnlyTwo
 {
     public partial class OnlyTwoForm : Form
     {
+        //Crypte File Variable
         byte[] abc;
         byte[,] table;
 
@@ -182,17 +183,10 @@ namespace OnlyTwo
             int PlainTextLenght = PlainRichTextBox.TextLength;
             CounterPlainLabel.Text = "Counter: " + PlainTextLenght.ToString();
         }
-        private void CipherTextBox_TextChanged_1(object sender, EventArgs e)
+        private void CipherTextBox_TextChanged(object sender, EventArgs e)
         {
             int CipherTextBoxLenght = CipherTextBox.TextLength;
             CounterCipherLabel.Text = "Counter: " + CipherTextBoxLenght.ToString();
-        }
-        //Key Must Be 8 Characters Control
-        private void KeygenTextBox_TextChanged(object sender, EventArgs e)
-        {         
-            int PasswordLenght = KeygenTextBox.TextLength;
-            if (PasswordLenght >= 8)
-                MessageBox.Show("You've Reached The 8 Character Limit!");
         }
 
         //Encryption Process / Button Click
@@ -249,7 +243,7 @@ namespace OnlyTwo
             }       
         }
 
-        //Turkisch Char Convert Englisch Char
+        //Turkisch Char Convert English Char
         public string StringReplace(string text)
         {
             text = text.Replace("İ", "I");
@@ -268,7 +262,7 @@ namespace OnlyTwo
         }
 
 
-        //-------------------------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         byte[] receivedBuf = new byte[1024];
         private void ReceiveData(IAsyncResult ar)//Asenkron
         {
@@ -300,17 +294,13 @@ namespace OnlyTwo
                     if (listede_yok == 0)
                     {
                         string ben = "@" + UsernameTextBox.Text;
-                        if (ben.Equals(gelen))
-                        {
-                        }
+                        if (ben.Equals(gelen)){}
                         else
                             UsersListBox.Items.Add(gelen);
                     }
                 }
                 else
-                {
                     PlainRichTextBox.AppendText(gelen + "\n");
-                }
 
                 _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);
             }
@@ -364,9 +354,7 @@ namespace OnlyTwo
                 if (tmpStr.Equals(""))
                     MessageBox.Show("Please Click The Send Username");
                 else
-                {
-                    PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");
-                }                         
+                    PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");                        
             }
         }
 
@@ -393,9 +381,7 @@ namespace OnlyTwo
                     table[i, j] = abc[(i + j) % 256];
         }
 
-
-
-        //-------------------------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog od = new OpenFileDialog();
@@ -403,12 +389,12 @@ namespace OnlyTwo
             if (od.ShowDialog() == DialogResult.OK)
                 FilePathTextBox.Text = od.FileName;
         }
+
         private void EnRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (EnRadioButton.Checked)
                 DeRadioButton.Checked = false;
         }
-
         private void DeRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (DeRadioButton.Checked)
@@ -438,15 +424,13 @@ namespace OnlyTwo
                 for (int i = 0; i < fileContent.Length; i++)
                     keys[i] = passwordTpm[i % passwordTpm.Length];
 
-
-                //Encrypt
+                
                 byte[] result = new byte[fileContent.Length];
-                if (EnRadioButton.Checked)
+                if (EnRadioButton.Checked)//Encrypt
                 {
                     for (int i = 0; i < fileContent.Length; i++)
                     {
-                        byte value = fileContent[i];
-                        byte key = keys[i];
+                        byte value = fileContent[i], key = keys[i];
                         int ValueIndex = -1, keyIndex = -1;
                         for (int j = 0; j < 256; j++)
                             if (abc[j] == value)
@@ -463,12 +447,11 @@ namespace OnlyTwo
                         result[i] = table[keyIndex, ValueIndex];
                     }
                 }
-                else    //Decrypt
+                else//Decrypt
                 {
                     for (int i = 0; i < fileContent.Length; i++)
                     {
-                        byte value = fileContent[i];
-                        byte key = keys[i];
+                        byte value = fileContent[i], key = keys[i];
                         int ValueIndex = -1, keyIndex = -1;
                         for (int j = 0; j < 256; j++)
                         {
@@ -503,7 +486,5 @@ namespace OnlyTwo
                 return;
             }
         }
-        
-        //------------------------------------------------------------------------------------------    
     }
 }
