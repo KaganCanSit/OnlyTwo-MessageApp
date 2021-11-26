@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.IO.Compression;
 
 namespace OnlyTwo
 {
@@ -136,18 +138,26 @@ namespace OnlyTwo
         string temptext;
         //Find The Keywords In The Main Text
         private void FindButton_Click(object sender, EventArgs e)
-        {        
-            temptext = PlainRichTextBox.Text;   //Restore Previous Text
-
-            int index = 0;
-            PlainRichTextBox.Text = PlainRichTextBox.Text.ToLower();
-            FindTextBox.Text = FindTextBox.Text.ToLower();
-
-            while (index < PlainRichTextBox.Text.LastIndexOf(FindTextBox.Text))
+        {
+            if (FindTextBox.Text == "")
             {
-                PlainRichTextBox.Find(FindTextBox.Text, index, PlainRichTextBox.TextLength, RichTextBoxFinds.None);
-                PlainRichTextBox.SelectionBackColor = Color.Yellow;
-                index = PlainRichTextBox.Text.IndexOf(FindTextBox.Text, index) + 1;
+                MessageBox.Show("Please Enter Search Value In The 'Find Keyword Search'");
+                return;
+            }
+            else
+            {
+                temptext = PlainRichTextBox.Text;   //Restore Previous Text
+
+                int index = 0;
+                PlainRichTextBox.Text = PlainRichTextBox.Text.ToLower();
+                FindTextBox.Text = FindTextBox.Text.ToLower();
+
+                while (index < PlainRichTextBox.Text.LastIndexOf(FindTextBox.Text))
+                {
+                    PlainRichTextBox.Find(FindTextBox.Text, index, PlainRichTextBox.TextLength, RichTextBoxFinds.None);
+                    PlainRichTextBox.SelectionBackColor = Color.Yellow;
+                    index = PlainRichTextBox.Text.IndexOf(FindTextBox.Text, index) + 1;
+                }
             }
         }
 
@@ -484,6 +494,47 @@ namespace OnlyTwo
             {
                 MessageBox.Show("File Is In Use. Close Other Program Is Using This File And Try Again.");
                 return;
+            }
+        }
+
+
+        //Zip File Operations
+        private void btnZipFile_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(FilePathTextBox.Text))
+            {
+                MessageBox.Show("Please select your filename.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FilePathTextBox.Focus();
+                return;
+            }
+            string fileName = FilePathTextBox.Text;
+            Thread thread = new Thread(t =>
+            {
+                using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
+                {
+                    FileInfo fi = new FileInfo(fileName);
+                    zip.AddFile(fileName);
+                    System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(fileName);
+                    zip.SaveProgress += Zip_SaveFileProgress;
+                    zip.Save(string.Format("{0}/{1}.zip", di.Parent.FullName, fi.Name));
+                }
+            })
+            { IsBackground = true };
+            thread.Start();
+        }
+        //Zip File Save Progress And Progress Bar Counter
+        private void Zip_SaveFileProgress(object sender, Ionic.Zip.SaveProgressEventArgs e)
+        {
+            if (e.EventType == Ionic.Zip.ZipProgressEventType.Saving_EntryBytesRead)
+            {
+                progressBar.Invoke(new MethodInvoker(delegate
+                {
+                    progressBar.MaximumValue = 100;
+                    progressBar.Value = (int)((e.BytesTransferred * 100) / e.TotalBytesToTransfer);
+                    progressBar.Update();
+                    if (progressBar.Value == 100)
+                        MessageBox.Show("Zip Progress Done!");
+                }));
             }
         }
     }

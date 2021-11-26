@@ -11,3 +11,6 @@ D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama
 D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.exe
 D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.pdb
 D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\obj\Debug\OnlyTwo.OnlyTwoForm.resources
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\DotNetZip.dll
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\DotNetZip.pdb
+D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\OnlyTwo\bin\Debug\DotNetZip.xml

@@ -49,6 +49,8 @@ namespace OnlyTwo
             this.KeyLabel = new System.Windows.Forms.Label();
             this.SagPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.CrypteFileGroup = new System.Windows.Forms.GroupBox();
+            this.btnZipFile = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.progressBar = new Bunifu.Framework.UI.BunifuProgressBar();
             this.ExecuteButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.DeRadioButton = new System.Windows.Forms.RadioButton();
             this.EnRadioButton = new System.Windows.Forms.RadioButton();
@@ -93,7 +95,7 @@ namespace OnlyTwo
             this.SendFlatButton.IconVisible = true;
             this.SendFlatButton.IconZoom = 90D;
             this.SendFlatButton.IsTab = false;
-            this.SendFlatButton.Location = new System.Drawing.Point(299, 602);
+            this.SendFlatButton.Location = new System.Drawing.Point(299, 690);
             this.SendFlatButton.Margin = new System.Windows.Forms.Padding(5);
             this.SendFlatButton.Name = "SendFlatButton";
             this.SendFlatButton.Normalcolor = System.Drawing.Color.Black;
@@ -116,7 +118,7 @@ namespace OnlyTwo
             this.PlainTextGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.PlainTextGroupBox.Name = "PlainTextGroupBox";
             this.PlainTextGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.PlainTextGroupBox.Size = new System.Drawing.Size(704, 262);
+            this.PlainTextGroupBox.Size = new System.Drawing.Size(704, 306);
             this.PlainTextGroupBox.TabIndex = 3;
             this.PlainTextGroupBox.TabStop = false;
             this.PlainTextGroupBox.Text = "Plain Text";
@@ -136,7 +138,7 @@ namespace OnlyTwo
             this.PlainRichTextBox.Location = new System.Drawing.Point(8, 34);
             this.PlainRichTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PlainRichTextBox.Name = "PlainRichTextBox";
-            this.PlainRichTextBox.Size = new System.Drawing.Size(683, 216);
+            this.PlainRichTextBox.Size = new System.Drawing.Size(683, 264);
             this.PlainRichTextBox.TabIndex = 5;
             this.PlainRichTextBox.Text = "";
             this.PlainRichTextBox.TextChanged += new System.EventHandler(this.PlainRichTextBox_TextChanged);
@@ -250,11 +252,11 @@ namespace OnlyTwo
             // 
             this.CipherTextGroupBox.Controls.Add(this.CounterCipherLabel);
             this.CipherTextGroupBox.Controls.Add(this.CipherTextBox);
-            this.CipherTextGroupBox.Location = new System.Drawing.Point(299, 334);
+            this.CipherTextGroupBox.Location = new System.Drawing.Point(299, 379);
             this.CipherTextGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.CipherTextGroupBox.Name = "CipherTextGroupBox";
             this.CipherTextGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.CipherTextGroupBox.Size = new System.Drawing.Size(704, 260);
+            this.CipherTextGroupBox.Size = new System.Drawing.Size(704, 307);
             this.CipherTextGroupBox.TabIndex = 4;
             this.CipherTextGroupBox.TabStop = false;
             this.CipherTextGroupBox.Text = "CipherText";
@@ -276,7 +278,7 @@ namespace OnlyTwo
             this.CipherTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.CipherTextBox.Multiline = true;
             this.CipherTextBox.Name = "CipherTextBox";
-            this.CipherTextBox.Size = new System.Drawing.Size(683, 217);
+            this.CipherTextBox.Size = new System.Drawing.Size(683, 265);
             this.CipherTextBox.TabIndex = 0;
             this.CipherTextBox.TextChanged += new System.EventHandler(this.CipherTextBox_TextChanged);
             // 
@@ -409,12 +411,14 @@ namespace OnlyTwo
             this.SagPanel.Margin = new System.Windows.Forms.Padding(4);
             this.SagPanel.Name = "SagPanel";
             this.SagPanel.Quality = 10;
-            this.SagPanel.Size = new System.Drawing.Size(271, 655);
+            this.SagPanel.Size = new System.Drawing.Size(271, 744);
             this.SagPanel.TabIndex = 8;
             // 
             // CrypteFileGroup
             // 
             this.CrypteFileGroup.BackColor = System.Drawing.Color.Transparent;
+            this.CrypteFileGroup.Controls.Add(this.btnZipFile);
+            this.CrypteFileGroup.Controls.Add(this.progressBar);
             this.CrypteFileGroup.Controls.Add(this.ExecuteButton);
             this.CrypteFileGroup.Controls.Add(this.DeRadioButton);
             this.CrypteFileGroup.Controls.Add(this.EnRadioButton);
@@ -426,10 +430,59 @@ namespace OnlyTwo
             this.CrypteFileGroup.Margin = new System.Windows.Forms.Padding(4);
             this.CrypteFileGroup.Name = "CrypteFileGroup";
             this.CrypteFileGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.CrypteFileGroup.Size = new System.Drawing.Size(245, 214);
+            this.CrypteFileGroup.Size = new System.Drawing.Size(245, 303);
             this.CrypteFileGroup.TabIndex = 10;
             this.CrypteFileGroup.TabStop = false;
             this.CrypteFileGroup.Text = "Crypte File Operation";
+            // 
+            // btnZipFile
+            // 
+            this.btnZipFile.Activecolor = System.Drawing.Color.Transparent;
+            this.btnZipFile.BackColor = System.Drawing.Color.Transparent;
+            this.btnZipFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnZipFile.BorderRadius = 3;
+            this.btnZipFile.ButtonText = "Zip File";
+            this.btnZipFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnZipFile.DisabledColor = System.Drawing.Color.Gray;
+            this.btnZipFile.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnZipFile.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnZipFile.Iconimage")));
+            this.btnZipFile.Iconimage_right = null;
+            this.btnZipFile.Iconimage_right_Selected = null;
+            this.btnZipFile.Iconimage_Selected = null;
+            this.btnZipFile.IconMarginLeft = 5;
+            this.btnZipFile.IconMarginRight = 0;
+            this.btnZipFile.IconRightVisible = true;
+            this.btnZipFile.IconRightZoom = 110D;
+            this.btnZipFile.IconVisible = true;
+            this.btnZipFile.IconZoom = 65D;
+            this.btnZipFile.IsTab = false;
+            this.btnZipFile.Location = new System.Drawing.Point(15, 131);
+            this.btnZipFile.Margin = new System.Windows.Forms.Padding(5);
+            this.btnZipFile.Name = "btnZipFile";
+            this.btnZipFile.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnZipFile.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.btnZipFile.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnZipFile.selected = false;
+            this.btnZipFile.Size = new System.Drawing.Size(216, 43);
+            this.btnZipFile.TabIndex = 8;
+            this.btnZipFile.Text = "Zip File";
+            this.btnZipFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnZipFile.Textcolor = System.Drawing.Color.White;
+            this.btnZipFile.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZipFile.Click += new System.EventHandler(this.btnZipFile_Click);
+            // 
+            // progressBar
+            // 
+            this.progressBar.BackColor = System.Drawing.Color.Silver;
+            this.progressBar.BorderRadius = 5;
+            this.progressBar.Location = new System.Drawing.Point(15, 182);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.MaximumValue = 100;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.ProgressColor = System.Drawing.Color.Teal;
+            this.progressBar.Size = new System.Drawing.Size(216, 22);
+            this.progressBar.TabIndex = 9;
+            this.progressBar.Value = 0;
             // 
             // ExecuteButton
             // 
@@ -452,7 +505,7 @@ namespace OnlyTwo
             this.ExecuteButton.IconVisible = true;
             this.ExecuteButton.IconZoom = 65D;
             this.ExecuteButton.IsTab = false;
-            this.ExecuteButton.Location = new System.Drawing.Point(15, 159);
+            this.ExecuteButton.Location = new System.Drawing.Point(16, 250);
             this.ExecuteButton.Margin = new System.Windows.Forms.Padding(5);
             this.ExecuteButton.Name = "ExecuteButton";
             this.ExecuteButton.Normalcolor = System.Drawing.Color.Transparent;
@@ -470,7 +523,7 @@ namespace OnlyTwo
             // DeRadioButton
             // 
             this.DeRadioButton.AutoSize = true;
-            this.DeRadioButton.Location = new System.Drawing.Point(127, 130);
+            this.DeRadioButton.Location = new System.Drawing.Point(140, 221);
             this.DeRadioButton.Name = "DeRadioButton";
             this.DeRadioButton.Size = new System.Drawing.Size(78, 21);
             this.DeRadioButton.TabIndex = 6;
@@ -481,7 +534,7 @@ namespace OnlyTwo
             // EnRadioButton
             // 
             this.EnRadioButton.AutoSize = true;
-            this.EnRadioButton.Location = new System.Drawing.Point(15, 130);
+            this.EnRadioButton.Location = new System.Drawing.Point(28, 221);
             this.EnRadioButton.Name = "EnRadioButton";
             this.EnRadioButton.Size = new System.Drawing.Size(77, 21);
             this.EnRadioButton.TabIndex = 5;
@@ -531,7 +584,7 @@ namespace OnlyTwo
             this.BrowseButton.IconVisible = true;
             this.BrowseButton.IconZoom = 65D;
             this.BrowseButton.IsTab = false;
-            this.BrowseButton.Location = new System.Drawing.Point(15, 78);
+            this.BrowseButton.Location = new System.Drawing.Point(16, 78);
             this.BrowseButton.Margin = new System.Windows.Forms.Padding(5);
             this.BrowseButton.Name = "BrowseButton";
             this.BrowseButton.Normalcolor = System.Drawing.Color.Transparent;
@@ -664,7 +717,7 @@ namespace OnlyTwo
             this.UsersListBox.Location = new System.Drawing.Point(16, 87);
             this.UsersListBox.Margin = new System.Windows.Forms.Padding(4);
             this.UsersListBox.Name = "UsersListBox";
-            this.UsersListBox.Size = new System.Drawing.Size(268, 500);
+            this.UsersListBox.Size = new System.Drawing.Size(268, 644);
             this.UsersListBox.TabIndex = 15;
             // 
             // OnlyTwoForm
@@ -672,7 +725,7 @@ namespace OnlyTwo
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1283, 655);
+            this.ClientSize = new System.Drawing.Size(1283, 744);
             this.Controls.Add(this.UsersListBox);
             this.Controls.Add(this.ServerInfoLabel);
             this.Controls.Add(this.ConnectButton);
@@ -743,6 +796,8 @@ namespace OnlyTwo
         private System.Windows.Forms.TextBox FilePathTextBox;
         private Bunifu.Framework.UI.BunifuFlatButton BrowseButton;
         private Bunifu.Framework.UI.BunifuFlatButton ExecuteButton;
+        private Bunifu.Framework.UI.BunifuFlatButton btnZipFile;
+        private Bunifu.Framework.UI.BunifuProgressBar progressBar;
     }
 }
 
