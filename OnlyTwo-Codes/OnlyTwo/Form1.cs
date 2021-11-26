@@ -227,8 +227,9 @@ namespace OnlyTwo
         //Solve Process / Button Click
         private void SolveButton_Click(object sender, EventArgs e)
         {
-            if (PlainRichTextBox.Text[0] != '0' || PlainRichTextBox.Text[1] != '1')
-                MessageBox.Show("Please Enter The Text Of The Spn-16 Password.");
+            char FirstChar = Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1));
+            if (FirstChar != '0' && FirstChar != '1')
+                MessageBox.Show("Enter the Binary Text Consisting of 0s and 1s of the Spn-16 Encryption.");
             else if (PlainRichTextBox.TextLength > 1200)
                 MessageBox.Show("You've Reached The 1200 character Limit! Please Try Again!");
             else
