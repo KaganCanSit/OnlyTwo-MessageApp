@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
-using System.IO.Compression;
 
 namespace OnlyTwo
 {
@@ -18,14 +16,15 @@ namespace OnlyTwo
         byte[] abc;
         byte[,] table;
 
-        //InterNetwork = ipv4 ailesi için -- SocketType.Dgram= UDP için -- SocketType.Stream= TCP için -- ProtocolType.IP = TCP ve UDP
+        //InterNetwork = IPV4 Protocol -- SocketType.Dgram= UDP Protocol -- SocketType.Stream= TCP Protocol -- ProtocolType.IP = TCP ve UDP
         private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         public OnlyTwoForm()
         {
             InitializeComponent();
         }
-        
+
+        //Encryption Operations ------------------------------------------------------------------------------------------------------------------------------------------------
         //SHA256 - Crypting
         private static string SHA256(string text)
         {
@@ -43,7 +42,6 @@ namespace OnlyTwo
             return sb.ToString();
         }
 
-
         //SPN-16 - Text Crypting
         private static string SPN16(string text, string keygen)
         {
@@ -56,7 +54,6 @@ namespace OnlyTwo
             alltext = Crossover(CrossoverArray, alltext);           //Crossover Operation
             return alltext;
         }
-
         //SPN-16 - Solve
         private static string SPN16Solve(string text, string keygen)
         {
@@ -75,14 +72,12 @@ namespace OnlyTwo
         private static String ConvertString(string text)
         {
             List<byte> stringList = new List<byte>();
-
             for (int i = 0; i < text.Length; i += 8)
             {
                 stringList.Add(Convert.ToByte(text.Substring(i, 8), 2));
             }
             return Encoding.ASCII.GetString(stringList.ToArray());
         }
-
         //SPN-16 Input Convert To Binary
         private static String Key(string text)
         {
@@ -133,8 +128,8 @@ namespace OnlyTwo
             }
             return alltextEnd;
         }
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        //Basic Form Operations ------------------------------------------------------------------------------------------------------------------------------------
         string temptext;
         //Find The Keywords In The Main Text
         private void FindButton_Click(object sender, EventArgs e)
@@ -166,7 +161,7 @@ namespace OnlyTwo
         {
             DialogResult Result;
             Result = MessageBox.Show("Do you want to restore the message?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(Result == DialogResult.Yes)
+            if (Result == DialogResult.Yes)
                 PlainRichTextBox.Text = temptext;
             else
                 MessageBox.Show("Operation Cancelled.");
@@ -204,8 +199,8 @@ namespace OnlyTwo
         {
             KeygenTextBox.Text = StringReplace(KeygenTextBox.Text);
             PlainRichTextBox.Text = StringReplace(PlainRichTextBox.Text);
-            
-            if(PlainRichTextBox.TextLength > 150)
+
+            if (PlainRichTextBox.TextLength > 150)
                 MessageBox.Show("You've Reached The 150 character Limit! Please Try Again!");
             else
             {
@@ -227,12 +222,14 @@ namespace OnlyTwo
                 }
                 else
                     MessageBox.Show("Please Check The Encrypt Type");
-            }          
+            }
         }
         //Solve Process / Button Click
         private void SolveButton_Click(object sender, EventArgs e)
         {
-            if(PlainRichTextBox.TextLength > 1200)
+            if (PlainRichTextBox.Text[0] != '0' || PlainRichTextBox.Text[1] != '1')
+                MessageBox.Show("Please Enter The Text Of The Spn-16 Password.");
+            else if (PlainRichTextBox.TextLength > 1200)
                 MessageBox.Show("You've Reached The 1200 character Limit! Please Try Again!");
             else
             {
@@ -242,7 +239,7 @@ namespace OnlyTwo
                     {
                         if (KeygenTextBox.Text == "" || KeygenTextBox.TextLength != 8)
                             MessageBox.Show("Please specify your Password with 8 characters.");
-                        else if(PlainRichTextBox.TextLength <= 8)
+                        else if (PlainRichTextBox.TextLength <= 8)
                             MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
                     }
                     else
@@ -250,7 +247,7 @@ namespace OnlyTwo
                 }
                 else
                     MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
-            }       
+            }
         }
 
         //Turkisch Char Convert English Char
@@ -272,7 +269,7 @@ namespace OnlyTwo
         }
 
 
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Socket Programming Operations ------------------------------------------------------------------------------------------------------------------------------------
         byte[] receivedBuf = new byte[1024];
         private void ReceiveData(IAsyncResult ar)//Asenkron
         {
@@ -304,7 +301,7 @@ namespace OnlyTwo
                     if (listede_yok == 0)
                     {
                         string ben = "@" + UsernameTextBox.Text;
-                        if (ben.Equals(gelen)){}
+                        if (ben.Equals(gelen)) { }
                         else
                             UsersListBox.Items.Add(gelen);
                     }
@@ -319,7 +316,7 @@ namespace OnlyTwo
                 Console.WriteLine("ReceiveData() Error In Method" + e.Message);
             }
         }
-
+        //Connect Loop Server Try
         private void LoopConnect()
         {
             int attempts = 0;
@@ -340,7 +337,8 @@ namespace OnlyTwo
             _clientSocket.Send(buffer);//Send The Server
             ServerInfoLabel.Text = ("Connected To The Server!");
         }
-        
+
+        //Connect Loop Start
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             UsernameTextBox.Text = StringReplace(UsernameTextBox.Text);
@@ -357,14 +355,14 @@ namespace OnlyTwo
                 foreach (var item in UsersListBox.SelectedItems)//Listbox Selected Item
                 {
                     tmpStr = UsersListBox.GetItemText(item);
-                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr +" :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//Byte Translate
+                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr + " :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//Byte Translate
                     _clientSocket.Send(buffer);//Send IP+Port > Socket
                     Thread.Sleep(20);
                 }
                 if (tmpStr.Equals(""))
                     MessageBox.Show("Please Click The Send Username");
                 else
-                    PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");                        
+                    PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");
             }
         }
 
@@ -391,7 +389,7 @@ namespace OnlyTwo
                     table[i, j] = abc[(i + j) % 256];
         }
 
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Crypte File Operations -------------------------------------------------------------------------------------------------------------------------------------------
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog od = new OpenFileDialog();
@@ -434,7 +432,7 @@ namespace OnlyTwo
                 for (int i = 0; i < fileContent.Length; i++)
                     keys[i] = passwordTpm[i % passwordTpm.Length];
 
-                
+
                 byte[] result = new byte[fileContent.Length];
                 if (EnRadioButton.Checked)//Encrypt
                 {
@@ -498,8 +496,8 @@ namespace OnlyTwo
         }
 
 
-        //Zip File Operations
-        private void btnZipFile_Click(object sender, EventArgs e)
+        //Zip File Operations -------------------------------------------------------------------------------------------------------------------------------------------
+        private void ZipFileButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(FilePathTextBox.Text))
             {

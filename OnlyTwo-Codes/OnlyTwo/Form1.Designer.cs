@@ -49,7 +49,7 @@ namespace OnlyTwo
             this.KeyLabel = new System.Windows.Forms.Label();
             this.SagPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.CrypteFileGroup = new System.Windows.Forms.GroupBox();
-            this.btnZipFile = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.ZipFileButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.progressBar = new Bunifu.Framework.UI.BunifuProgressBar();
             this.ExecuteButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.DeRadioButton = new System.Windows.Forms.RadioButton();
@@ -417,7 +417,7 @@ namespace OnlyTwo
             // CrypteFileGroup
             // 
             this.CrypteFileGroup.BackColor = System.Drawing.Color.Transparent;
-            this.CrypteFileGroup.Controls.Add(this.btnZipFile);
+            this.CrypteFileGroup.Controls.Add(this.ZipFileButton);
             this.CrypteFileGroup.Controls.Add(this.progressBar);
             this.CrypteFileGroup.Controls.Add(this.ExecuteButton);
             this.CrypteFileGroup.Controls.Add(this.DeRadioButton);
@@ -435,41 +435,41 @@ namespace OnlyTwo
             this.CrypteFileGroup.TabStop = false;
             this.CrypteFileGroup.Text = "Crypte File Operation";
             // 
-            // btnZipFile
+            // ZipFileButton
             // 
-            this.btnZipFile.Activecolor = System.Drawing.Color.Transparent;
-            this.btnZipFile.BackColor = System.Drawing.Color.Transparent;
-            this.btnZipFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnZipFile.BorderRadius = 3;
-            this.btnZipFile.ButtonText = "Zip File";
-            this.btnZipFile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnZipFile.DisabledColor = System.Drawing.Color.Gray;
-            this.btnZipFile.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnZipFile.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnZipFile.Iconimage")));
-            this.btnZipFile.Iconimage_right = null;
-            this.btnZipFile.Iconimage_right_Selected = null;
-            this.btnZipFile.Iconimage_Selected = null;
-            this.btnZipFile.IconMarginLeft = 5;
-            this.btnZipFile.IconMarginRight = 0;
-            this.btnZipFile.IconRightVisible = true;
-            this.btnZipFile.IconRightZoom = 110D;
-            this.btnZipFile.IconVisible = true;
-            this.btnZipFile.IconZoom = 65D;
-            this.btnZipFile.IsTab = false;
-            this.btnZipFile.Location = new System.Drawing.Point(15, 131);
-            this.btnZipFile.Margin = new System.Windows.Forms.Padding(5);
-            this.btnZipFile.Name = "btnZipFile";
-            this.btnZipFile.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnZipFile.OnHovercolor = System.Drawing.Color.WhiteSmoke;
-            this.btnZipFile.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnZipFile.selected = false;
-            this.btnZipFile.Size = new System.Drawing.Size(216, 43);
-            this.btnZipFile.TabIndex = 8;
-            this.btnZipFile.Text = "Zip File";
-            this.btnZipFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnZipFile.Textcolor = System.Drawing.Color.White;
-            this.btnZipFile.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZipFile.Click += new System.EventHandler(this.btnZipFile_Click);
+            this.ZipFileButton.Activecolor = System.Drawing.Color.Transparent;
+            this.ZipFileButton.BackColor = System.Drawing.Color.Transparent;
+            this.ZipFileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ZipFileButton.BorderRadius = 3;
+            this.ZipFileButton.ButtonText = "Zip File";
+            this.ZipFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ZipFileButton.DisabledColor = System.Drawing.Color.Gray;
+            this.ZipFileButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.ZipFileButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("ZipFileButton.Iconimage")));
+            this.ZipFileButton.Iconimage_right = null;
+            this.ZipFileButton.Iconimage_right_Selected = null;
+            this.ZipFileButton.Iconimage_Selected = null;
+            this.ZipFileButton.IconMarginLeft = 5;
+            this.ZipFileButton.IconMarginRight = 0;
+            this.ZipFileButton.IconRightVisible = true;
+            this.ZipFileButton.IconRightZoom = 110D;
+            this.ZipFileButton.IconVisible = true;
+            this.ZipFileButton.IconZoom = 65D;
+            this.ZipFileButton.IsTab = false;
+            this.ZipFileButton.Location = new System.Drawing.Point(15, 131);
+            this.ZipFileButton.Margin = new System.Windows.Forms.Padding(5);
+            this.ZipFileButton.Name = "ZipFileButton";
+            this.ZipFileButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.ZipFileButton.OnHovercolor = System.Drawing.Color.WhiteSmoke;
+            this.ZipFileButton.OnHoverTextColor = System.Drawing.Color.Black;
+            this.ZipFileButton.selected = false;
+            this.ZipFileButton.Size = new System.Drawing.Size(216, 43);
+            this.ZipFileButton.TabIndex = 8;
+            this.ZipFileButton.Text = "Zip File";
+            this.ZipFileButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ZipFileButton.Textcolor = System.Drawing.Color.White;
+            this.ZipFileButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ZipFileButton.Click += new System.EventHandler(this.ZipFileButton_Click);
             // 
             // progressBar
             // 
@@ -796,7 +796,7 @@ namespace OnlyTwo
         private System.Windows.Forms.TextBox FilePathTextBox;
         private Bunifu.Framework.UI.BunifuFlatButton BrowseButton;
         private Bunifu.Framework.UI.BunifuFlatButton ExecuteButton;
-        private Bunifu.Framework.UI.BunifuFlatButton btnZipFile;
+        private Bunifu.Framework.UI.BunifuFlatButton ZipFileButton;
         private Bunifu.Framework.UI.BunifuProgressBar progressBar;
     }
 }
