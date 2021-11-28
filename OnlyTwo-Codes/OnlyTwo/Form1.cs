@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.Net;
 
 namespace OnlyTwo
 {
@@ -240,10 +241,8 @@ namespace OnlyTwo
                         else if (PlainRichTextBox.TextLength <= 8)
                             MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
                     }
-                    else if (Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '1')
-                    {
-                            MessageBox.Show("Enter the Binary Text Consisting of 0s and 1s of the Spn-16 Encryption.");
-                    }
+                    else if (Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '1' || Convert.ToChar(PlainRichTextBox.Text.Substring(PlainRichTextBox.TextLength - 1, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(PlainRichTextBox.TextLength - 1, 1)) != '1')
+                        MessageBox.Show("Enter the Binary Text Consisting of 0s and 1s of the Spn-16 Encryption.");
                     else
                         CipherTextBox.Text = SPN16Solve(PlainRichTextBox.Text, KeygenTextBox.Text);
                 }
@@ -367,7 +366,6 @@ namespace OnlyTwo
                     PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");
             }
         }
-
 
         //Form Load Operation
         private void OnlyTwoForm_Load(object sender, EventArgs e)
