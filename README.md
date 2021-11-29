@@ -36,10 +36,10 @@
     <a href="https://www.youtube.com/watch?v=EzkvHj9s_Ys">08-MultiChat Socket Programming</a><br>
     <a href="http://www.yazilimmutfagi.com/index.php/2011/01/07/csharp-system-compression-dosya-sikistirma/">09-System Compression</a><br>
     <a href="https://www.youtube.com/watch?v=CFfjZfkciQQ">10-File Encrypt Decrypte</a><br>
-    <a href="https://www.bilisimkonulari.com/c-textboxa-girilen-karakterleri-sayma-ve-sinirlama.html">11-Text Box Limitation</a>
-    <a href="https://docs.microsoft.com/tr-tr/dotnet/standard/io/how-to-compress-and-extract-files">12-File Operation</a>
-    <a href="https://www.youtube.com/watch?v=A-vShsIelvk">13-Zip File Operation</a>
-    <a href="https://docs.microsoft.com/tr-tr/dotnet/api/system.net.sockets.socket.sendfile?view=net-6.0">14-Socket Info</a>
-    <a href="https://www.codeproject.com/Questions/1090382/Tcp-IP-file-transfer-in-NET-using-socket-programmi">15-TSocket Info - 2</a>
-    <a href="https://www.c-sharpcorner.com/uploadfile/0a7dc8/file-transfer-program-using-C-Sharp-net-windows-application/">15-TSocket Info - 3</a>
+    <a href="https://www.bilisimkonulari.com/c-textboxa-girilen-karakterleri-sayma-ve-sinirlama.html">11-Text Box Limitation</a><br>
+    <a href="https://docs.microsoft.com/tr-tr/dotnet/standard/io/how-to-compress-and-extract-files">12-File Operation</a><br>
+    <a href="https://www.youtube.com/watch?v=A-vShsIelvk">13-Zip File Operation</a><br>
+    <a href="https://docs.microsoft.com/tr-tr/dotnet/api/system.net.sockets.socket.sendfile?view=net-6.0">14-Socket Info</a><br>
+    <a href="https://www.codeproject.com/Questions/1090382/Tcp-IP-file-transfer-in-NET-using-socket-programmi">15-TSocket Info - 2</a><br>
+    <a href="https://www.c-sharpcorner.com/uploadfile/0a7dc8/file-transfer-program-using-C-Sharp-net-windows-application/">15-TSocket Info - 3</a><br>
   </ul></div>
