@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 namespace OnlyTwo
@@ -88,7 +86,7 @@ namespace OnlyTwo
         private static String Crossover(int[] CrossoverArray, string alltext)
         {
             string alltextEnd = alltext;
-            int CrossoverCounter = 0, arraypoint = 0, counter = 0;
+            int CrossoverCounter = 0, arraypoint, counter = 0;
             int remaining = alltext.Length % 16;
 
             for (int j = 0; j < alltext.Length - remaining; j++)

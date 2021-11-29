@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EncryptionClass.cs" />
+    <Compile Include="EncryptionFile.cs" />
     <Compile Include="OnlyTwoForm.cs">
       <SubType>Form</SubType>
     </Compile>

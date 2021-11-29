@@ -10,10 +10,6 @@ namespace OnlyTwo
 {
     public partial class OnlyTwoForm : Form
     {
-        //Crypte File Variable
-        byte[] abc;
-        byte[,] table;
-
         //InterNetwork = IPV4 Protocol -- SocketType.Dgram= UDP Protocol -- SocketType.Stream= TCP Protocol -- ProtocolType.IP = TCP ve UDP
         private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -24,10 +20,8 @@ namespace OnlyTwo
 
         //Encryption Operations 
         EncryptionClass EncryptionOp = new EncryptionClass();
-
         
         //Basic Form Operations
-
         string temptext;
         //Find The Keywords In The Main Text
         private void FindButton_Click(object sender, EventArgs e)
@@ -264,123 +258,31 @@ namespace OnlyTwo
             PlainRichTextBox.MaxLength = 1200;
             CipherTextBox.MaxLength = 1200;
             CheckForIllegalCrossThreadCalls = false;//Add Dynamic Object To List
-
             EnRadioButton.Checked = true;
-            //Init abc and table
-            abc = new byte[256];
-            for (int i = 0; i < 256; i++)
-                abc[i] = Convert.ToByte(i);
-
-            table = new byte[256, 256];
-            for (int i = 0; i < 256; i++)
-                for (int j = 0; j < 256; j++)
-                    table[i, j] = abc[(i + j) % 256];
         }
 
         //Crypte File Operations -------------------------------------------------------------------------------------------------------------------------------------------
+        EncryptionFile EncryptFile = new EncryptionFile();
+        
         private void BrowseButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog od = new OpenFileDialog();
-            od.Multiselect = false;
-            if (od.ShowDialog() == DialogResult.OK)
-                FilePathTextBox.Text = od.FileName;
+            FilePathTextBox.Text = EncryptFile.BrowseFile(FilePathTextBox.Text);
         }
 
         private void EnRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (EnRadioButton.Checked)
-                DeRadioButton.Checked = false;
+                DeRadioButton.Checked = false;             
         }
         private void DeRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (DeRadioButton.Checked)
-                EnRadioButton.Checked = false;
+                EnRadioButton.Checked = false;               
         }
 
         private void ExecuteButton_Click(object sender, EventArgs e)
         {
-            //Check Input Value
-            if (!File.Exists(FilePathTextBox.Text))
-            {
-                MessageBox.Show("File Does Not Exit");
-                return;
-            }
-            if (String.IsNullOrEmpty(KeygenTextBox.Text))
-            {
-                MessageBox.Show("Password Empty! Please Enter Your Password");
-                return;
-            }
-
-            //Get File Content And Key For Encryption/Decyription
-            try
-            {
-                byte[] fileContent = File.ReadAllBytes(FilePathTextBox.Text);
-                byte[] passwordTpm = Encoding.ASCII.GetBytes(KeygenTextBox.Text);
-                byte[] keys = new byte[fileContent.Length];
-                for (int i = 0; i < fileContent.Length; i++)
-                    keys[i] = passwordTpm[i % passwordTpm.Length];
-
-
-                byte[] result = new byte[fileContent.Length];
-                if (EnRadioButton.Checked)//Encrypt
-                {
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        byte value = fileContent[i], key = keys[i];
-                        int ValueIndex = -1, keyIndex = -1;
-                        for (int j = 0; j < 256; j++)
-                            if (abc[j] == value)
-                            {
-                                ValueIndex = j;
-                                break;
-                            }
-                        for (int j = 0; j < 256; j++)
-                            if (abc[j] == key)
-                            {
-                                keyIndex = j;
-                                break;
-                            }
-                        result[i] = table[keyIndex, ValueIndex];
-                    }
-                }
-                else//Decrypt
-                {
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        byte value = fileContent[i], key = keys[i];
-                        int ValueIndex = -1, keyIndex = -1;
-                        for (int j = 0; j < 256; j++)
-                        {
-                            if (abc[j] == key)
-                            {
-                                keyIndex = j;
-                                break;
-                            }
-                        }
-                        for (int j = 0; j < 256; j++)
-                        {
-                            if (table[keyIndex, j] == value)
-                            {
-                                ValueIndex = j;
-                                break;
-                            }
-                        }
-                        result[i] = abc[ValueIndex];
-                    }
-                }
-
-                //Save Resule To New File With The Same Extention
-                String fileExt = Path.GetExtension(FilePathTextBox.Text);
-                SaveFileDialog sd = new SaveFileDialog();
-                sd.Filter = "Files (*" + fileExt + ") | *" + fileExt;
-                if (sd.ShowDialog() == DialogResult.OK)
-                    File.WriteAllBytes(sd.FileName, result);
-            }
-            catch
-            {
-                MessageBox.Show("File Is In Use. Close Other Program Is Using This File And Try Again.");
-                return;
-            }
+            EncryptFile.ExecuteDescryption(FilePathTextBox.Text, KeygenTextBox.Text, EnRadioButton.Checked);
         }
 
 
