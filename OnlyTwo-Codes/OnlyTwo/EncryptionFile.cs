@@ -11,7 +11,7 @@ namespace OnlyTwo
         byte[] abc;
         byte[,] table;
 
-        public string BrowseFile(string FilePath)
+        public string BrowseFile()
         {
             OpenFileDialog od = new OpenFileDialog();
             od.Multiselect = false;

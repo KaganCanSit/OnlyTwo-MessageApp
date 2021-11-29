@@ -10,18 +10,24 @@ namespace OnlyTwo
 {
     public partial class OnlyTwoForm : Form
     {
-        //InterNetwork = IPV4 Protocol -- SocketType.Dgram= UDP Protocol -- SocketType.Stream= TCP Protocol -- ProtocolType.IP = TCP ve UDP
-        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
         public OnlyTwoForm()
         {
             InitializeComponent();
         }
 
-        //Encryption Operations 
-        EncryptionClass EncryptionOp = new EncryptionClass();
-        
-        //Basic Form Operations
+        //Form Load Operation
+        private void OnlyTwoForm_Load(object sender, EventArgs e)
+        {
+            UsernameTextBox.MaxLength = 20;
+            KeygenTextBox.MaxLength = 8;
+            FindTextBox.MaxLength = 20;
+            PlainRichTextBox.MaxLength = 1200;
+            CipherTextBox.MaxLength = 1200;
+            CheckForIllegalCrossThreadCalls = false;//Add Dynamic Object To List
+            EnRadioButton.Checked = true;
+        }
+
+        //Basic Form Operations ---------------------------------------------------------------------------------------------------------------------- 
         string temptext;
         //Find The Keywords In The Main Text
         private void FindButton_Click(object sender, EventArgs e)
@@ -86,7 +92,6 @@ namespace OnlyTwo
             CounterCipherLabel.Text = "Counter: " + CipherTextBoxLenght.ToString();
         }
 
-
         //Keygen Text Box Control
         private void KeygenTBControl()
         {
@@ -95,6 +100,9 @@ namespace OnlyTwo
             else if (PlainRichTextBox.TextLength <= 8)
                 MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
         }
+
+        //Encryption Operations ----------------------------------------------------------------------------------------------------------------------  
+        EncryptionClass EncryptionOp = new EncryptionClass();
 
         //Encryption Process / Button Click
         private void EncryptButton_Click(object sender, EventArgs e)
@@ -152,7 +160,10 @@ namespace OnlyTwo
             }
         }
 
-        //Socket Programming Operations ------------------------------------------------------------------------------------------------------------------------------------
+        //Socket Programming Operations ---------------------------------------------------------------------------------------------------------------------- 
+        //InterNetwork = IPV4 Protocol -- SocketType.Dgram= UDP Protocol -- SocketType.Stream= TCP Protocol -- ProtocolType.IP = TCP ve UDP
+        private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
         byte[] receivedBuf = new byte[1024];
         private void ReceiveData(IAsyncResult ar)//Asenkron
         {
@@ -249,24 +260,12 @@ namespace OnlyTwo
             }
         }
 
-        //Form Load Operation
-        private void OnlyTwoForm_Load(object sender, EventArgs e)
-        {
-            UsernameTextBox.MaxLength = 20;
-            KeygenTextBox.MaxLength = 8;
-            FindTextBox.MaxLength = 20;
-            PlainRichTextBox.MaxLength = 1200;
-            CipherTextBox.MaxLength = 1200;
-            CheckForIllegalCrossThreadCalls = false;//Add Dynamic Object To List
-            EnRadioButton.Checked = true;
-        }
-
         //Crypte File Operations -------------------------------------------------------------------------------------------------------------------------------------------
         EncryptionFile EncryptFile = new EncryptionFile();
         
         private void BrowseButton_Click(object sender, EventArgs e)
         {
-            FilePathTextBox.Text = EncryptFile.BrowseFile(FilePathTextBox.Text);
+            FilePathTextBox.Text = EncryptFile.BrowseFile();
         }
 
         private void EnRadioButton_CheckedChanged(object sender, EventArgs e)
