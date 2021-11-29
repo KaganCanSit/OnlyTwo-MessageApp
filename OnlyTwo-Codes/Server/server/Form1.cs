@@ -26,7 +26,7 @@ namespace server
         {
             InfoLabelUp.Text = "Server Started . . .";
             _serverSocket.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 100));//127.0.0.1,100 Port Listen
-            _serverSocket.Listen(1);//dinliyor
+            _serverSocket.Listen(1);//Listen
 
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null); //Async Callback
             Console.WriteLine("Listen");
