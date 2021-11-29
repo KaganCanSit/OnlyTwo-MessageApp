@@ -92,15 +92,6 @@ namespace OnlyTwo
             CounterCipherLabel.Text = "Counter: " + CipherTextBoxLenght.ToString();
         }
 
-        //Keygen Text Box Control
-        private void KeygenTBControl()
-        {
-            if (KeygenTextBox.Text == "" || KeygenTextBox.TextLength != 8)
-                MessageBox.Show("Please specify your Password with 8 characters.");
-            else if (PlainRichTextBox.TextLength <= 8)
-                MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
-        }
-
         //Encryption Operations ----------------------------------------------------------------------------------------------------------------------  
         EncryptionClass EncryptionOp = new EncryptionClass();
 
@@ -158,6 +149,15 @@ namespace OnlyTwo
                 else
                     MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
             }
+        }
+
+        //Keygen Text Box Control
+        private void KeygenTBControl()
+        {
+            if (KeygenTextBox.Text == "" || KeygenTextBox.TextLength != 8)
+                MessageBox.Show("Please specify your Password with 8 characters.");
+            else if (PlainRichTextBox.TextLength <= 8)
+                MessageBox.Show("Text To Be Encrypted Must Be Longer Than 8 Letters!");
         }
 
         //Socket Programming Operations ---------------------------------------------------------------------------------------------------------------------- 
