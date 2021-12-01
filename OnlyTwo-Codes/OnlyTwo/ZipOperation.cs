@@ -9,7 +9,7 @@ namespace OnlyTwo
     {
         public Bunifu.Framework.UI.BunifuProgressBar progressBar;
 
-        public void ZipFileOperation(object sender, EventArgs e, string FilePath)
+        public void ZipFileOperation(string FilePath)
         {
             if (string.IsNullOrEmpty(FilePath))
                 MessageBox.Show("Please select your filename.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -27,7 +27,6 @@ namespace OnlyTwo
                         System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(fileName);
                         zip.SaveProgress += Zip_SaveFileProgress;
                         zip.Save(string.Format("{0}/{1}.zip", di.Parent.FullName, fi.Name));
-                        //MessageBox.Show("Zip Operation Done");
                     }
                 })
                 { IsBackground = true };

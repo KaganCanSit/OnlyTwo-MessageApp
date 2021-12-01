@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 using System.Text;
-using System.IO;
 
 namespace OnlyTwo
 {
@@ -289,7 +288,7 @@ namespace OnlyTwo
         private void ZipFileButton_Click(object sender, EventArgs e)
         {
             ZipOpr.progressBar = progressBar;
-            ZipOpr.ZipFileOperation(sender, e, FilePathTextBox.Text);
+            ZipOpr.ZipFileOperation(FilePathTextBox.Text);
         }
     }
 }
