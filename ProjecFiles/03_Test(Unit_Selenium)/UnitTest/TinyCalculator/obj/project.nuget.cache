@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gDpKCN5V/S7XRi4sEaS3sR1jvbXMEm9ObCFPQouU6oP2vwe/xX0ecuryC9eFOdwBg+CZQWAWta+A6GUVPRHXiA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kağan Can Şit\\.nuget\\packages\\prism.core\\8.1.97\\prism.core.8.1.97.nupkg.sha512"
+  ],
+  "logs": []
+}
