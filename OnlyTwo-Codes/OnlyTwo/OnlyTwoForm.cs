@@ -99,55 +99,53 @@ namespace OnlyTwo
         private void EncryptButton_Click(object sender, EventArgs e)
         {
             if (PlainRichTextBox.Text == "")
-            {
                 MessageBox.Show("File is empty!");
-                return;
-            }
-
-            KeygenTextBox.Text = EncryptionOp.StringReplace(KeygenTextBox.Text);
-            PlainRichTextBox.Text = EncryptionOp.StringReplace(PlainRichTextBox.Text);
-
-            if (PlainRichTextBox.TextLength > 150)
-                MessageBox.Show("You've Reached The 150 character Limit! Please Try Again!");
             else
             {
-                if (EncryptComboBox.SelectedIndex == 0) //SHA-256
-                    CipherTextBox.Text = EncryptionOp.SHA256(PlainRichTextBox.Text);
-                else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
-                {
-                    if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
-                        KeygenTBControl();
-                    else
-                        CipherTextBox.Text = EncryptionOp.SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
-                }
+                KeygenTextBox.Text = EncryptionOp.StringReplace(KeygenTextBox.Text);
+                PlainRichTextBox.Text = EncryptionOp.StringReplace(PlainRichTextBox.Text);
+
+                if (PlainRichTextBox.TextLength > 150)
+                    MessageBox.Show("You've Reached The 150 character Limit! Please Try Again!");
                 else
-                    MessageBox.Show("Please Check The Encrypt Type");
+                {
+                    if (EncryptComboBox.SelectedIndex == 0) //SHA-256
+                        CipherTextBox.Text = EncryptionOp.SHA256(PlainRichTextBox.Text);
+                    else if (EncryptComboBox.SelectedIndex == 1) //SPN-16
+                    {
+                        if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
+                            KeygenTBControl();
+                        else
+                            CipherTextBox.Text = EncryptionOp.SPN16(PlainRichTextBox.Text, KeygenTextBox.Text);
+                    }
+                    else
+                        MessageBox.Show("Please Check The Encrypt Type");
+                }
             }
         }
         //Solve Process / Button Click
         private void SolveButton_Click(object sender, EventArgs e)
         {
             if (PlainRichTextBox.Text == "")
-            {
                 MessageBox.Show("File is empty!");
-                return;
-            }
-
-            if (PlainRichTextBox.TextLength > 1200)
-                MessageBox.Show("You've Reached The 1200 character Limit! Please Try Again!");
             else
             {
-                if (EncryptComboBox.SelectedIndex == 1) //SPN-16
-                {
-                    if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
-                        KeygenTBControl();
-                    else if (Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '1' || Convert.ToChar(PlainRichTextBox.Text.Substring(PlainRichTextBox.TextLength - 1, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(PlainRichTextBox.TextLength - 1, 1)) != '1')
-                        MessageBox.Show("Enter the Binary Text Consisting of 0s and 1s of the Spn-16 Encryption.");
-                    else
-                        CipherTextBox.Text = EncryptionOp.SPN16Solve(PlainRichTextBox.Text, KeygenTextBox.Text);
-                }
+                if (PlainRichTextBox.TextLength > 1200)
+                    MessageBox.Show("You've Reached The 1200 character Limit! Please Try Again!");
                 else
-                    MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
+                {
+                    if (EncryptComboBox.SelectedIndex == 1) //SPN-16
+                    {
+                        if (KeygenTextBox.TextLength != 8 || PlainRichTextBox.TextLength < 8)
+                            KeygenTBControl();
+                        else if (Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(0, 1)) != '1' || Convert.ToChar(PlainRichTextBox.Text.Substring(PlainRichTextBox.TextLength - 1, 1)) != '0' && Convert.ToChar(PlainRichTextBox.Text.Substring(PlainRichTextBox.TextLength - 1, 1)) != '1')
+                            MessageBox.Show("Enter the Binary Text Consisting of 0s and 1s of the Spn-16 Encryption.");
+                        else
+                            CipherTextBox.Text = EncryptionOp.SPN16Solve(PlainRichTextBox.Text, KeygenTextBox.Text);
+                    }
+                    else
+                        MessageBox.Show("Please Select Encryption Type Select SPN-16. SHA256 Encryption Undecryptable. Passwords Only.");
+                }
             }
         }
 
@@ -164,7 +162,7 @@ namespace OnlyTwo
         //InterNetwork = IPV4 Protocol -- SocketType.Dgram= UDP Protocol -- SocketType.Stream= TCP Protocol -- ProtocolType.IP = TCP ve UDP
         private Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        byte[] receivedBuf = new byte[1024];
+        byte[] receivedBuf = new byte[1024*20];
         private void ReceiveData(IAsyncResult ar)//Asenkron
         {
             int listede_yok = 0;
@@ -289,25 +287,26 @@ namespace OnlyTwo
         private void ZipFileButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(FilePathTextBox.Text))
-            {
                 MessageBox.Show("Please select your filename.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FilePathTextBox.Focus();
-                return;
-            }
-            string fileName = FilePathTextBox.Text;
-            Thread thread = new Thread(t =>
+            else if (FileSizeControl(FilePathTextBox.Text) == false)
+                MessageBox.Show("File Size Bigger Than 20MB");
+            else
             {
-                using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
+                string fileName = FilePathTextBox.Text;
+                Thread thread = new Thread(t =>
                 {
-                    FileInfo fi = new FileInfo(fileName);
-                    zip.AddFile(fileName);
-                    System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(fileName);
-                    zip.SaveProgress += Zip_SaveFileProgress;
-                    zip.Save(string.Format("{0}/{1}.zip", di.Parent.FullName, fi.Name));
-                }
-            })
-            { IsBackground = true };
-            thread.Start();
+                    using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
+                    {
+                        FileInfo fi = new FileInfo(fileName);
+                        zip.AddFile(fileName);
+                        System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(fileName);
+                        zip.SaveProgress += Zip_SaveFileProgress;
+                        zip.Save(string.Format("{0}/{1}.zip", di.Parent.FullName, fi.Name));
+                    }
+                })
+                { IsBackground = true };
+                thread.Start();
+            }
         }
         //Zip File Save Progress And Progress Bar Counter
         private void Zip_SaveFileProgress(object sender, Ionic.Zip.SaveProgressEventArgs e)
@@ -323,6 +322,15 @@ namespace OnlyTwo
                         MessageBox.Show("Zip Progress Done!");
                 }));
             }
+        }
+        //File Size Control (20MB)
+        private Boolean FileSizeControl(string FilePath)
+        {
+            FileInfo info = new FileInfo(FilePath);
+            long FileSize = info.Length;
+            if (FileSize > 20971520)
+                return false;
+            return true;
         }
     }
 }

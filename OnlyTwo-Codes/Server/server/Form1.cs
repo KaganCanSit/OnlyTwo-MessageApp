@@ -10,7 +10,7 @@ namespace server
 {
     public partial class ServerForm : Form
     {
-        private byte[] _buffer = new byte[1024*5];//Data Size
+        private byte[] _buffer = new byte[1024*20];//Data Size
         public List<SocketT2h> ClientSockets { get; set; }
         private Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         public ServerForm()
@@ -19,6 +19,7 @@ namespace server
             CheckForIllegalCrossThreadCalls = false;
             ClientSockets = new List<SocketT2h>();
         }
+
         //AsyncCallback
         private void SetupServer()
         {
@@ -29,6 +30,7 @@ namespace server
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null); //Async Callback
             Console.WriteLine("Listen");
         }
+
         private void AppceptCallback(IAsyncResult ar)
         {
             Socket socket = _serverSocket.EndAccept(ar);
@@ -122,6 +124,7 @@ namespace server
             }
             socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
         }
+
         public void ClientlerdenSil(string SonlananClient)
         {
             string sil = "Delete*" + SonlananClient;
@@ -134,6 +137,7 @@ namespace server
                 }
             }
         }
+
         public void GonderGelenMesaji(string cli, string text, string mesaj)
         {
             //gelen=@@aa
@@ -172,22 +176,26 @@ namespace server
                 Console.WriteLine("gonder_gelen_mesaji() Error " + e.Message);
             }
         }
+
         void Sendata(Socket socket, string mesajj)//Come Socket And Message
         {
             byte[] data = Encoding.ASCII.GetBytes(mesajj);
             socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);//Send The Socket
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
         }
+
         private void SendCallback(IAsyncResult AR)
         {
             Socket socket = (Socket)AR.AsyncState;
             socket.EndSend(AR);
         }
+
         private void Form1_Load_1(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;//Dinamic Article
             SetupServer();
         }
+
         public void IsimleriGonder()
         {
             for (int j = 0; j < ClientSockets.Count; j++)
