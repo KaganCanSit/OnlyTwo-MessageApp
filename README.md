@@ -8,8 +8,8 @@
   <ol>
     <li>The text written by Single User will be encrypted with <b>SHA 256</b> or <b>SPN</b> and the user will see the encrypted text.</li><br>
     <div align="center">
-      <image src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/Project%20Info/SHA256%20.png" height="500px" width="420px">
-      <image src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/Project%20Info/spn.png"  height="500px" width="420px">
+      <image src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/Project%20Info%20And%20%20Report/01.%20Project%20Info/SHA256%20.png" height="500px" width="420px">
+      <image src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/Project%20Info%20And%20%20Report/01.%20Project%20Info/SPN.png"  height="500px" width="420px">
     </div>
     <li>With the Socket Program, your own encrypted message will be made from the user of the same user message and the user will be able to see the user password with the key (password) containing the password of the other user's message.</li>
     <li>The program will also be able to send other files (such as TXT, DAT or GIF) to the other party, but while sending (the file will be reduced in size after it is encrypted with a compression algorithm you will write or use ready-made).</li>
