@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZipOperation.cs" />
     <EmbeddedResource Include="OnlyTwoForm.resx">
       <DependentUpon>OnlyTwoForm.cs</DependentUpon>
     </EmbeddedResource>
