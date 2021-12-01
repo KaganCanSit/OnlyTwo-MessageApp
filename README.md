@@ -23,8 +23,8 @@
 <hr>
 <div class="infoEncryption">
   <div class="images">
-    <img src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/ProjectFiles/01_ProjectInfo/SHA256%20.png" width="400px" height="600px"></img>
-    <img src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/ProjectFiles/01_ProjectInfo/SPN.png"  width="400px" height="600px"></img>
+    <img src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/ProjectFiles/01_ProjectInfo/SHA256%20.png" width="450px" height="600px"></img>
+    <img src="https://github.com/KaganCanSit/OnlyTwo-MessageApp/blob/main/ProjectFiles/01_ProjectInfo/SPN.png"  width="450px" height="600px"></img>
   </div>
   <h2>What Is SHA256 Encryption?</h2>
   <p> 
