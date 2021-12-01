@@ -8,18 +8,16 @@ using System.Threading;
 
 namespace server
 {
-
     public partial class ServerForm : Form
     {
-
-        private byte[] _buffer = new byte[1024];//Data Size
-        public List<SocketT2h> __ClientSockets { get; set; }
+        private byte[] _buffer = new byte[1024*5];//Data Size
+        public List<SocketT2h> ClientSockets { get; set; }
         private Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         public ServerForm()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            __ClientSockets = new List<SocketT2h>();
+            ClientSockets = new List<SocketT2h>();
         }
         //AsyncCallback
         private void SetupServer()
@@ -33,18 +31,16 @@ namespace server
         }
         private void AppceptCallback(IAsyncResult ar)
         {
-            Console.WriteLine("Here Again");
-            Socket socket = _serverSocket.EndAccept(ar);//
-            __ClientSockets.Add(new SocketT2h(socket));//SocketT2h Class At The Bottom -> List<SocketT2h> __ClientSockets = new List<SocketT2h>();
+            Socket socket = _serverSocket.EndAccept(ar);
+            ClientSockets.Add(new SocketT2h(socket));//SocketT2h Class At The Bottom -> List<SocketT2h> __ClientSockets = new List<SocketT2h>();
             ClintListBox.Items.Add(socket.RemoteEndPoint.ToString());
             Console.WriteLine("Connecting Socket = " + socket.RemoteEndPoint.ToString());
             InfoLabelUp.Text = "Client Connect. . .";
             socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);//AsyncCallback
-            Console.WriteLine("ReceiveCallback Method Work");
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
             Console.WriteLine("AppceptCallback Method Is Recursive");
         }
-       static string sonlanan_clien = "";
+       static string SonlananClient = "";
        
         private void ReceiveCallback(IAsyncResult ar)
         {
@@ -58,21 +54,21 @@ namespace server
                 }
                 catch (Exception)
                 {
-                    for (int i = 0; i < __ClientSockets.Count; i++)
+                    for (int i = 0; i < ClientSockets.Count; i++)
                     {
-                        if (__ClientSockets[i]._Socket.RemoteEndPoint.ToString().Equals(socket.RemoteEndPoint.ToString()))
+                        if (ClientSockets[i].SocketPr.RemoteEndPoint.ToString().Equals(socket.RemoteEndPoint.ToString()))
                         {
-                            sonlanan_clien = __ClientSockets[i]._Name.Substring(1, __ClientSockets[i]._Name.Length - 1);
-                            Console.WriteLine("End Client " + sonlanan_clien);
-                            __ClientSockets.RemoveAt(i);//Delete Socket List
+                            SonlananClient = ClientSockets[i].NamePr.Substring(1, ClientSockets[i].NamePr.Length - 1);
+                            Console.WriteLine("End Client " + SonlananClient);
+                            ClientSockets.RemoveAt(i);//Delete Socket List
                             for (int j = 0; j < ClintListBox.Items.Count; j++)//Delete ListBox
                             {
-                                if (ClintListBox.Items[j].Equals(sonlanan_clien))
+                                if (ClintListBox.Items[j].Equals(SonlananClient))
                                     ClintListBox.Items.RemoveAt(j);
                             }
                         }
                     }
-                    clientlerden_sil(sonlanan_clien);
+                    ClientlerdenSil(SonlananClient);
                     return;
                 }
                 if (received != 0)
@@ -87,13 +83,13 @@ namespace server
                     {
                         for (int i = 0; i < ClintListBox.Items.Count; i++)
                         {
-                            if (socket.RemoteEndPoint.ToString().Equals(__ClientSockets[i]._Socket.RemoteEndPoint.ToString())) //If Already In Listbox
+                            if (socket.RemoteEndPoint.ToString().Equals(ClientSockets[i].SocketPr.RemoteEndPoint.ToString())) //If Already In Listbox
                             {
                                 ClintListBox.Items.RemoveAt(i);
                                 ClintListBox.Items.Insert(i, text.Substring(1, text.Length - 1));
-                                __ClientSockets[i]._Name = text;
+                                ClientSockets[i].NamePr = text;
                                 socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);//BeginReceive=  Begin The Receiving rocess Recursive=ReceiveCallback
-                                isimleri_gonder();
+                                IsimleriGonder();
                                 return;
                             }
                         }
@@ -105,20 +101,20 @@ namespace server
                     int uzunluk = (text.Length) - (index + 2);
                     index += 2;
                     mesaj = text.Substring(index, uzunluk);
-                    gonder_gelen_mesaji(cli, text, mesaj);
-                    for (int i = 0; i < __ClientSockets.Count; i++)
+                    GonderGelenMesaji(cli, text, mesaj);
+                    for (int i = 0; i < ClientSockets.Count; i++)
                     {
-                        if (socket.RemoteEndPoint.ToString().Equals(__ClientSockets[i]._Socket.RemoteEndPoint.ToString()))//Socket Name == List Socket Name
-                            MessageTextBox.AppendText("\n" + __ClientSockets[i]._Name + ": " + text);//Socket Name Write
+                        if (socket.RemoteEndPoint.ToString().Equals(ClientSockets[i].SocketPr.RemoteEndPoint.ToString()))//Socket Name == List Socket Name
+                            MessageTextBox.AppendText("\n" + ClientSockets[i].NamePr + ": " + text);//Socket Name Write
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < __ClientSockets.Count; i++)
+                    for (int i = 0; i < ClientSockets.Count; i++)
                     {
-                        if (__ClientSockets[i]._Socket.RemoteEndPoint.ToString().Equals(socket.RemoteEndPoint.ToString()))
+                        if (ClientSockets[i].SocketPr.RemoteEndPoint.ToString().Equals(socket.RemoteEndPoint.ToString()))
                         {
-                            __ClientSockets.RemoveAt(i);
+                            ClientSockets.RemoveAt(i);
                             Console.WriteLine("Output");
                         }
                     }
@@ -126,19 +122,19 @@ namespace server
             }
             socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
         }
-        public void clientlerden_sil(string sonlanan_client)
+        public void ClientlerdenSil(string SonlananClient)
         {
-            string sil = "Delete*" + sonlanan_clien;
-            for (int j = 0; j < __ClientSockets.Count; j++)
+            string sil = "Delete*" + SonlananClient;
+            for (int j = 0; j < ClientSockets.Count; j++)
             {
-                if (__ClientSockets[j]._Socket.Connected)
+                if (ClientSockets[j].SocketPr.Connected)
                 {
-                        Sendata(__ClientSockets[j]._Socket, sil);
+                        Sendata(ClientSockets[j].SocketPr, sil);
                         Thread.Sleep(20);
                 }
             }
         }
-        public void gonder_gelen_mesaji(string cli, string text, string mesaj)
+        public void GonderGelenMesaji(string cli, string text, string mesaj)
         {
             //gelen=@@aa
             //__ClientSockets[i]._Name=@@aa
@@ -146,8 +142,8 @@ namespace server
             Console.WriteLine("I Was Looking For " + parcc);
             cli = "@" + cli;
 
-            Console.WriteLine("Coming_cli = " + cli + "\n cli_name" + __ClientSockets[0]._Name + "\n text :" + text);
-            if (cli.Equals(__ClientSockets[0]._Name))
+            Console.WriteLine("Coming_cli = " + cli + "\n cli_name" + ClientSockets[0].NamePr + "\n text :" + text);
+            if (cli.Equals(ClientSockets[0].NamePr))
                 Console.WriteLine("Done");
 
 
@@ -159,13 +155,13 @@ namespace server
             Console.WriteLine("Sender " + gonder_);
             try
             {
-                for (int j = 0; j < __ClientSockets.Count; j++)
+                for (int j = 0; j < ClientSockets.Count; j++)
                 {
-                    if (__ClientSockets[j]._Socket.Connected)
+                    if (ClientSockets[j].SocketPr.Connected)
                     {
-                        if (__ClientSockets[j]._Name.Equals(cli))//Send The Message (a Client >B Client)
+                        if (ClientSockets[j].NamePr.Equals(cli))//Send The Message (a Client >B Client)
                         {
-                            Sendata(__ClientSockets[j]._Socket, gonder_);
+                            Sendata(ClientSockets[j].SocketPr, gonder_);
                             Thread.Sleep(20);
                         }
                     }
@@ -192,15 +188,15 @@ namespace server
             CheckForIllegalCrossThreadCalls = false;//Dinamic Article
             SetupServer();
         }
-        public void isimleri_gonder()
+        public void IsimleriGonder()
         {
-            for (int j = 0; j < __ClientSockets.Count; j++)
+            for (int j = 0; j < ClientSockets.Count; j++)
             {
-                if (__ClientSockets[j]._Socket.Connected)//Connected OK
+                if (ClientSockets[j].SocketPr.Connected)//Connected OK
                 {
                     for (int i = 0; i < ClintListBox.Items.Count; i++)
                     {
-                        Sendata(__ClientSockets[j]._Socket, ClintListBox.Items[i].ToString());//Client Names Send
+                        Sendata(ClientSockets[j].SocketPr, ClintListBox.Items[i].ToString());//Client Names Send
                         Thread.Sleep(20);
                     }
                 }
@@ -209,11 +205,11 @@ namespace server
     }
     public class SocketT2h
     {
-        public Socket _Socket { get; set; }
-        public string _Name { get; set; }
+        public Socket SocketPr { get; set; }
+        public string NamePr { get; set; }
         public SocketT2h(Socket socket)
         {
-            this._Socket = socket;
+            this.SocketPr = socket;
         }
     }
 }

@@ -40,3 +40,15 @@ D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama
 D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.csproj.CopyComplete
 D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.exe
 D:\Uzaktan Eğitim\3.Sınıf Yazılım Mühendisliği\1.Dönem\Yazılım Sınama\Proje2021\Proje_Kod\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.pdb
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\bin\Debug\server.exe.config
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\bin\Debug\server.exe
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\bin\Debug\server.pdb
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\bin\Debug\Bunifu_UI_v1.5.3.xml
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.csproj.AssemblyReference.cache
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.ServerForm.resources
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.Properties.Resources.resources
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.csproj.GenerateResource.cache
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.csproj.CoreCompileInputs.cache
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.csproj.CopyComplete
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.exe
+C:\Users\Kağan Can Şit\Desktop\OnlyTwo-MessageApp\OnlyTwo-Codes\Server\server\obj\Debug\server.pdb
