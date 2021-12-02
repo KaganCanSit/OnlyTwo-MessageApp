@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 using System.Text;
+using System.Net;
+using System.IO;
 
 namespace OnlyTwo
 {
@@ -240,20 +242,25 @@ namespace OnlyTwo
         //Send Operation
         private void SendFlatButton_Click(object sender, EventArgs e)
         {
-            if (_clientSocket.Connected)
+            if (CipherTextBox.Text == "")
+                MessageBox.Show("Cipher Text Is Empty");
+            else
             {
-                string tmpStr = "";
-                foreach (var item in UsersListBox.SelectedItems)//Listbox Selected Item
+                if (_clientSocket.Connected)
                 {
-                    tmpStr = UsersListBox.GetItemText(item);
-                    byte[] buffer = Encoding.ASCII.GetBytes(tmpStr + " :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//Byte Translate
-                    _clientSocket.Send(buffer);//Send IP+Port > Socket
-                    Thread.Sleep(20);
+                    string tmpStr = "";
+                    foreach (var item in UsersListBox.SelectedItems)//Listbox Selected Item
+                    {
+                        tmpStr = UsersListBox.GetItemText(item);
+                        byte[] buffer = Encoding.ASCII.GetBytes(tmpStr + " :" + CipherTextBox.Text + "*" + UsernameTextBox.Text);//Byte Translate
+                        _clientSocket.Send(buffer);//Send IP+Port > Socket                       
+                        Thread.Sleep(20);
+                    }
+                    if (tmpStr.Equals(""))
+                        MessageBox.Show("Please Click The Send Username");
+                    else
+                        PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");
                 }
-                if (tmpStr.Equals(""))
-                    MessageBox.Show("Please Click The Send Username");
-                else
-                    PlainRichTextBox.AppendText(UsernameTextBox.Text + ": " + CipherTextBox.Text + "\n");
             }
         }
 
