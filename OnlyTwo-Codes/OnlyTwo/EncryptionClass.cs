@@ -41,7 +41,7 @@ namespace OnlyTwo
         }
 
         //Spn16-Solve - Input Convert To String
-        private static String ConvertString(string text)
+        public String ConvertString(string text)
         {
             List<byte> stringList = new List<byte>();
             for (int i = 0; i < text.Length; i += 8)
@@ -52,7 +52,7 @@ namespace OnlyTwo
         }
 
         //SPN-16 Input Convert To Binary
-        private static String Key(string text)
+        public String Key(string text)
         {
             string temp, keycrypto = "";
             for (int a = 0; a < text.Length; a++)
