@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mfmszXj7uwAWS+6fpgQj09OiH3WzFvu+c0AioGDfUvmxZUl69TrYzRW/HtNG0GWITgCp7lN4/QRMb25EE6RQlQ==",
+  "dgSpecHash": "8ceCvAvGUGOoEE2DgWpBglJYS9xVp9bNszw+fSSM6wG7VvRKVrToQHWq+y8ZgcRHD0YfrfA76NUiIwuKbeBf1w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj",
+  "projectFilePath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kağan Can Şit\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\Kağan Can Şit\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",

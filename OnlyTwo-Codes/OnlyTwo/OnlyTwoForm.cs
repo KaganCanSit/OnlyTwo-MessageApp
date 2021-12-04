@@ -4,8 +4,6 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 using System.Text;
-using System.Net;
-using System.IO;
 
 namespace OnlyTwo
 {

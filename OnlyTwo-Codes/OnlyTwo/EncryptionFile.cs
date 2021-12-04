@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace OnlyTwo
 {
-    class EncryptionFile
+    public class EncryptionFile
     {
         //Crypte File Variable
         byte[] abc;

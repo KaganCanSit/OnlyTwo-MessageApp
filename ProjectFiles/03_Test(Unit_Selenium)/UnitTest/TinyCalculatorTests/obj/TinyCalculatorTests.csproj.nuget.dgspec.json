@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj": {}
+    "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj": {
+    "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj",
+        "projectUniqueName": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj",
         "projectName": "TinyCalculatorTests",
-        "projectPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj",
+        "projectPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\TinyCalculatorTests.csproj",
         "packagesPath": "C:\\Users\\Kağan Can Şit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\obj\\",
+        "outputPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculatorTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj": {
-                "projectPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj"
+              "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj": {
+                "projectPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj": {
+    "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj",
+        "projectUniqueName": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj",
         "projectName": "TinyCalculator",
-        "projectPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj",
+        "projectPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\TinyCalculator.csproj",
         "packagesPath": "C:\\Users\\Kağan Can Şit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjecFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\obj\\",
+        "outputPath": "C:\\Users\\Kağan Can Şit\\Desktop\\OnlyTwo-MessageApp\\ProjectFiles\\03_Test(Unit_Selenium)\\UnitTest\\TinyCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

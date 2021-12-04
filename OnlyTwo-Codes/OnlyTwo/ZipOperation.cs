@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace OnlyTwo
 {
-    class ZipOperation
+    public class ZipOperation
     {
         public Bunifu.Framework.UI.BunifuProgressBar progressBar;
 

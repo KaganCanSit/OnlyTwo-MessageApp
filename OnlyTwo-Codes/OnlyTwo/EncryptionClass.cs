@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace OnlyTwo
 {
-    class EncryptionClass
+    public class EncryptionClass
     {
         //SHA256 - Crypting
         public string SHA256(string text)
