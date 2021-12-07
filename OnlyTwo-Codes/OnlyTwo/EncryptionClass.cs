@@ -107,18 +107,13 @@ namespace OnlyTwo
         //Turkisch Char Convert English Char
         public string StringReplace(string text)
         {
-            text = text.Replace("İ", "I");
-            text = text.Replace("ı", "i");
-            text = text.Replace("Ğ", "G");
-            text = text.Replace("ğ", "g");
-            text = text.Replace("Ö", "O");
-            text = text.Replace("ö", "o");
-            text = text.Replace("Ü", "U");
-            text = text.Replace("ü", "u");
-            text = text.Replace("Ş", "S");
-            text = text.Replace("ş", "s");
-            text = text.Replace("Ç", "C");
-            text = text.Replace("ç", "c");
+            string[] ValueIn = { "İ", "ı", "Ğ", "ğ", "Ö", "ö", "Ü","ü", "Ş", "ş", "Ç", "ç"};
+            string[] ValueOut = { "I", "i", "G", "g", "O", "o", "U","u", "S","s", "C", "c" };
+
+            for (int i=0; i < ValueIn.Length;i++)
+            {
+                text = text.Replace(ValueIn[i],ValueOut[i]);
+            }
             return text;
         }
     }
